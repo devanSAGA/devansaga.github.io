@@ -6,7 +6,23 @@ import { Instagram, GitHub, Linkedin, Twitter } from "react-feather";
 const HomePage = props => {
   return (
     <div className="homepage-container">
-      <div className="personal-info">Hey I am Devansh</div>
+      <div className="personal-info">
+        <h1>
+          Hey, I am Devansh!
+          <span role="img" aria-label="waving-hand">
+            👋
+          </span>
+        </h1>
+        <p>
+          I am from India{" "}
+          <span role="img" aria-label="india">
+            🇮🇳
+          </span>. I{" "}
+          <span role="img" aria-label="heart">
+            ❤️{" "}
+          </span>JavaScript and React.
+        </p>
+      </div>
       <div className="social-icons">
         <div className="icon-container below">
           <a

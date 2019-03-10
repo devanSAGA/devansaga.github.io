@@ -7,6 +7,17 @@
 .personal-info {
   height: auto;
   flex-grow: 3;
+  text-align: center;
+}
+
+.personal-info p {
+  font-size: 21px;
+  color: #1b1919;
+}
+
+.personal-info h1 {
+  font-size: 24px;
+  color: #1b1919;
 }
 
 .avatar {
@@ -26,16 +37,18 @@
   flex-grow: 1;
 }
 
+.icon-container {
+  margin: 20px;
+}
+
 .below {
   align-self: flex-end;
+  margin-bottom: 0px;
 }
 
 .above {
   align-self: flex-start;
-}
-
-.icon-container {
-  margin: 20px;
+  margin-top: 0px;
 }
 
 .github-icon,
