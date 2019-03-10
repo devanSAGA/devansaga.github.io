@@ -1,0 +1,69 @@
+.homepage-container {
+  display: flex;
+  height: 90%;
+  flex-direction: column;
+}
+
+.personal-info {
+  height: auto;
+  flex-grow: 3;
+}
+
+.avatar {
+  display: flex;
+  align-self: flex-end;
+  justify-content: center;
+  width: 100%;
+}
+
+.avatar img {
+  height: 350px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.below {
+  align-self: flex-end;
+}
+
+.above {
+  align-self: flex-start;
+}
+
+.icon-container {
+  margin: 20px;
+}
+
+.github-icon,
+.twitter-icon,
+.instagram-icon,
+.linkedin-icon {
+  color: #009f9d;
+}
+
+.github-icon:hover,
+.twitter-icon:hover,
+.instagram-icon:hover,
+.linkedin-icon:hover {
+  color: #0f0a3c;
+}
+
+.github-icon:hover {
+  fill: #34699a;
+}
+
+.twitter-icon:hover {
+  fill: #8ed6ff;
+}
+
+.instagram-icon:hover {
+  fill: #e6b2c6;
+}
+
+.linkedin-icon:hover {
+  fill: #408ab4;
+}
