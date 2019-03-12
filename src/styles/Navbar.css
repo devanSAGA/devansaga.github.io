@@ -1,6 +1,6 @@
 .navbar-container {
   height: 10%;
-  width: 500px;
+  width: 100%;
   display: flex;
   padding-top: 16px;
   padding-bottom: 16px;
@@ -22,7 +22,7 @@ a:hover {
 }
 
 .navbar-start-section {
-  padding-left: 43px;
+  /* padding-left: 43px; */
 }
 
 .selected {

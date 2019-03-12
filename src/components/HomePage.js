@@ -20,7 +20,8 @@ const HomePage = props => {
           </span>. I{" "}
           <span role="img" aria-label="heart">
             ❤️{" "}
-          </span>JavaScript and React.
+          </span>JavaScript and React. If not stumbling upon Twitter, I also
+          spend some time designing minimal arts and in quizzing!
         </p>
       </div>
       <div className="social-icons">

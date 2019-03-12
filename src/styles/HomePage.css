@@ -6,7 +6,7 @@
 
 .personal-info {
   height: auto;
-  flex-grow: 3;
+  flex-grow: 1;
   text-align: center;
 }
 
@@ -34,7 +34,7 @@
 .social-icons {
   display: flex;
   justify-content: center;
-  flex-grow: 1;
+  flex-grow: 4;
 }
 
 .icon-container {
@@ -56,6 +56,7 @@
 .instagram-icon,
 .linkedin-icon {
   color: #009f9d;
+  opacity: 1;
 }
 
 .github-icon:hover,
@@ -74,9 +75,19 @@
 }
 
 .instagram-icon:hover {
-  fill: #e6b2c6;
+  fill: #e14594;
 }
-
 .linkedin-icon:hover {
   fill: #408ab4;
+}
+.personal-info p {
+  text-align: justify;
+}
+
+.icon-container {
+  transition: all 0.2s ease-in-out;
+}
+
+.icon-container:hover {
+  transform: scale(1.1);
 }
