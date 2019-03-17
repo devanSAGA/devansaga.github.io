@@ -1,0 +1,17 @@
+.aboutme-page-container {
+  display: flex;
+  text-align: left;
+  flex-direction: column;
+}
+
+.aboutme {
+  display: flex;
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 28px;
+  color: #113f67;
+}
+
+.footer {
+  height: 20px;
+}

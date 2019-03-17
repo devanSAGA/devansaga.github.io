@@ -25,7 +25,7 @@ const HomePage = props => {
         </p>
       </div>
       <div className="social-icons">
-        <div className="icon-container below">
+        <div className="icon-container github">
           <a
             href="https://github.com/devanSAGA"
             target="_blank"
@@ -34,7 +34,7 @@ const HomePage = props => {
             <GitHub className="github-icon" size={50} />
           </a>
         </div>
-        <div className="icon-container above">
+        <div className="icon-container instagram">
           <a
             href="https://www.instagram.com/_devansaga_/"
             target="_blank"
@@ -43,7 +43,7 @@ const HomePage = props => {
             <Instagram className="instagram-icon" size={50} />
           </a>
         </div>
-        <div className="icon-container above">
+        <div className="icon-container twitter">
           <a
             href="https://twitter.com/devanshdoesdab"
             target="_blank"
@@ -52,7 +52,7 @@ const HomePage = props => {
             <Twitter className="twitter-icon" size={50} />
           </a>
         </div>
-        <div className="icon-container below">
+        <div className="icon-container linkedin">
           <a
             href="https://www.linkedin.com/in/devansh-purohit-3541b7140/"
             target="_blank"
