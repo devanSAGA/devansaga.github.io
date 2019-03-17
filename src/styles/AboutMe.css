@@ -5,7 +5,7 @@
 }
 
 .aboutme {
-  display: flex;
+  /* display: flex; */
   margin-top: 20px;
   font-size: 18px;
   line-height: 28px;
@@ -14,4 +14,14 @@
 
 .footer {
   height: 20px;
+}
+
+.about a {
+}
+
+.half-highlight {
+  background-color: #65c6c4;
+  height: 8px;
+  line-height: 14px;
+  display: inline-block;
 }
