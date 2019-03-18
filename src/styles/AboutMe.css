@@ -1,4 +1,6 @@
 .aboutme-page-container {
+  display: -webkit-flex;
+  display: -ms-flex;
   display: flex;
   text-align: left;
   flex-direction: column;
@@ -16,12 +18,17 @@
   height: 20px;
 }
 
-.about a {
+.bold {
+  font-weight: bold;
 }
 
-.half-highlight {
+.aboutme a {
+  text-decoration: underline;
+}
+
+/* .half-highlight {
   background-color: #65c6c4;
   height: 8px;
   line-height: 14px;
   display: inline-block;
-}
+} */

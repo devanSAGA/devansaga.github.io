@@ -1,6 +1,8 @@
 .navbar-container {
   height: 10%;
   width: 80%;
+  display: -webkit-flex;
+  display: -ms-flex;
   display: flex;
   padding-top: 16px;
   padding-bottom: 16px;
