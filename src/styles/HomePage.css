@@ -2,10 +2,9 @@
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
-  height: 90%;
-  min-height: 750px;
   flex-direction: column;
   align-items: center;
+  flex-grow: 1;
 }
 
 .personal-info {
@@ -26,6 +25,7 @@
 .personal-info h1 {
   font-size: 24px;
   color: #113f67;
+  margin: 0;
 }
 
 .avatar {
@@ -34,11 +34,12 @@
   display: flex;
   justify-content: center;
   width: 100%;
+  min-height: 250px;
 }
 
 .avatar img {
   align-self: flex-end;
-  height: 350px;
+  height: 300px;
 }
 
 .social-icons {

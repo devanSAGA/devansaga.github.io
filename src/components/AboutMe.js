@@ -6,15 +6,14 @@ const AboutMe = () => {
     <div className="aboutme-page-container">
       <section className="aboutme ">Oh you clicked! Awesome.</section>
       <section className="aboutme">
-        My name is Devansh, I am a junior front end developer and I am from
-        India. Currently, I am pursuing my bachelor of technology in the field
-        of Information and Communication Technology(4th year) at Dhirubhai
-        Ambani Institute of Information and Communication Technology ,
-        Gandhinagar.
+        My name is Devansh, I am a junior Frontend Developer from India.
+        Currently, I am pursuing my bachelor of technology in the field of
+        Information and Communication Technology(4th year) at Dhirubhai Ambani
+        Institute of Information and Communication Technology , Gandhinagar.
       </section>
       <section className="aboutme">
         Along with JavaScript I love Cartoons, Superheroes and collecting Nerdy
-        T-Shirts. I am currently experimenting React and implementing some of my
+        T-Shirts. I am currently exploring React and implementing some of my
         ideas. The other side of me is an Artist. I have been fond of drawing
         since my childhood and after getting introduced to Adobe Illustrator I
         try to represent my Ideas through Illustrations. I am good at making
