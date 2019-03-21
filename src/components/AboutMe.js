@@ -22,7 +22,7 @@ const AboutMe = () => {
           href="https://www.instagram.com/_devansaga_/"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ color: "#e14594", padding: 0, fontWeight: "bold" }}
+          style={{ color: "#e14594" }}
         >
           Instagram
         </a>{" "}
@@ -35,7 +35,7 @@ const AboutMe = () => {
           href="https://twitter.com/devanshdoesdab"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ color: "#5893d4", padding: 0, fontWeight: "bold" }}
+          style={{ color: "#5893d4" }}
         >
           Twitter
         </a>{" "}
@@ -44,7 +44,7 @@ const AboutMe = () => {
           href="http://www.thelocaltrain.com/"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ padding: 0, fontWeight: "bold", color: "#113f67" }}
+          style={{ color: "#113f67" }}
         >
           The Local Train.
         </a>
@@ -55,7 +55,18 @@ const AboutMe = () => {
         Feel free to Contact me{" "}
         <span className="bold">@dnpurohit96@gmail.com</span>
       </section>
-      <section className="aboutme">Bye!</section>
+      <section className="aboutme">
+        You can also check my Resume by clicking below!
+        <a
+          href="https://docs.google.com/document/d/14265IV9v8TZ2PnuzinPQsTSSDZo5ZKfcOcorgI--UUY/edit?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+          id="resume-link"
+        >
+          Resume
+        </a>
+      </section>
+
       <section className="footer" />
     </div>
   );
