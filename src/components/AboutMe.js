@@ -6,7 +6,7 @@ const AboutMe = () => {
     <div className="aboutme-page-container">
       <section className="aboutme ">Oh you clicked! Awesome.</section>
       <section className="aboutme">
-        My name is Devansh, I am a junior Frontend Developer from India.
+        My name is Devansh, I am a Junior Frontend Developer from India.
         Currently, I am pursuing my bachelor of technology in the field of
         Information and Communication Technology(4th year) at Dhirubhai Ambani
         Institute of Information and Communication Technology , Gandhinagar.
@@ -58,7 +58,7 @@ const AboutMe = () => {
       <section className="aboutme">
         You can also check my Resume by clicking below!
         <a
-          href="https://docs.google.com/document/d/14265IV9v8TZ2PnuzinPQsTSSDZo5ZKfcOcorgI--UUY/edit?usp=sharing"
+          href="https://drive.google.com/open?id=1kVUp6-RO0jgQ8I0JPRfK_lHd1F6hd3LL"
           target="_blank"
           rel="noopener noreferrer"
           id="resume-link"
