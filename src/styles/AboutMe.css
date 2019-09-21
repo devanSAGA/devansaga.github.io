@@ -7,15 +7,14 @@
 }
 
 .aboutme {
-  /* display: flex; */
-  margin-top: 20px;
-  font-size: 18px;
-  line-height: 28px;
+  margin-top: 2rem;
+  font-size: 2rem;
+  line-height: 3rem;
   color: #113f67;
 }
 
 .footer {
-  height: 20px;
+  height: 2rem;
 }
 
 .bold {
@@ -40,10 +39,3 @@
   text-align: center;
   text-decoration: none;
 }
-
-/* .half-highlight {
-  background-color: #65c6c4;
-  height: 8px;
-  line-height: 14px;
-  display: inline-block;
-} */

@@ -11,6 +11,9 @@ const Navbar = props => {
         </NavLink>
       </div>
       <div className="navbar-end-section">
+        <NavLink to="/work" activeClassName="selected">
+          Work
+        </NavLink>
         <NavLink to="/about" activeClassName="selected">
           About Me
         </NavLink>

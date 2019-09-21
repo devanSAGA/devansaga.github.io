@@ -7,25 +7,24 @@
   flex-grow: 1;
 }
 
-.personal-info {
+.homepage-intro {
   height: auto;
   max-width: 500px;
   padding-top: 30px;
   text-align: center;
-  position: relative;
-  flex-grow: 1;
 }
 
-.personal-info p {
+.homepage-intro .homepage-intro--text {
   font-size: 21px;
   line-height: 28px;
   color: #113f67;
+  text-align: center;
 }
 
-.personal-info h1 {
-  font-size: 24px;
+.homepage-intro .homepage-intro--heading {
+  font-size: 3.2rem;
   color: #113f67;
-  margin: 0;
+  margin-bottom: 3rem;
 }
 
 .avatar {
@@ -58,21 +57,9 @@
   transition: all 0.2s ease-in-out;
 }
 
-.icon-container {
-}
-
 .icon-container:hover {
   transform: scale(1.1);
 }
-/* .below {
-  align-self: flex-end;
-  margin-bottom: 0px;
-}
-
-.above {
-  align-self: flex-start;
-  margin-top: 0px;
-} */
 
 .github,
 .linkedin {
@@ -113,18 +100,15 @@
 .linkedin-icon:hover {
   fill: #408ab4;
 }
-.personal-info p {
-  text-align: center;
-}
 
 @media only screen and (max-width: 468px) {
-  .personal-info p {
+  .homepage-intro p {
     font-size: 18px;
   }
 }
 
 @media only screen and (max-width: 468px) {
-  .personal-info,
+  .homepage-intro,
   .social-icons {
     width: 90vw;
   }

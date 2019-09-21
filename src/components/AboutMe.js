@@ -58,7 +58,7 @@ const AboutMe = () => {
       <section className="aboutme">
         You can also check my Resume by clicking below!
         <a
-          href="https://drive.google.com/open?id=1kVUp6-RO0jgQ8I0JPRfK_lHd1F6hd3LL"
+          href="https://drive.google.com/file/d/1pkGE6Bd7tJkuRvPE4qstxOcyfqawR2lY/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
           id="resume-link"

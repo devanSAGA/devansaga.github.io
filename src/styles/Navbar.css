@@ -1,22 +1,22 @@
 .navbar-container {
   height: 10%;
-  width: 80%;
+  width: 100%;
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
-  padding-top: 16px;
-  padding-bottom: 16px;
+  padding: 1.6rem 0;
   justify-content: space-between;
-  box-sizing: border-box;
-  margin: 0 auto;
 }
 
 a {
   text-decoration: none;
-  font-size: 18px;
+  font-size: 2rem;
   font-weight: 400;
   color: #112d4e;
-  padding-left: 10px;
+}
+
+.navbar-end-section a {
+  padding-left: 2rem;
 }
 
 a:hover {
@@ -25,13 +25,4 @@ a:hover {
 
 .selected {
   font-weight: bold;
-}
-
-@media only screen and (max-width: 768px) {
-  .navbar-container {
-    width: 100%;
-  }
-}
-
-@media only screen and (max-width: 400px) {
 }
