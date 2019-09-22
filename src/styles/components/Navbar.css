@@ -49,6 +49,7 @@ a:hover {
 
 .bm-burger-bars-hover {
   background: #113f67;
+  opacity: 1 !important;
 }
 /* Position and sizing of clickable cross button */
 .bm-cross-button {
@@ -58,7 +59,7 @@ a:hover {
 
 /* Color/shape of close button cross */
 .bm-cross {
-  background: #bdc3c7;
+  background: #113f67;
 }
 
 /*
@@ -72,6 +73,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /* General sidebar styles */
 .bm-menu {
+  width: 100%;
   background: #f9f7f7;
   padding: 5rem 1.5rem 0 1.5rem;
 }

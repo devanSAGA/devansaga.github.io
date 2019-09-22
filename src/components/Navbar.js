@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { NavLink } from "react-router-dom";
-import { slide as Menu } from "react-burger-menu";
+import { bubble as Menu } from "react-burger-menu";
 
 import "../styles/components/Navbar.css";
 
@@ -44,6 +44,7 @@ class Navbar extends Component {
           <Menu
             width={"100%"}
             right
+            noOverlay
             isOpen={this.state.isMenuOpen}
             onStateChange={state => this.handleStateChange(state)}
           >

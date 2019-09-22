@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import AboutMe from "./pages/AboutMe";
 import Designs from "./pages/Designs";
+import Work from "./pages/Work";
 import "./App.css";
 
 class App extends Component {
@@ -16,6 +17,7 @@ class App extends Component {
           <Switch>
             <Route path="/" exact component={HomePage} />
             <Route path="/about" component={AboutMe} />
+            <Route path="/work" component={Work} />
             <Route path="/designs" exact component={Designs} />
           </Switch>
         </div>

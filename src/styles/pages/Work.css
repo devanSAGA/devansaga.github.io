@@ -1,0 +1,17 @@
+.work-section {
+  width: 100%;
+}
+
+.page-heading {
+  display: inline-block;
+  font-size: 4rem;
+  color: #113f67;
+  margin-bottom: 2rem;
+  border-bottom: 5px solid #f9f7f7;
+}
+
+.work__projects--content {
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
