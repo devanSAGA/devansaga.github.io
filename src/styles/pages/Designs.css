@@ -7,13 +7,7 @@
 
 .designs {
   margin-top: 20px;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 28px;
   color: #113f67;
-}
-
-.designs a {
-  padding: 0;
-  color: #e14594;
-  font-weight: bold;
 }

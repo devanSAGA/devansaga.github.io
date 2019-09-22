@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "../components/Link";
 import "../styles/pages/Designs.css";
 
 const Designs = props => {
@@ -8,14 +9,9 @@ const Designs = props => {
         I am working on it. Please be back soon!
         <br />
         Meanwhile you can check my designs on{" "}
-        <a
-          href="https://www.instagram.com/_devansaga_/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {" "}
+        <Link to="https://www.instagram.com/_devansaga_/" textColor="#e14594">
           Instagram
-        </a>
+        </Link>
       </div>
     </div>
   );

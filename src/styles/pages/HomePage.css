@@ -106,9 +106,7 @@
   .homepage-intro p {
     font-size: 18px;
   }
-}
 
-@media only screen and (max-width: 468px) {
   .homepage-intro,
   .social-icons {
     width: 90vw;
