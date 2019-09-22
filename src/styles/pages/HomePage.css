@@ -12,6 +12,7 @@
   max-width: 500px;
   padding-top: 30px;
   text-align: center;
+  flex-grow: 1;
 }
 
 .homepage-intro .homepage-intro--text {

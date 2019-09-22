@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Designs.css";
+import "../styles/pages/Designs.css";
 
 const Designs = props => {
   return (

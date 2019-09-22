@@ -1,8 +1,8 @@
 import React from "react";
-import "../styles/HomePage.css";
-import Avatar from "../assets/myAvatar.png";
-import Link from "./Link";
 import { Instagram, GitHub, Linkedin, Twitter } from "react-feather";
+import Avatar from "../assets/myAvatar.png";
+import Link from "../components/Link";
+import "../styles/pages/HomePage.css";
 
 const HomePage = props => {
   return (

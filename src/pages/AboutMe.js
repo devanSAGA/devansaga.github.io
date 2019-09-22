@@ -1,5 +1,6 @@
 import React from "react";
-import "../styles/AboutMe.css";
+import Link from "../components/Link";
+import "../styles/pages/AboutMe.css";
 
 const AboutMe = () => {
   return (
@@ -18,42 +19,27 @@ const AboutMe = () => {
         since my childhood and after getting introduced to Adobe Illustrator I
         try to represent my Ideas through Illustrations. I am good at making
         puns and that is reflected in my Designs too. You can check my{" "}
-        <a
-          href="https://www.instagram.com/_devansaga_/"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ color: "#e14594" }}
-        >
+        <Link to="https://www.instagram.com/_devansaga_/" textColor="#e14594">
           Instagram
-        </a>{" "}
+        </Link>{" "}
         to have a look at my designs and know more.
       </section>
       <section className="aboutme">
         In my spare time, I watch Football or participate in a Quiz or scroll
         through{" "}
-        <a
-          href="https://twitter.com/devanshdoesdab"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ color: "#5893d4" }}
-        >
+        <Link to="https://twitter.com/devanshdoesdab" textColor="#5893d4">
           Twitter
-        </a>{" "}
+        </Link>{" "}
         or listen to{" "}
-        <a
-          href="http://www.thelocaltrain.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ color: "#113f67" }}
-        >
+        <Link to="http://www.thelocaltrain.com/" textColor="#113f67">
           The Local Train.
-        </a>
+        </Link>
       </section>
       <section className="aboutme">
         If you would like to say hello,
         <br />
-        Feel free to Contact me{" "}
-        <span className="bold">@dnpurohit96@gmail.com</span>
+        Feel free to Contact me @{" "}
+        <span className="bold">dnpurohit96[at]gmail.com</span>
       </section>
       <section className="aboutme">
         You can also check my Resume by clicking below!

@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
-import HomePage from "./components/HomePage";
-import AboutMe from "./components/AboutMe";
-import Designs from "./components/Designs";
+import HomePage from "./pages/HomePage";
+import AboutMe from "./pages/AboutMe";
+import Designs from "./pages/Designs";
 import "./App.css";
 
 class App extends Component {
