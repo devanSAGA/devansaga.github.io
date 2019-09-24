@@ -24,8 +24,10 @@ const Project = props => {
       <div className="project__content">
         <div className="project__content--desc">{props.description}</div>
         <ul className="project__content--tech">
-          {props.technologies.map(tech => (
-            <li className="tech-badge">{tech}</li>
+          {props.technologies.map((tech, index) => (
+            <li key={`tech-${index}`} className="tech-badge">
+              {tech}
+            </li>
           ))}
         </ul>
       </div>

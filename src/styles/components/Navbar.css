@@ -25,12 +25,17 @@ a:hover {
 
 .selected {
   font-weight: bold;
+  outline: none;
 }
 
 .navbar-hamburger {
   display: block;
   width: 100%;
   height: 30px;
+}
+
+.navbar-hamburger a span {
+  padding-right: 5px;
 }
 
 /* Position and sizing of burger button */
@@ -93,7 +98,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* Individual item */
 .bm-item {
   display: inline-block;
-  padding: 1rem 0;
+  padding: 2rem 0;
+  outline: none;
 }
 
 /* Styling of overlay */

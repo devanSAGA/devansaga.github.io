@@ -54,6 +54,9 @@ class Navbar extends Component {
               activeClassName="selected"
               onClick={this.closeMenu}
             >
+              <span role="img" aria-label="house">
+                🏠
+              </span>
               Home
             </NavLink>
             <NavLink
@@ -61,6 +64,9 @@ class Navbar extends Component {
               activeClassName="selected"
               onClick={this.closeMenu}
             >
+              <span role="img" aria-label="light-bulb">
+                💡
+              </span>
               Work
             </NavLink>
             <NavLink
@@ -68,6 +74,9 @@ class Navbar extends Component {
               activeClassName="selected"
               onClick={this.closeMenu}
             >
+              <span role="img" aria-label="waving-hand">
+                👦
+              </span>
               About Me
             </NavLink>
             <NavLink
@@ -76,6 +85,9 @@ class Navbar extends Component {
               activeClassName="selected"
               onClick={this.closeMenu}
             >
+              <span role="img" aria-label="artist-palette">
+                🎨
+              </span>
               Designs
             </NavLink>
           </Menu>

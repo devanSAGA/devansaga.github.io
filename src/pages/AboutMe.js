@@ -7,10 +7,10 @@ const AboutMe = () => {
     <div className="aboutme-page-container">
       <section className="aboutme ">Oh you clicked! Awesome.</section>
       <section className="aboutme">
-        My name is Devansh, I am a Junior Frontend Developer from India.
-        Currently, I am pursuing my bachelor of technology in the field of
-        Information and Communication Technology(4th year) at Dhirubhai Ambani
-        Institute of Information and Communication Technology , Gandhinagar.
+        My name is Devansh, I am a Junior Frontend Developer from India. I have
+        completed my bachelor of technology in the field of Information and
+        Communication Technology(4th year) at Dhirubhai Ambani Institute of
+        Information and Communication Technology , Gandhinagar.
       </section>
       <section className="aboutme">
         Along with JavaScript I love Cartoons, Superheroes and collecting Nerdy

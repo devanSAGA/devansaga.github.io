@@ -1,0 +1,49 @@
+.hash-symbol {
+  font-size: 4rem;
+  color: #113f67;
+  font-weight: bold;
+  padding-right: 1rem;
+}
+
+.experience {
+  display: flex;
+  margin-bottom: 5rem;
+}
+
+.role-and-company {
+  margin-bottom: 3px;
+}
+
+.exp--role {
+  font-size: 2.4rem;
+  color: #113f67;
+  font-weight: bold;
+}
+
+.exp--dates {
+  display: inline-block;
+  color: #113f67;
+  font-size: 1.8rem;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-bottom: 2px solid #b6b6b6;
+}
+
+.exp-info--sub .exp-desc {
+  list-style-type: none;
+}
+
+.exp-info--sub .exp-desc li {
+  font-size: 1.8rem;
+  color: #113f67;
+  padding-left: 4px;
+  line-height: 2.4rem;
+}
+
+ul.dashed > li {
+  text-indent: -5px;
+}
+ul.dashed > li:before {
+  content: "- ";
+  text-indent: -5px;
+}
