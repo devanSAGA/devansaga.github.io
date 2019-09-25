@@ -7,10 +7,10 @@
 }
 
 .aboutme {
-  margin-top: 2rem;
   font-size: 2rem;
   line-height: 3rem;
   color: #113f67;
+  margin-top: 2rem;
 }
 
 .footer {
@@ -21,15 +21,21 @@
   font-weight: bold;
 }
 
-#resume-link {
-  display: block;
+.button {
+  display: inline-block;
+  /* border: 2px solid #113f67; */
   background-color: #113f67;
-  color: #65c6c4;
+  color: #f9f7f7;
   font-size: 18px;
+  font-weight: 600;
   border-radius: 8px;
-  padding: 10px;
-  margin: 3px 0;
-  width: 100px;
+  padding: 1rem 2rem;
+  margin: 5px 0;
   text-align: center;
   text-decoration: none;
+}
+
+.button:hover {
+  text-decoration: none;
+  cursor: pointer;
 }

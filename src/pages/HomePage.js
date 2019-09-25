@@ -15,7 +15,7 @@ const HomePage = props => {
           </span>
         </h1>
         <p className="homepage-intro--text">
-          {`I am design-minded Frontend Developer from India `}
+          {`I am a design-minded Frontend Developer from India `}
           <span role="img" aria-label="india">
             🇮🇳
           </span>

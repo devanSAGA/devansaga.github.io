@@ -2,7 +2,7 @@ export default [
   {
     title: "myWallet",
     description:
-      "An expenses tracking responsive web application with features like, User Authentication, Search and Filters.",
+      "Developed an expense tracker web application along with Google Authentication to sync data across devices with the help of Firebase. Responsive design developed with React, SCSS and used Redux for state management.",
     githubLink: "https://github.com/devanSAGA/myWallet",
     demoLink: "https://mywallet.netlify.com/",
     technologies: ["React", "Redux", "Firebase", "React-Router", "SCSS"]
@@ -18,7 +18,7 @@ export default [
   {
     title: "Github Battle",
     description:
-      "A React based application which lets you perform statistical battle between two GitHub users and also displays popular repos in various languages.",
+      "Designed and implemented a web application in React, which gets data using GitHub API and lets you perform statistical battle between two GitHub users. It also lists down top 30 repositories based on popularity.",
     githubLink: "https://github.com/devanSAGA/github-battle",
     demoLink: "https://647nr484xw.codesandbox.io/",
     technologies: ["React", "GitHub API"]
@@ -33,7 +33,7 @@ export default [
   {
     title: "What Should I Eat?",
     description:
-      "A good looking web application which helps making a decision 'What To Eat' by randomly picking one food item.",
+      "A good looking web application which helps you make a decision 'What To Eat' by randomly picking one food item.",
     githubLink: "https://github.com/devanSAGA/what-should-i-eat",
     demoLink: "https://whatshouldieat.netlify.com/",
     technologies: ["React", "Webpack", "SCSS"]
@@ -48,7 +48,7 @@ export default [
   {
     title: "Stranger Beings",
     description:
-      "A project closest to my heart. Documented four years of college life to relive those moments again.",
+      "Used Imgur API and React to develop an image heavy multi-page website which captured our memorable journey of college life.",
     githubLink: "https://github.com/devanSAGA/Stranger-Beings-DA",
     demoLink: "https://devansaga.github.io/Stranger-Beings-DA/",
     technologies: ["React", "Imgur API", "CSS"]
