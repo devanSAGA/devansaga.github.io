@@ -20,7 +20,7 @@ class App extends Component {
             <Route path="/about" component={AboutMe} />
             <Route path="/work" component={Work} />
             <Route path="/designs" exact component={Designs} />
-            <Route path="/blogs-i-follow" exact component={BlogsIFollow} />
+            <Route path="/blogs-to-follow" exact component={BlogsIFollow} />
           </Switch>
         </div>
       </BrowserRouter>

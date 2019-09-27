@@ -31,7 +31,7 @@ const AboutMe = () => {
       </section>
       <section className="aboutme">
         In my spare time, I watch Football, participate in a Quiz, read{" "}
-        <Link to="devansaga.github.io/blogs-i-follow">Blogs</Link>, scroll
+        <Link to="devansaga.github.io/blogs-to-follow">Blogs</Link>, scroll
         through{" "}
         <Link to="https://twitter.com/devanshdoesdab" textColor="#5893d4">
           Twitter

@@ -25,3 +25,12 @@
 .blog__content--link:hover {
   text-decoration: underline;
 }
+
+@media only screen and (max-width: 468px) {
+  .blog__heading--author {
+    font-size: 2rem;
+  }
+  .blog__content--link {
+    font-size: 1.8rem;
+  }
+}

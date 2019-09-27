@@ -8,7 +8,7 @@ const BlogsIFollow = () => {
   return (
     <div className="container" id="blogs-i-follow">
       <h1 className="page-heading" id="projects">
-        <span className="hash-symbol">#</span>Blogs I Follow
+        <span className="hash-symbol">#</span>Blogs To Follow
       </h1>
       <p>
         <strong>Motivation:</strong> I came across{" "}
@@ -35,7 +35,7 @@ const BlogsIFollow = () => {
                 <span className="blog__content--linkContainer">
                   <Globe className="blog__content--linkIcon" size={25} />
                   <Link className="blog__content--link" to={blog.link}>
-                    {blog.link}
+                    {blog.displayLink}
                   </Link>
                 </span>
                 <div className="blog__content--desc">{blog.desc}</div>

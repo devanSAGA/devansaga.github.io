@@ -36,3 +36,9 @@
   font-size: 2rem;
   color: #3f72af;
 }
+
+@media only screen and (max-width: 468px) {
+  .blog__content--desc {
+    font-size: 1.8rem;
+  }
+}
