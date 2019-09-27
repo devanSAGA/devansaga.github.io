@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/components/Link.css";
 
 const Link = ({ to, textColor, children, className, title, otherProps }) => {
-  const linkClass = className ? className : "link";
+  const linkClass = className ? `link ${className}` : "link";
   return (
     <a
       href={to}

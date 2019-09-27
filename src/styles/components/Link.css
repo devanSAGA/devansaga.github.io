@@ -5,8 +5,23 @@
 }
 
 .exp--companyLink {
-  text-decoration: underline;
-  padding: 0;
-  font-weight: bold;
   font-size: 2.4rem;
+}
+
+.blog__heading--author {
+  display: block;
+  text-decoration: none;
+  font-size: 2.4rem;
+}
+
+.blog__heading--author:hover {
+  text-decoration: underline;
+}
+
+.blog__content--link {
+  text-decoration: none;
+}
+
+.blog__content--link:hover {
+  text-decoration: underline;
 }

@@ -30,7 +30,8 @@ const AboutMe = () => {
         to have a look at my designs and know more.
       </section>
       <section className="aboutme">
-        In my spare time, I watch Football or participate in a Quiz or scroll
+        In my spare time, I watch Football, participate in a Quiz, read{" "}
+        <Link to="devansaga.github.io/blogs-i-follow">Blogs</Link>, scroll
         through{" "}
         <Link to="https://twitter.com/devanshdoesdab" textColor="#5893d4">
           Twitter
@@ -43,16 +44,15 @@ const AboutMe = () => {
       <section className="aboutme">
         If you would like to say hello,
         <br />
-        Feel free to Contact me @{" "}
-        <span className="bold">dnpurohit96[at]gmail.com</span>
+        Feel free to Contact me @ <strong>dnpurohit96[at]gmail.com</strong>
       </section>
-      <section className="aboutme">
-        <span className="bold">PS:</span> I am currently looking for a{" "}
-        <span className="bold">Frontend Developer</span> job, I am passionate
-        about learning new things related to web and especially React. If you
-        (or your friend) are looking for someone who loves JavaScript, curious
-        to learn new things and has terrible pun delivering skills then we
-        should talk maybe?!
+      <section className="aboutme imp">
+        <strong>PS:</strong> I am currently looking for a{" "}
+        <strong>Frontend Developer</strong> job, I am passionate about learning
+        things around modern web technologies and especially React. If you (or
+        your friend) are looking for someone who loves JavaScript, who is
+        curious to learn new things and has terrible pun delivering skills then
+        we should talk maybe?!
       </section>
       <section className="aboutme">
         You can also check my Resume by clicking below!

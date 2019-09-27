@@ -7,27 +7,6 @@
   width: 100%;
 }
 
-.page-heading {
-  position: relative;
-  display: inline-block;
-  font-size: 3.2rem;
-  color: #113f67;
-  padding: 1rem 0 0 2rem;
-  margin-bottom: 2rem;
-}
-
-.hash-symbol {
-  position: absolute;
-  font-size: 6rem;
-  color: #f9f7f7;
-  font-weight: bold;
-  opacity: 0.8;
-  padding-right: 1rem;
-  top: -9px;
-  left: -4px;
-  z-index: -1;
-}
-
 .work__projects--content {
   display: grid;
   grid-gap: 2rem;
