@@ -17,9 +17,8 @@ const BlogsIFollow = () => {
         <Link to="https://www.taniarascia.com/developer-blogs-to-follow-2019/">
           Developer blogs to follow
         </Link>{" "}
-        and that inspired me to make my own list of good blog and artices that I
-        have come across to share with others! So in this space I'll maintain
-        good blogs/articles.
+        and that inspired me to maintain my own list of good blog and articles
+        that I have come across to share with others!
       </p>
       <div className="blog-list">
         {blogsList.map(blog => {

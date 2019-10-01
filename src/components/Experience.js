@@ -7,24 +7,26 @@ const Experience = props => {
     <div className="experience">
       <div className="exp-info">
         <div className="exp-info--main">
-          <div className="role-and-company">
-            <span className="exp--role">{`${props.role} @ `}</span>
-            <Link
-              to={props.companyWebsite}
-              textColor="#113f67"
-              className="exp--companyLink"
-            >
-              {props.companyName}
-            </Link>
+          <Link
+            to={props.companyWebsite}
+            textColor="#113f67"
+            className="exp--companyLink"
+          >
+            <img
+              className="exp--companyLogo"
+              src={props.companyLogo}
+              alt={props.companyName}
+            />
+          </Link>
+          <div className="role-and-duration">
+            <div className="exp--role">{props.role}</div>
+            <div className="exp--duration">
+              <span>{`${props.startDate} - ${props.endDate}`}</span>
+            </div>
           </div>
-          <span className="exp--dates">{`${props.startDate} - ${props.endDate}`}</span>
         </div>
         <div className="exp-info--sub">
-          <ul className="exp-desc dashed">
-            {props.summary.map((point, index) => (
-              <li key={`point-${index}`}>{point}</li>
-            ))}
-          </ul>
+          <p className="exp-desc">{props.summary}</p>
         </div>
       </div>
     </div>

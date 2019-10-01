@@ -41,4 +41,7 @@
   .blog__content--desc {
     font-size: 1.8rem;
   }
+  #blogs-i-follow p {
+    font-size: 1.8rem;
+  }
 }

@@ -1,15 +1,13 @@
+import SocialPilotLogo from "../assets/socialpilot.png";
 export default [
   {
     companyName: "SocialPilot",
     companyWebsite: "https://www.socialpilot.co/",
+    companyLogo: SocialPilotLogo,
     role: "Junior React Developer",
     startDate: "January 2019",
     endDate: "August 2019",
-    summary: [
-      "I worked mainly on creating simple user friendly layouts in React and Redux and mainting the existing ones.",
-      "Quickly adapted the codebase and improved it to make the development process better.",
-      "I contributed in migrating legacy PHP codebase to React.",
-      "I also actively contributed in developing front-end of 2 new features, from creating from scratch to shipping them to production."
-    ]
+    summary:
+      "My work primarily involved working with React and Redux and to create responsive layouts and maintain the existing ones. I quickly understood the code base and improved it over time to make the development process faster. I also collaborated with Back End Developers and handled the ownership of developing front ends of two major feather updates and shipped them to production. Apart from that I also worked on migrating PHP code to React. Along with enhancing my React and Redux concepts, this work experience has also helped me improve my modern JavaScript (ES6) and version control understandings. "
   }
 ];

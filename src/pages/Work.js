@@ -35,6 +35,7 @@ const Work = () => {
               key={`Experience-${index}`}
               companyName={exp.companyName}
               companyWebsite={exp.companyWebsite}
+              companyLogo={exp.companyLogo}
               role={exp.role}
               startDate={exp.startDate}
               endDate={exp.endDate}

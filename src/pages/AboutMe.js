@@ -24,20 +24,25 @@ const AboutMe = () => {
         since my childhood and after getting introduced to Adobe Illustrator I
         try to convey my Ideas through Illustrations. I am good at making puns
         and that is reflected in my Designs too. You can check my{" "}
-        <Link to="https://www.instagram.com/_devansaga_/" textColor="#e14594">
+        <Link to="https://www.instagram.com/_devansaga_/" textColor="#3f72af">
           Instagram
         </Link>{" "}
         to have a look at my designs and know more.
       </section>
       <section className="aboutme">
         In my spare time, I watch Football, participate in a Quiz, read{" "}
-        <Link to="devansaga.github.io/blogs-to-follow">Blogs</Link>, scroll
-        through{" "}
-        <Link to="https://twitter.com/devanshdoesdab" textColor="#5893d4">
+        <Link
+          to="https://devansaga.github.io/blogs-to-follow"
+          textColor="#3f72af"
+        >
+          Blogs
+        </Link>
+        , scroll through{" "}
+        <Link to="https://twitter.com/devanshdoesdab" textColor="#3f72af">
           Twitter
         </Link>{" "}
         or listen to{" "}
-        <Link to="http://www.thelocaltrain.com/" textColor="#113f67">
+        <Link to="http://www.thelocaltrain.com/" textColor="#3f72af">
           The Local Train.
         </Link>
       </section>

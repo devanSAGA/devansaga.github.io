@@ -45,11 +45,12 @@ export default [
     link: "https://tylermcginnis.com/blog/",
     displayLink: "tylermcginnis.com/blog",
     desc:
-      'Tyler also writes very detailed blogs. One thing I specifically liked about his articles is his mostly every articles starts with the question "What problems does this thing solve?" like what is the motivation behind this, which I believe really helps while learning the concept. If you are looking for full explanation on any modern JavaScript (ES6/ES7) feature than Tyler got you covered. He also has written many articles on React Router.'
+      'Tyler also writes very detailed blogs. One thing I specifically liked about his articles is his mostly every articles starts with the question "What problems does this thing solve?" like what is the motivation behind this, which I believe really helps while learning the concept. If you are looking for full explanation on any modern JavaScript (ES6/ES7) feature then Tyler got you covered. He also has written many articles on React Router.'
   },
   {
     author: "Cassidy Williams",
     twitterLink: "https://twitter.com/cassidoo",
+    link: "https://tinyletter.com/cassidoo/archive",
     displayLink: "tinyletter.com/cassidoo/archive",
     desc:
       "It's one of the most unique newsletter which contains segments like 'Web links of the week' and 'Cool things from around the internet' to cover some great articles. It also has one interview question and an excellent punny joke in every edition!"
@@ -57,6 +58,7 @@ export default [
   {
     author: "Robin Wieruch",
     twitterLink: "https://twitter.com/rwieruch",
+    link: "https://www.robinwieruch.de/blog",
     displayLink: "www.robinwieruch.de/blog",
     desc:
       "A list of very well step by step written tutorials. My go to place for everything related to React, Redux, state management and Firebase."
