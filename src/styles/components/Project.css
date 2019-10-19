@@ -39,6 +39,7 @@
 
 .project__content {
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
   justify-content: space-between;
   height: 80%;
@@ -66,6 +67,6 @@
   padding: 5px 10px;
   border-radius: 2rem;
   display: inline-block;
-  margin: 0 5px 5px 0;
+  margin: 0 7px 7px 0;
   font-size: 1.4rem;
 }

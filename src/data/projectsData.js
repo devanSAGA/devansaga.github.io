@@ -8,6 +8,14 @@ export default [
     technologies: ["React", "Redux", "Firebase", "React-Router", "SCSS"]
   },
   {
+    title: "Youtube-Search",
+    description:
+      "This project searches Youtube Vidoes using Youtube API v3. It also has features like sort by published date or video title.",
+    githubLink: "https://github.com/devanSAGA/Youtube-Clone",
+    demoLink: "https://yt-search.netlify.com/",
+    technologies: ["React", "Youtube API", "SCSS"]
+  },
+  {
     title: "Thanos Snap",
     description:
       "Fetched list of characters using Marvel API and implemented Thanos Snap!",
