@@ -1,5 +1,16 @@
 import SocialPilotLogo from "../assets/socialpilot.png";
+import PostmanLogo from '../assets/postman.png';
 export default [
+  {
+    companyName: "Postman",
+    companyWebsite: "https://www.postman.com/",
+    companyLogo: PostmanLogo,
+    role: "Software Developer",
+    startDate: "November 2019",
+    endDate: "Present",
+    summary:
+      "I work on the Design Systems here and ususally found scratching my head thinking about \"Which design tokens should I use?\""
+  },
   {
     companyName: "SocialPilot",
     companyWebsite: "https://www.socialpilot.co/",

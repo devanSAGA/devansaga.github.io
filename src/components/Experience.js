@@ -13,7 +13,7 @@ const Experience = props => {
             className="exp--companyLink"
           >
             <img
-              className="exp--companyLogo"
+              className={`exp--companyLogo exp--${props.companyName}Logo`}
               src={props.companyLogo}
               alt={props.companyName}
             />

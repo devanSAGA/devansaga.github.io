@@ -15,8 +15,17 @@
 
 .exp--companyLogo {
   padding: 1rem;
+}
+
+.exp--SocialPilotLogo {
   margin-bottom: 2rem;
   height: 7rem;
+  width: 23.5rem;
+}
+
+.exp--PostmanLogo {
+  margin-bottom: 0.5rem;
+  height: 9rem;
   width: 23.5rem;
 }
 
@@ -56,13 +65,13 @@
   font-size: 2rem;
   color: #113f67;
   padding-bottom: 3px;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .exp--duration {
   display: block;
   color: #113f67;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
 }
 
 .exp-info--sub .exp-desc {
