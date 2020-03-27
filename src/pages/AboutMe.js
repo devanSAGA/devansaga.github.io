@@ -51,15 +51,7 @@ const AboutMe = () => {
         <br />
         Feel free to Contact me @ <strong>dnpurohit96[at]gmail.com</strong>
       </section>
-      <section className="aboutme imp">
-        <strong>PS:</strong> I am currently looking for a{" "}
-        <strong>Frontend Developer</strong> job, I am passionate about learning
-        things around modern web technologies and especially React. If you (or
-        your friend) are looking for someone who loves JavaScript, who is
-        curious to learn new things and has terrible pun delivering skills then
-        we should talk maybe?!
-      </section>
-      <section className="aboutme">
+      {/* <section className="aboutme">
         You can also check my Resume by clicking below!
         <div className="resume-button">
           <a
@@ -71,7 +63,7 @@ const AboutMe = () => {
             Resume
           </a>
         </div>
-      </section>
+      </section> */}
 
       <section className="footer" />
     </div>
