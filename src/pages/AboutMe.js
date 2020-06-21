@@ -12,10 +12,13 @@ const AboutMe = () => {
       </div>
       <section className="aboutme ">Oh you clicked! Awesome.</section>
       <section className="aboutme">
-        My name is Devansh, I am a Junior Frontend Developer from India. I have
-        completed my bachelor of technology in the field of Information and
-        Communication Technology(4th year) at Dhirubhai Ambani Institute of
-        Information and Communication Technology , Gandhinagar.
+        My name is Devansh, I am from India and working as a developer with the awesome folks at
+        {" "}<Link to="https://www.postman.com/" textColor="#3f72af">
+          Postman.
+        </Link>{" "}
+        I have completed my bachelor of technology in the field of Information and
+        Communication Technology from Dhirubhai Ambani Institute of
+        Information and Communication Technology, Gandhinagar.
       </section>
       <section className="aboutme">
         Along with JavaScript I love Cartoons(90's), Superheroes and collecting
