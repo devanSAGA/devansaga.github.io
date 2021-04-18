@@ -28,8 +28,12 @@ const IntroHeading = styled.h1`
   margin-bottom: 16px;
   color: #212121;
 
+  & .no-wrap {
+    white-space: nowrap;
+  }
+  
   @media (max-width: 468px) {
-    font-size: 3.2rem;
+    font-size: 2.8rem;
   }
 `;
 
@@ -59,7 +63,7 @@ function HomePage() {
   return (
     <HomePageContainer>
       <IntroSection>
-        <IntroHeading>Hey, I am Devansh!<WavingHandEmoji /></IntroHeading>
+        <IntroHeading>Hey, I am <span className="no-wrap">Devansh!<WavingHandEmoji /></span></IntroHeading>
         <IntroSubheading>I am a design-minded frontend developer.</IntroSubheading>  
         <IntroSubheading>I am curious and passionate towards <b>Design Systems</b> and <b>UX engineering</b>.</IntroSubheading>  
       </IntroSection>

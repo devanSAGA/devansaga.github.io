@@ -52,7 +52,6 @@ const WavingHand = styled(Emoji)`
   transform: rotate(0deg);
   animation-iteration-count: infinite;
   transform-origin: 75% 75%;
-  margin-left: 4px;
 `;
 
 function WavingHandEmoji() {
