@@ -1,100 +1,44 @@
-import React, { Component, Fragment } from "react";
+import React from "react";
+import styled from 'styled-components';
 import { NavLink } from "react-router-dom";
-import { bubble as Menu } from "react-burger-menu";
 
-import "../styles/components/Navbar.css";
+const StyledNavbarContainer = styled.div`
+  display: flex;
+  height: 48px;
+  width: 100%;
+  padding: 1.6rem 0;
 
-class Navbar extends Component {
-  state = {
-    isMenuOpen: false
-  };
+  & a {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-weight: 600;
+    height: 24px;
+    padding: 4px;
+    margin-right: 8px;
+    color: #0265D2;
 
-  closeMenu = () => {
-    this.setState({
-      isMenuOpen: false
-    });
-  };
-
-  handleStateChange = state => {
-    this.setState({ isMenuOpen: state.isMenuOpen });
-  };
-
-  render() {
-    return (
-      <Fragment>
-        <div className="navbar-container desktop-only">
-          <div className="navbar-start-section">
-            <NavLink exact to="/" activeClassName="selected">
-              Home
-            </NavLink>
-          </div>
-          <div className="navbar-end-section">
-            <NavLink to="/work" activeClassName="selected">
-              Work
-            </NavLink>
-            <NavLink to="/about" activeClassName="selected">
-              About Me
-            </NavLink>
-            <NavLink exact to="/designs" activeClassName="selected">
-              Designs
-            </NavLink>
-          </div>
-        </div>
-        <div className="navbar-hamburger mobile-only">
-          <Menu
-            width={"100%"}
-            right
-            noOverlay
-            isOpen={this.state.isMenuOpen}
-            onStateChange={state => this.handleStateChange(state)}
-          >
-            <NavLink
-              exact
-              to="/"
-              activeClassName="selected"
-              onClick={this.closeMenu}
-            >
-              <span role="img" aria-label="house">
-                🏠
-              </span>
-              Home
-            </NavLink>
-            <NavLink
-              to="/work"
-              activeClassName="selected"
-              onClick={this.closeMenu}
-            >
-              <span role="img" aria-label="light-bulb">
-                💡
-              </span>
-              Work
-            </NavLink>
-            <NavLink
-              to="/about"
-              activeClassName="selected"
-              onClick={this.closeMenu}
-            >
-              <span role="img" aria-label="waving-hand">
-                👦
-              </span>
-              About Me
-            </NavLink>
-            <NavLink
-              exact
-              to="/designs"
-              activeClassName="selected"
-              onClick={this.closeMenu}
-            >
-              <span role="img" aria-label="artist-palette">
-                🎨
-              </span>
-              Designs
-            </NavLink>
-          </Menu>
-        </div>
-      </Fragment>
-    );
+    &:hover {
+      background-color: #E7F0FF;
+      padding: 4px;
+      border-radius: 3px;
+    }    
   }
+`;
+
+function Navbar() {
+  return (
+    <StyledNavbarContainer>
+      <NavLink exact to="/">
+        Home
+      </NavLink>
+      <NavLink to="/about">
+        About
+      </NavLink>
+    </StyledNavbarContainer>
+  );
 }
 
 export default Navbar;

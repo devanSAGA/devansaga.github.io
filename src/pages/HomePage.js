@@ -1,54 +1,72 @@
 import React from "react";
-import { Instagram, GitHub, Linkedin, Twitter } from "react-feather";
-import Avatar from "../assets/myAvatar.png";
-import Link from "../components/Link";
-import "../styles/pages/HomePage.css";
+import styled from 'styled-components';
+import Avatar from '../components/Avatar/Avatar';
+import Emoji from "../components/Emoji/Emoji";
 
-const HomePage = props => {
+const HomePageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  width: 100%;
+`;
+
+const IntroSection = styled.section`
+  margin-top: 128px;
+  margin-bottom: 24px;
+  text-align: left;
+  width: 100%;
+
+  @media (max-width: 468px) {
+    margin-top: 64px;
+  }
+`;
+
+const IntroHeading = styled.h1`
+  font-size: 4.8rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #212121;
+
+  @media (max-width: 468px) {
+    font-size: 3.6rem;
+  }
+`;
+
+const IntroSubheading = styled.p`
+  font-size: 2.4rem;
+  color: #212121;
+  line-height: 1.5;
+
+  @media (max-width: 468px) {
+    font-size: 2rem;
+  }
+`;
+
+export const AvatarSection = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  width: 100%;
+  min-height: 250px;
+
+  & img {
+    align-self: flex-end;
+  }
+`;
+
+function HomePage() {
   return (
-    <div className="homepage-container">
-      <div className="homepage-intro">
-        <h1 className="homepage-intro--heading">
-          Hey, I am Devansh!
-          <span role="img" aria-label="waving-hand">
-            👋
-          </span>
-        </h1>
-        <p className="homepage-intro--text">
-          {`I am a design-minded Frontend Developer from India `}
-          <span role="img" aria-label="india">
-            🇮🇳
-          </span>
-          {`. I love JavaScript and React. If not stumbling upon Twitter, I also spend some
-          time designing minimal arts and in quizzing!`}
-        </p>
-      </div>
-      <div className="social-icons">
-        <div className="icon-container github">
-          <Link to="https://github.com/devanSAGA">
-            <GitHub className="github-icon" size={50} />
-          </Link>
-        </div>
-        <div className="icon-container instagram">
-          <Link to="https://www.instagram.com/_devansaga_/">
-            <Instagram className="instagram-icon" size={50} />
-          </Link>
-        </div>
-        <div className="icon-container twitter">
-          <Link to="https://twitter.com/devanshdoesdab">
-            <Twitter className="twitter-icon" size={50} />
-          </Link>
-        </div>
-        <div className="icon-container linkedin">
-          <Link to="https://www.linkedin.com/in/devansh-purohit-3541b7140/">
-            <Linkedin className="linkedin-icon" size={50} />
-          </Link>
-        </div>
-      </div>
-      <div className="avatar">
-        <img src={Avatar} title="avatar" alt="avatar" />
-      </div>
-    </div>
+    <HomePageContainer>
+      <IntroSection>
+        <IntroHeading>Hey, I am Devansh!<Emoji ariaLabel="waving-hand-emoji" emoji="👋" /></IntroHeading>
+        <IntroSubheading>I am a design-minded frontend developer.</IntroSubheading>  
+        <IntroSubheading>I am curious and passionate towards <b>Design Systems</b> and <b>UX engineering</b>.</IntroSubheading>  
+      </IntroSection>
+      <AvatarSection>
+        <Avatar />
+      </AvatarSection>
+    </HomePageContainer>
   );
 };
 
