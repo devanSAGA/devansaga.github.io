@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 import Avatar from '../components/Avatar/Avatar';
-import Emoji from "../components/Emoji/Emoji";
+import WavingHandEmoji from "../components/Emoji/WavingHand";
 
 const HomePageContainer = styled.div`
   display: flex;
@@ -29,7 +29,7 @@ const IntroHeading = styled.h1`
   color: #212121;
 
   @media (max-width: 468px) {
-    font-size: 3.6rem;
+    font-size: 3.2rem;
   }
 `;
 
@@ -59,7 +59,7 @@ function HomePage() {
   return (
     <HomePageContainer>
       <IntroSection>
-        <IntroHeading>Hey, I am Devansh!<Emoji ariaLabel="waving-hand-emoji" emoji="👋" /></IntroHeading>
+        <IntroHeading>Hey, I am Devansh!<WavingHandEmoji /></IntroHeading>
         <IntroSubheading>I am a design-minded frontend developer.</IntroSubheading>  
         <IntroSubheading>I am curious and passionate towards <b>Design Systems</b> and <b>UX engineering</b>.</IntroSubheading>  
       </IntroSection>
