@@ -70,19 +70,20 @@ function AboutMe() {
         <p>Oh you clicked! Awesome.</p>
         <p>
           My name is Devansh. I am from India <Emoji ariaLabel='india-flag' emoji="🇮🇳" />,
-          and I'm working with the <i>Design System</i> team at <Link to={POSTMAN_LINK}>Postman</Link>.
+          and I'm working with the Design System team at <Link to={POSTMAN_LINK}>Postman</Link>.
         </p>
         <p>
-          I have been fond of drawing since childhood and in college, I got introduced to <i>Digital Designing</i>.
+          I have been fond of drawing since childhood and in college, I got introduced to Digital Designing.
           I got intrigued quickly by Designing as it allowed me to convey my ideas through Designs and Illustrations.
           You can check my designs on <Link to={INSTAGRAM_LINK}>Instagram</Link>!
         </p>
 
         <p>
           During college, I also got introduced to programming as one of the subjects!
-          I liked programming as I was learning it. The common trend in the college was
+          I liked programming as but the common trend in the college was
           towards <Link to={COMPETITIVE_PROGRAMMING_WIKI_LINK}>Competitive Programming</Link> but
-          the Data Structures and Algorithms didn't interest me much. That's when I got to know about Frontend Development.
+          the Data Structures and Algorithms didn't interest me much. I wanted to use programming concepts to build something
+          that I can use in daily life. That's when I got to know about Frontend Development.
         </p>
 
         <p>
@@ -90,7 +91,7 @@ function AboutMe() {
           As I continued learning I came across <Link to={REACT_DOCS_LINK}>React</Link>,
           and this was the first <i>Aha</i> moment for me (I love React <Emoji ariaLabel="heart-eyes-emoji" emoji="😍" />).
           React enabled me to connect 
-          two concepts in my mind (Design and Programming) using which I can <i>Build Things</i>.
+          two concepts in my mind (Design and Programming) using which I can Build Things.
         </p>
 
         <p>
@@ -101,9 +102,8 @@ function AboutMe() {
         </p>
 
         <p>
-          Here, I also found the area which I want to explore
-          (at least for a few coming years <Emoji ariaLabel="smiling-face-emoji-with-sunglasses" emoji="😎" />) that
-          is <i>How to build quality software</i>, especially the UI and UX aspects of it. So currently, I am learning and exploring that!
+          Here, I also found the area which I want to explore that
+          is - How to build quality software, especially the UI and UX aspects of it. So currently, I am learning and exploring that!
         </p>
 
         <p>
@@ -113,7 +113,7 @@ function AboutMe() {
         </p>
 
         <p>
-          One more thing I enjoy a lot is making puns, <i>Wordplay is my weapun</i>.
+          One more thing I enjoy a lot is making puns, Wordplay is my <i>weapun</i>.
           You can see, that is reflected in some of my <Link to={MONTHERS_DAY_POST_LINK}>designs</Link> as well.
         </p>
 
