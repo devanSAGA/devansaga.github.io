@@ -80,10 +80,9 @@ function AboutMe() {
 
         <p>
           During college, I also got introduced to programming as one of the subjects!
-          I liked programming as but the common trend in the college was
-          towards <Link to={COMPETITIVE_PROGRAMMING_WIKI_LINK}>Competitive Programming</Link> but
-          the Data Structures and Algorithms didn't interest me much. I wanted to use programming concepts to build something
-          that I can use in daily life. That's when I got to know about Frontend Development.
+          I was getting interested in programming as I was learning it but unlike the common college trend the <Link to={COMPETITIVE_PROGRAMMING_WIKI_LINK}>Competitive Programming</Link>
+          didn't interest me much. I wanted to use programming concepts to build something that I can use in daily life.
+          Soon, I got to know about Frontend Development.
         </p>
 
         <p>
@@ -91,11 +90,11 @@ function AboutMe() {
           As I continued learning I came across <Link to={REACT_DOCS_LINK}>React</Link>,
           and this was the first <i>Aha</i> moment for me (I love React <Emoji ariaLabel="heart-eyes-emoji" emoji="😍" />).
           React enabled me to connect 
-          two concepts in my mind (Design and Programming) using which I can Build Things.
+          two concepts in my mind (Design and Programming) using which I can "Build Things".
         </p>
 
         <p>
-          Few years fast forwards, I joined Postman (and currently working) in the Design System team.
+          Few years fast forwards, I joined Postman (and currently working).
           This I believe is, one of the best things happened in my life!
           Here, I found the second <i>Aha</i> moment for me - Design Systems, which falls right as an intersection of
           my two key interests: Designing and Building UI.
