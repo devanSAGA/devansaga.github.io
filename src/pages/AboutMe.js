@@ -73,31 +73,30 @@ function AboutMe() {
           and I'm working with the Design System team at <Link to={POSTMAN_LINK}>Postman</Link>.
         </p>
         <p>
-          I have been fond of drawing since childhood and in college, I got introduced to Digital Designing.
-          I got intrigued quickly by Designing as it allowed me to convey my ideas through Designs and Illustrations.
+          I have been fond of drawing since childhood and in college, I got introduced to digital designing.
+          I got intrigued quickly by designing as it allowed me to convey my ideas through designs and illustrations.
           You can check my designs on <Link to={INSTAGRAM_LINK}>Instagram</Link>!
         </p>
 
         <p>
           During college, I also got introduced to programming as one of the subjects!
-          I liked programming as but the common trend in the college was
-          towards <Link to={COMPETITIVE_PROGRAMMING_WIKI_LINK}>Competitive Programming</Link> but
-          the Data Structures and Algorithms didn't interest me much. I wanted to use programming concepts to build something
-          that I can use in daily life. That's when I got to know about Frontend Development.
+          I was getting interested in programming as I was learning it but unlike the common college trend, <Link to={COMPETITIVE_PROGRAMMING_WIKI_LINK}>competitive programming</Link>
+          didn't interest me much. I wanted to use programming concepts to build something that I can use in daily life.
+          Soon, I got to know about Frontend Development.
         </p>
 
         <p>
           I started learning HTML,CSS and JavaScript.
           As I continued learning I came across <Link to={REACT_DOCS_LINK}>React</Link>,
-          and this was the first <i>Aha</i> moment for me (I love React <Emoji ariaLabel="heart-eyes-emoji" emoji="😍" />).
+          and this was the first <i>aha</i> moment for me (I love React <Emoji ariaLabel="heart-eyes-emoji" emoji="😍" />).
           React enabled me to connect 
-          two concepts in my mind (Design and Programming) using which I can Build Things.
+          two concepts in my mind (Design and Programming) using which I can "Build Things".
         </p>
 
         <p>
-          Few years fast forwards, I joined Postman (and currently working) in the Design System team.
+          Few years fast forwards, I joined Postman (and currently working).
           This I believe is, one of the best things happened in my life!
-          Here, I found the second <i>Aha</i> moment for me - Design Systems, which falls right as an intersection of
+          Here, I found the second <i>aha</i> moment for me - Design Systems, which falls right as an intersection of
           my two key interests: Designing and Building UI.
         </p>
 
@@ -107,7 +106,7 @@ function AboutMe() {
         </p>
 
         <p>
-          Apart from that, I am a huge fan of Cartoons (the 90s), Anime, Superheroes, and collecting Nerdy Tshirts.
+          Apart from that, I am a huge fan of Cartoons (the 90s), Anime, Superheroes, and collecting nerdy tshirts.
           In my free time, I go cycling, scroll through <Link to={TWITTER_LINK}>Twitter</Link> or
           listen to <Link to={THE_LOCAL_TRAIN_SPOTIFY_LINK}>The Local Train</Link>.
         </p>

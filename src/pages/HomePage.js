@@ -65,7 +65,7 @@ function HomePage() {
       <IntroSection>
         <IntroHeading>Hey, I am <span className="no-wrap">Devansh!<WavingHandEmoji /></span></IntroHeading>
         <IntroSubheading>I am a design-minded frontend developer.</IntroSubheading>  
-        <IntroSubheading>I am curious and passionate towards <b>Design Systems</b> and <b>UX engineering</b>.</IntroSubheading>  
+        <IntroSubheading>I am curious and passionate towards <b>Design Systems</b> and <b>UX Engineering</b>.</IntroSubheading>  
       </IntroSection>
       <AvatarSection>
         <Avatar />
