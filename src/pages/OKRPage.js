@@ -246,7 +246,6 @@ function OKRPage() {
         <KeyResultListItem label="Learn Swimming" showProgress={showProgress} />
         <KeyResultListItem
           label="Learn Procreate"
-          progress={{ current: 0, target: 3, unit: "Courses" }}
           showProgress={showProgress}
         >
           <InitiativesList>
@@ -308,7 +307,6 @@ function OKRPage() {
         />
         <KeyResultListItem
           label="Read 3 books"
-          progress={{ current: 0, target: 3, unit: "Books" }}
           showProgress={showProgress}
         >
           <InitiativesList>

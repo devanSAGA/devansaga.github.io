@@ -68,6 +68,7 @@ function renderStatusIcon(status) {
 const StyledStatusIcon = styled.div`
   height: 20px;
   width: 20px;
+  min-width: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,29 +88,23 @@ const KeyResultContainer = styled.li`
   ${(props) => getStatusStyles(props.status)};
 `;
 
-const progressBarAnimation = keyframes`
-    0% { background-position: 0 0; }
-    100% { background-position: -200% 0; }
+const progressBarAnimation = (percentage) => keyframes`
+    0% { width: 0%; }
+    100% { width: ${percentage}%; }
 `;
 
 const ProgressBarContainer = styled.div`
-  animation: ${progressBarAnimation} 2.5s;
-  ${(props) => {
-    if (props.completionPercentage > 0 && props.showProgress) {
-      return `
-        position: absolute;
-        height: 100%;
-        width: ${props.completionPercentage}%;
-        border-top-left-radius: 6px;
-        border-bottom-left-radius: 6px;
-        background: repeating-linear-gradient(to right, #E5FFF1 50%, #A4EEC4 100%);
-        animation-fill-mode: forwards;
-        animation-timing-function: linear;
-        background-size: 200% auto;
-        background-position: 0 100%;
-      `;
-    }
-  }}
+  position: absolute;
+  height: 100%;
+  width: ${(props) => props.completionPercentage}%;
+  border-radius: 6px;
+  border-top: 3px solid #F9F9F9;
+  border-bottom: 3px solid #F9F9F9;
+  border-left: 3px solid #F9F9F9;
+  background-color: #A4EEC4;
+  animation: ${(props) => progressBarAnimation(props.completionPercentage)} 2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
 `;
 
 const KeyResultPrimaryInfo = styled.div`
@@ -120,7 +115,15 @@ const KeyResultPrimaryInfo = styled.div`
 const KeyResultLabel = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  flex-grow: 1;
+
+  @media (max-width: 468px) {
+    flex-direction: column;
+    & .progress-info {
+      margin-top: 4px;
+      font-size: 1.2rem;
+    }
+  }
 `;
 
 const ProgressInfo = styled.div`
@@ -129,10 +132,6 @@ const ProgressInfo = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-
-  @media (max-width: 468px) {
-    display: none;
-  }
 `;
 
 const InitiativesListContainer = styled.div`
@@ -175,7 +174,7 @@ function KeyResultListItem(props) {
           <KeyResultLabel>
             {label}
             {progress && showProgress && (
-              <ProgressInfo>
+              <ProgressInfo className="progress-info">
                 {`${progress.current}/${progress.target} ${progress.unit}`}
               </ProgressInfo>
             )}
@@ -183,9 +182,9 @@ function KeyResultListItem(props) {
         </KeyResultPrimaryInfo>
         {children}
       </div>
-      <ProgressBarContainer completionPercentage={completionPercentage} showProgress={showProgress}>
-        <div className="gradient-overlay"></div>
-      </ProgressBarContainer>
+      {(completionPercentage > 0 && showProgress) ? (
+        <ProgressBarContainer completionPercentage={completionPercentage} />
+      ) : null }
     </KeyResultContainer>
   );
 }
