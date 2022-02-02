@@ -1,6 +1,5 @@
-import React from "react";
-import styled from "styled-components";
-import propTypes from "prop-types";
+import React, { useState, useEffect } from "react";
+import styled, { keyframes } from "styled-components";
 
 function getStatusStyles(status) {
   switch (status) {
@@ -24,7 +23,7 @@ function getStatusStyles(status) {
                 border: 1px solid #E6E6E6 ;
 
                 .key-result__list-item--status-icon {
-                  border: 1px solid #E6E6E6 ;
+                  border: 1px solid #A6A6A6 ;
                 }
             `;
   }
@@ -77,10 +76,10 @@ const StyledStatusIcon = styled.div`
 `;
 
 const KeyResultContainer = styled.li`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 12px 16px;
   border-radius: 6px;
   list-style-type: none;
   width: 100%;
@@ -88,9 +87,52 @@ const KeyResultContainer = styled.li`
   ${(props) => getStatusStyles(props.status)};
 `;
 
-const KeyResultLabel = styled.div`
+const progressBarAnimation = keyframes`
+    0% { background-position: 0 0; }
+    100% { background-position: -200% 0; }
+`;
+
+const ProgressBarContainer = styled.div`
+  animation: ${progressBarAnimation} 2.5s infinite;
+  ${(props) => {
+    if (props.completionPercentage > 0 && props.showProgress) {
+      return `
+        position: absolute;
+        height: 100%;
+        width: ${props.completionPercentage}%;
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+        background: repeating-linear-gradient(to right, #E5FFF1 50%, #A4EEC4 100%);
+        animation-fill-mode: forwards;
+        animation-timing-function: linear;
+        background-size: 200% auto;
+        background-position: 0 100%;
+      `;
+    }
+  }}
+`;
+
+const KeyResultPrimaryInfo = styled.div`
   display: flex;
   flex-grow: 1;
+`;
+
+const KeyResultLabel = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+const ProgressInfo = styled.div`
+  color: #686868;
+  font-size: 1.4rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 468px) {
+    display: none;
+  }
 `;
 
 const InitiativesListContainer = styled.div`
@@ -109,14 +151,41 @@ const InitiativeLabel = styled.div`
 `;
 
 function KeyResultListItem(props) {
-  const { children, label, status } = props;
+  const { children, label, progress, showProgress, status } = props;
+  const [completionPercentage, setCompletionPercentage] = useState(0);
+
+  useEffect(() => {
+    let percentage = 0;
+    if (progress) {
+      percentage = (progress.current * 100) / progress.target;
+      setCompletionPercentage(percentage);
+    }
+  }, []);
+
   return (
     <KeyResultContainer status={status}>
-      <KeyResultLabel>
-        {renderStatusIcon(status)}
-        {label}
-      </KeyResultLabel>
-      {children}
+      <div
+        style={{
+          padding: "12px 16px",
+          zIndex: 1,
+        }}
+      >
+        <KeyResultPrimaryInfo>
+          {renderStatusIcon(status)}
+          <KeyResultLabel>
+            {label}
+            {progress && showProgress && (
+              <ProgressInfo>
+                {`${progress.current}/${progress.target} ${progress.unit}`}
+              </ProgressInfo>
+            )}
+          </KeyResultLabel>
+        </KeyResultPrimaryInfo>
+        {children}
+      </div>
+      <ProgressBarContainer completionPercentage={completionPercentage} showProgress={showProgress}>
+        <div className="gradient-overlay"></div>
+      </ProgressBarContainer>
     </KeyResultContainer>
   );
 }
@@ -131,7 +200,7 @@ function InitiativesList(props) {
         viewBox="0 0 30 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        style={{ minWidth: '30px' }}
+        style={{ minWidth: "30px" }}
       >
         <rect
           width="48"
@@ -143,9 +212,7 @@ function InitiativesList(props) {
           rx="8"
         />
       </svg>
-      <InitiativeListItemContainer>
-        {children}
-      </InitiativeListItemContainer>
+      <InitiativeListItemContainer>{children}</InitiativeListItemContainer>
     </InitiativesListContainer>
   );
 }
@@ -162,10 +229,6 @@ function InitiativeListItem(props) {
 
 KeyResultListItem.defaultProps = {
   status: "todo",
-};
-
-KeyResultListItem.propTypes = {
-  status: propTypes.oneOf(["todo", "progress", "done"]),
 };
 
 export { KeyResultListItem, InitiativesList, InitiativeListItem };

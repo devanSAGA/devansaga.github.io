@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Emoji from "../components/Emoji/Emoji";
+import ToggleSwitch from "../components/ToggleSwitch/ToggleSwitch";
 import {
   KeyResultListItem,
   InitiativeListItem,
@@ -9,6 +10,25 @@ import {
 
 const PageContainer = styled.div`
   margin-bottom: 128px;
+`;
+
+const PageHeadingContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const ShowProgressLabel = styled.div`
+  display: flex;
+  align-items: center;
+
+  span {
+    display: inline-block;
+    margin-right: 8px;
+    color: #212121;
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
 `;
 
 const PageHeadingH1 = styled.h1`
@@ -22,7 +42,6 @@ const PageHeadingH1 = styled.h1`
 `;
 
 const PageHeadingH2 = styled.h2`
-  width: 100%;
   text-align: left;
   color: #212121;
   font-size: 2.4rem;
@@ -77,27 +96,60 @@ const StyledLink = styled.a`
 `;
 
 function OKRPage() {
+  const [showProgress, setShowProgress] = React.useState(false);
+
+  const toggleShowProgress = () => {
+    setShowProgress((prevState) => !prevState);
+  };
+
   return (
     <PageContainer>
       <PageHeadingH1>2022: Goals and Intentions</PageHeadingH1>
       <PageText>
-        2021 was a good year for me. I achieved a few milestones and also missed some.
-        I have realized that, I would have been able to work better if
-        I had planned and prioritized my actions better. Keeping in mind the
+        2021 was a good year for me. I achieved a few milestones and also missed
+        some. I have realized that, I would have been able to work better if I
+        had planned and prioritized my actions better. Keeping in mind the
         learnings, this year, I am experimenting a more structured way of
         defining my goals and intentions for 2022.
       </PageText>
       <PageDivider />
-      <PageHeadingH2>Q1 </PageHeadingH2>
+      <PageHeadingContainer>
+        <PageHeadingH2>Q1 </PageHeadingH2>
+        <ShowProgressLabel>
+          <span>Show Progress</span>
+          <ToggleSwitch
+            isChecked={showProgress}
+            onChange={toggleShowProgress}
+          />
+        </ShowProgressLabel>
+      </PageHeadingContainer>
       <PageHeadingH3>
         Wellness <Emoji ariaLabel="muscle-emoji" emoji="💪" />
       </PageHeadingH3>
       <KeyResultList>
-        <KeyResultListItem label="180km Cycling" />
-        <KeyResultListItem label="180km Walking" />
-        <KeyResultListItem label="Play badminton for at least 25 days" />
-        <KeyResultListItem label="Achieve 5km in 40mins" />
-        <KeyResultListItem label="Reduce mobile screen time to 2hrs" />
+        <KeyResultListItem
+          label="180km Cycling"
+          progress={{ current: 17, target: 180, unit: "km" }}
+          showProgress={showProgress}
+        />
+        <KeyResultListItem
+          label="180km Walking"
+          progress={{ current: 50, target: 180, unit: "km" }}
+          showProgress={showProgress}
+        />
+        <KeyResultListItem
+          label="Play badminton for at least 25 days"
+          progress={{ current: 2, target: 25, unit: "Days" }}
+          showProgress={showProgress}
+        />
+        <KeyResultListItem
+          label="Achieve 5km in 40mins"
+          showProgress={showProgress}
+        />
+        <KeyResultListItem
+          label="Reduce mobile screen time to 2hrs"
+          showProgress={showProgress}
+        />
       </KeyResultList>
       <PageHeadingH3>
         Tech Learnings <Emoji ariaLabel="person-with-laptop-emoji" emoji="👨‍💻" />
@@ -117,6 +169,8 @@ function OKRPage() {
               <span>&nbsp;course</span>
             </div>
           }
+          progress={{ current: 1, target: 10, unit: "Modules" }}
+          showProgress={showProgress}
         />
         <KeyResultListItem
           label={
@@ -132,8 +186,14 @@ function OKRPage() {
               <span>&nbsp;section</span>
             </div>
           }
+          progress={{ current: 0, target: 6, unit: "km" }}
+          showProgress={showProgress}
         />
-        <KeyResultListItem label="Write and publish 5 blog posts" />
+        <KeyResultListItem
+          label="Write and publish 3 blog posts"
+          progress={{ current: 0, target: 3, unit: "Posts" }}
+          showProgress={showProgress}
+        />
       </KeyResultList>
       <PageHeadingH3>
         Travelling <Emoji ariaLabel="plane-emoji" emoji="✈️" />
@@ -153,6 +213,7 @@ function OKRPage() {
               </StyledLink>
             </div>
           }
+          showProgress={showProgress}
         />
         <KeyResultListItem
           label={
@@ -167,16 +228,63 @@ function OKRPage() {
               </StyledLink>
             </div>
           }
+          showProgress={showProgress}
         />
       </KeyResultList>
       <PageHeadingH3>
         Skills <Emoji ariaLabel="juggling-person-emoji" emoji="🤹‍♂️" />
       </PageHeadingH3>
       <KeyResultList>
-        <KeyResultListItem label="Get 2-wheeler driving license" />
-        <KeyResultListItem label="Get the driving license for car" />
-        <KeyResultListItem label="Learn Swimming" />
-        <KeyResultListItem label="Learn Procreate" />
+        <KeyResultListItem
+          label="Get 2-wheeler driving license"
+          showProgress={showProgress}
+        />
+        <KeyResultListItem
+          label="Get the driving license for car"
+          showProgress={showProgress}
+        />
+        <KeyResultListItem label="Learn Swimming" showProgress={showProgress} />
+        <KeyResultListItem
+          label="Learn Procreate"
+          progress={{ current: 0, target: 3, unit: "Courses" }}
+          showProgress={showProgress}
+        >
+          <InitiativesList>
+            <InitiativeListItem
+              label={
+                <StyledLink
+                  href="https://www.skillshare.com/classes/Digital-Illustration-Learn-to-Use-Procreate/971736290?via=search-layout-grid"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Course: Learn to Use Procreate
+                </StyledLink>
+              }
+            />
+            <InitiativeListItem
+              label={
+                <StyledLink
+                  href="https://www.skillshare.com/classes/Hand-Lettering-in-Procreate-Fundamentals-to-Finishing-Touches/1749196794?via=search-layout-grid"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Course: Hand Lettering in Procreate
+                </StyledLink>
+              }
+            />
+            <InitiativeListItem
+              label={
+                <StyledLink
+                  href="https://www.skillshare.com/classes/Digital-Marbling-Create-Stunning-Abstract-Art-in-Procreate/559162226?via=search-layout-grid"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Course: Creating Abstract Art in Procreate
+                </StyledLink>
+              }
+            />
+          </InitiativesList>
+        </KeyResultListItem>
       </KeyResultList>
       <PageHeadingH3>
         Reading <Emoji ariaLabel="book-emoji" emoji="📖" />
@@ -195,8 +303,14 @@ function OKRPage() {
               </StyledLink>
             </div>
           }
+          progress={{ current: 0, target: 30, unit: "Modules" }}
+          showProgress={showProgress}
         />
-        <KeyResultListItem label="Read 3 books">
+        <KeyResultListItem
+          label="Read 3 books"
+          progress={{ current: 0, target: 3, unit: "Books" }}
+          showProgress={showProgress}
+        >
           <InitiativesList>
             <InitiativeListItem
               label={
@@ -238,7 +352,10 @@ function OKRPage() {
         Fun <Emoji ariaLabel="party-face-emoji" emoji="🥳" />
       </PageHeadingH3>
       <KeyResultList>
-        <KeyResultListItem label="Kickstart the Dribbble profile" />
+        <KeyResultListItem
+          label="Kickstart the Dribbble profile"
+          showProgress={showProgress}
+        />
         <KeyResultListItem
           label={
             <div>
@@ -252,6 +369,7 @@ function OKRPage() {
               </StyledLink>
             </div>
           }
+          showProgress={showProgress}
         >
           <InitiativesList>
             <InitiativeListItem label="Add my Designs and Illustrations cataog to the website" />
