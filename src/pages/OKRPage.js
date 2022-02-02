@@ -186,7 +186,7 @@ function OKRPage() {
               <span>&nbsp;section</span>
             </div>
           }
-          progress={{ current: 0, target: 6, unit: "km" }}
+          progress={{ current: 0, target: 6, unit: "Modules" }}
           showProgress={showProgress}
         />
         <KeyResultListItem
