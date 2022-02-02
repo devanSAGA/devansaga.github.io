@@ -93,7 +93,7 @@ const progressBarAnimation = keyframes`
 `;
 
 const ProgressBarContainer = styled.div`
-  animation: ${progressBarAnimation} 2.5s infinite;
+  animation: ${progressBarAnimation} 2.5s;
   ${(props) => {
     if (props.completionPercentage > 0 && props.showProgress) {
       return `
