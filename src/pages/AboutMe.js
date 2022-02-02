@@ -75,13 +75,13 @@ function AboutMe() {
         <p>
           I have been fond of drawing since childhood and in college, I got introduced to digital designing.
           I got intrigued quickly by designing as it allowed me to convey my ideas through designs and illustrations.
-          You can check my designs on <Link to={INSTAGRAM_LINK}>Instagram</Link>!
+          You can check my designs on <Link to={INSTAGRAM_LINK}>Instagram</Link>.
         </p>
 
         <p>
           During college, I also got introduced to programming as one of the subjects!
-          I was getting interested in programming as I was learning it but unlike the common college trend, <Link to={COMPETITIVE_PROGRAMMING_WIKI_LINK}>competitive programming</Link>
-          didn't interest me much. I wanted to use programming concepts to build something that I can use in daily life.
+          I was getting interested in programming as I was learning it but unlike the common college trend, <Link to={COMPETITIVE_PROGRAMMING_WIKI_LINK}>competitive programming</Link> didn't
+          interest me much. I wanted to use programming concepts to build something that I can use in daily life.
           Soon, I got to know about Frontend Development.
         </p>
 

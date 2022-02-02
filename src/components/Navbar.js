@@ -2,8 +2,9 @@ import React from "react";
 import styled from 'styled-components';
 import { NavLink } from "react-router-dom";
 
-const StyledNavbarContainer = styled.div`
+const NavBarContainer = styled.div`
   display: flex;
+  justify-content: space-between;
   height: 48px;
   width: 100%;
   padding: 1.6rem 0;
@@ -16,28 +17,37 @@ const StyledNavbarContainer = styled.div`
     font-size: 1.8rem;
     font-weight: 600;
     height: 24px;
-    padding: 4px;
-    margin-right: 8px;
+    margin-right: 12px;
     color: #0265D2;
+    border-bottom: 1px solid transparent;
 
     &:hover {
-      background-color: #E7F0FF;
-      padding: 4px;
-      border-radius: 3px;
+      border-bottom: 1px solid #0265D2;
     }    
   }
 `;
 
+const NavBarLeftSection = styled.div``;
+
+const NavBarRightSection = styled.div``;
+
 function Navbar() {
   return (
-    <StyledNavbarContainer>
-      <NavLink exact to="/">
-        Home
-      </NavLink>
-      <NavLink to="/about">
-        About
-      </NavLink>
-    </StyledNavbarContainer>
+    <NavBarContainer>
+      <NavBarLeftSection>
+        <NavLink exact to="/">
+          Home
+        </NavLink>
+      </NavBarLeftSection>
+      <NavBarRightSection>
+        <NavLink to="/about">
+          About
+        </NavLink>
+        <NavLink to="/goals">
+          Goals
+        </NavLink>
+      </NavBarRightSection>
+    </NavBarContainer>
   );
 }
 
