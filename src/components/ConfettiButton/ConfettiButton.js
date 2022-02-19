@@ -86,13 +86,13 @@ function ConfettiButton(props) {
       type="emoji"
       config={{
         springAnimation: false,
-        emoji: ["🏆", "🎉", "👏"],
+        emoji: ["🏆", "🎉", "👏", "🎊"],
         spread: 100,
-        elementCount: 10,
+        elementCount: 30,
         elementSize: 32,
         zIndex: 10,
-        lifetime: 50,
-        startVelocity: 50
+        lifetime: 200,
+        startVelocity: 40,
       }}
     >
       <StyledConfettiButton onClick={handleOnClick}>
