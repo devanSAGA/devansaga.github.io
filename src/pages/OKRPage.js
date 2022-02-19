@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import styled from "styled-components";
 import Emoji from "../components/Emoji/Emoji";
 import ToggleSwitch from "../components/ToggleSwitch/ToggleSwitch";
@@ -8,8 +8,6 @@ import {
   InitiativesList,
 } from "../components/KeyResultListItem";
 import ConfettiButton from "../components/ConfettiButton/ConfettiButton";
-import HelpIcon from "../components/Icons/HelpIcon";
-import Popover from "../components/Popover/Popover";
 
 const PageContainer = styled.div`
   margin-bottom: 128px;
@@ -110,28 +108,9 @@ const StickyFooter = styled.div`
   align-items: center;
 `;
 
-const ConfettiButtonContainer = styled.div`
-  display: flex;
-  align-items: center;
-
-  & > *:not(:last-child) {
-    margin-right: 8px;
-  }
-`;
-
-const PopoverContent = styled.div`
-  color: #f9f9f9;
-  font-size: 1.4rem;
-  line-height: 1.4;
-
-  p:not(:last-child) {
-    margin-bottom: 8px;
-  }
-`;
 
 function OKRPage() {
   const [showProgress, setShowProgress] = React.useState(false);
-  const popoverTriggerRef = useRef();
 
   const toggleShowProgress = () => {
     setShowProgress((prevState) => !prevState);
@@ -405,31 +384,7 @@ function OKRPage() {
         </KeyResultListItem>
       </KeyResultList>
       <StickyFooter>
-        <ConfettiButtonContainer>
-          <ConfettiButton text="Shabash Devansh" />
-          <HelpIcon ref={popoverTriggerRef} />
-          <Popover
-            placement="top"
-            padding="16px"
-            triggerRef={popoverTriggerRef}
-            triggerEvent="mouseenter"
-          >
-            <PopoverContent>
-              <p>I added this button to console myself with some confetti and trophies even if missed some goals :P</p>
-              <p>
-                Shabash Devansh in English means Well done, Devansh!. The idea was originally suggested by my friend on Twitter&nbsp;
-                <StyledLink
-                  color="#3E92F2"
-                  href="https://twitter.com/rosnshah/status/1488887434272116738"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  here!
-                </StyledLink>
-              </p>
-            </PopoverContent>
-          </Popover>
-        </ConfettiButtonContainer>
+        <ConfettiButton text="Shabash Devansh" />
       </StickyFooter>
     </PageContainer>
   );
