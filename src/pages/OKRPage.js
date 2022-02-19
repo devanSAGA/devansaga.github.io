@@ -7,6 +7,7 @@ import {
   InitiativeListItem,
   InitiativesList,
 } from "../components/KeyResultListItem";
+import ConfettiButton from "../components/ConfettiButton/ConfettiButton";
 
 const PageContainer = styled.div`
   margin-bottom: 128px;
@@ -93,6 +94,18 @@ const StyledLink = styled.a`
   &:hover {
     text-decoration: underline;
   }
+`;
+
+const StickyFooter = styled.div`
+  position: fixed;
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding-bottom: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 function OKRPage() {
@@ -375,6 +388,9 @@ function OKRPage() {
           </InitiativesList>
         </KeyResultListItem>
       </KeyResultList>
+      <StickyFooter>
+        <ConfettiButton text="Shabash Devansh" />
+      </StickyFooter>
     </PageContainer>
   );
 }
