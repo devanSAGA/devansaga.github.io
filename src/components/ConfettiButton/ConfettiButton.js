@@ -18,13 +18,13 @@ const StyledConfettiButton = styled.button`
   user-select: none;
   position: relative;
   outline: none;
-  border: none;
-  background-color: #0265d2;
-  color: #ffffff;
+  border: 2px solid #E6E6E6;
+  background-color: #F9F9F9;
+  color: #212121;
   font-size: 1.4rem;
   font-weight: 600;
-  border-radius: 4px;
-  padding: 8px 12px;
+  border-radius: 8px;
+  padding: 12px 16px;
   cursor: pointer;
 
   &::before {
@@ -52,7 +52,7 @@ const StyledConfettiButton = styled.button`
     animation: ${gradientAnimation} 20s linear infinite;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
-    border-radius: 4px;
+    border-radius: 8px;
   }
 
   &:hover::before {
@@ -67,8 +67,9 @@ const StyledConfettiButton = styled.button`
     height: 100%;
     left: 0;
     top: 0;
-    background-color: #0265d2;
-    border-radius: 4px;
+    border: 2px solid #E6E6E6;
+    background-color: #F9F9F9;
+    border-radius: 8px;
   }
 `;
 

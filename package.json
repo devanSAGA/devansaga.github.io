@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://devansaga.github.io",
   "dependencies": {
+    "@tippyjs/react": "^4.2.6",
     "gh-pages": "2.0.1",
     "react": "16.8.3",
     "react-dom": "16.8.3",
