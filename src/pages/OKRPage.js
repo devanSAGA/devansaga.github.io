@@ -7,6 +7,7 @@ import {
   InitiativeListItem,
   InitiativesList,
 } from "../components/KeyResultListItem";
+import ConfettiButton from "../components/ConfettiButton/ConfettiButton";
 
 const PageContainer = styled.div`
   margin-bottom: 128px;
@@ -88,12 +89,25 @@ const KeyResultList = styled.ul`
 
 const StyledLink = styled.a`
   text-decoration: none;
-  color: #0265d2;
+  color: ${(props) => (props.color ? props.color : "#0265d2")};
 
   &:hover {
     text-decoration: underline;
   }
 `;
+
+const StickyFooter = styled.div`
+  position: fixed;
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding-bottom: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 
 function OKRPage() {
   const [showProgress, setShowProgress] = React.useState(false);
@@ -244,10 +258,7 @@ function OKRPage() {
           showProgress={showProgress}
         />
         <KeyResultListItem label="Learn Swimming" showProgress={showProgress} />
-        <KeyResultListItem
-          label="Learn Procreate"
-          showProgress={showProgress}
-        >
+        <KeyResultListItem label="Learn Procreate" showProgress={showProgress}>
           <InitiativesList>
             <InitiativeListItem
               label={
@@ -305,10 +316,7 @@ function OKRPage() {
           progress={{ current: 0, target: 30, unit: "Modules" }}
           showProgress={showProgress}
         />
-        <KeyResultListItem
-          label="Read 3 books"
-          showProgress={showProgress}
-        >
+        <KeyResultListItem label="Read 3 books" showProgress={showProgress}>
           <InitiativesList>
             <InitiativeListItem
               label={
@@ -375,6 +383,9 @@ function OKRPage() {
           </InitiativesList>
         </KeyResultListItem>
       </KeyResultList>
+      <StickyFooter>
+        <ConfettiButton text="Shabash Devansh" />
+      </StickyFooter>
     </PageContainer>
   );
 }

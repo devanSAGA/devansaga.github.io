@@ -4,12 +4,14 @@
   "private": true,
   "homepage": "https://devansaga.github.io",
   "dependencies": {
+    "@tippyjs/react": "^4.2.6",
     "gh-pages": "2.0.1",
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "react-feather": "1.1.6",
     "react-router-dom": "4.3.1",
     "react-scripts": "2.1.5",
+    "rewards-lite": "^1.0.5",
     "styled-components": "5.2.3"
   },
   "scripts": {
