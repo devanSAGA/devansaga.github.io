@@ -143,12 +143,12 @@ function OKRPage() {
       <KeyResultList>
         <KeyResultListItem
           label="180km Cycling"
-          progress={{ current: 17, target: 180, unit: "km" }}
+          progress={{ current: 30.5, target: 180, unit: "km" }}
           showProgress={showProgress}
         />
         <KeyResultListItem
           label="180km Walking"
-          progress={{ current: 50, target: 180, unit: "km" }}
+          progress={{ current: 89, target: 180, unit: "km" }}
           showProgress={showProgress}
         />
         <KeyResultListItem
