@@ -128,7 +128,7 @@ function OKRPage() {
       </PageText>
       <PageDivider />
       <PageHeadingContainer>
-        <PageHeadingH2>Q1 </PageHeadingH2>
+        <PageHeadingH2>Q1 [Jan-April]</PageHeadingH2>
         <ShowProgressLabel>
           <span>Show Progress</span>
           <ToggleSwitch
@@ -142,14 +142,14 @@ function OKRPage() {
       </PageHeadingH3>
       <KeyResultList>
         <KeyResultListItem
-          label="180km Cycling"
-          progress={{ current: 17, target: 180, unit: "km" }}
-          showProgress={showProgress}
+          label="240km Cycling"
+          progress={{ current: 272, target: 240, unit: "km" }}
+          status="done"
         />
         <KeyResultListItem
-          label="180km Walking"
-          progress={{ current: 50, target: 180, unit: "km" }}
-          showProgress={showProgress}
+          label="240km Walking"
+          progress={{ current: 250, target: 240, unit: "km" }}
+          status="done"
         />
         <KeyResultListItem
           label="Play badminton for at least 25 days"
@@ -158,7 +158,7 @@ function OKRPage() {
         />
         <KeyResultListItem
           label="Achieve 5km in 40mins"
-          showProgress={showProgress}
+          status="done"
         />
         <KeyResultListItem
           label="Reduce mobile screen time to 2hrs"
@@ -200,7 +200,7 @@ function OKRPage() {
               <span>&nbsp;section</span>
             </div>
           }
-          progress={{ current: 0, target: 6, unit: "Modules" }}
+          progress={{ current: 1, target: 6, unit: "Modules" }}
           showProgress={showProgress}
         />
         <KeyResultListItem
@@ -270,6 +270,7 @@ function OKRPage() {
                   Course: Learn to Use Procreate
                 </StyledLink>
               }
+              status="done"
             />
             <InitiativeListItem
               label={
@@ -313,7 +314,7 @@ function OKRPage() {
               </StyledLink>
             </div>
           }
-          progress={{ current: 0, target: 30, unit: "Modules" }}
+          progress={{ current: 5, target: 30, unit: "Modules" }}
           showProgress={showProgress}
         />
         <KeyResultListItem label="Read 3 books" showProgress={showProgress}>

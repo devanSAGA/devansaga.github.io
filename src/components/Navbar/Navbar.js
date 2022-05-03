@@ -142,6 +142,9 @@ function Navbar(props) {
               <NavLink exact to="/about">
                 About
               </NavLink>
+              <NavLink exact to="/dashboard">
+                Dashboard
+              </NavLink>
               <NavLink exact to="/designs">
                 Designs
               </NavLink>
@@ -185,6 +188,7 @@ function Navbar(props) {
           </NavBarLeftSection>
           <NavBarRightSection>
             <NavLink to="/about">About</NavLink>
+            <NavLink exact to="/dashboard">Dashboard</NavLink>
             <NavLink to="/designs">Designs</NavLink>
             <NavLink to="/goals">Goals</NavLink>
           </NavBarRightSection>

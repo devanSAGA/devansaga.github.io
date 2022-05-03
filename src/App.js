@@ -7,6 +7,7 @@ import Designs from './pages/Designs';
 import AboutMe from "./pages/AboutMe";
 import OKRPage from './pages/OKRPage';
 import "./App.css";
+import Dashboard from "./pages/Dashboard";
 class App extends Component {
   render() {
     return (
@@ -16,6 +17,7 @@ class App extends Component {
           <Switch>
             <Route path="/" exact component={HomePage} />
             <Route path="/about" component={AboutMe} />
+            <Route path="/dashboard" component={Dashboard} />
             <Route path="/designs" component={Designs} />
             <Route path="/goals" component={OKRPage} />
           </Switch>
