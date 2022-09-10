@@ -21,5 +21,21 @@ body {
   font-family: Inter, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f4f9f9;
+  background-color: #161616;
+}
+
+@font-face {
+  font-family: VulfSansMedium;
+  src: url(./styles/fonts/Vulf_Sans-Medium.ttf);
+}
+
+
+@font-face {
+  font-family: VulfSansRegular;
+  src: url(./styles/fonts/Vulf_Sans-Regular.ttf);
+}
+
+@font-face {
+  font-family: VulfSansBoldItalic;
+  src: url(./styles/fonts/Vulf_Sans-Bold_Italic.woff2);
 }
