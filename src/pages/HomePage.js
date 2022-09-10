@@ -86,6 +86,7 @@ const InterestsText = styled.p`
 `;
 
 const AnimatedText = styled(Typical)`
+  line-height: 32px;
   @media (max-width: 512px) {
     display: block;
   }

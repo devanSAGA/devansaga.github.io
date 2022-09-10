@@ -17,7 +17,7 @@ function AboutMe() {
       <p>Oh you clicked! Awesome.</p>
       <p>
         My name is Devansh. I am from India <Emoji ariaLabel='india-flag' emoji="🇮🇳" />,
-        and I'm work in Design System team at <Link to={POSTMAN_LINK}>Postman</Link>.
+        and I work in Design System team at <Link to={POSTMAN_LINK}>Postman</Link>.
       </p>
       <p>
         I have been fond of drawing since childhood and in college, I got introduced to digital designing.
