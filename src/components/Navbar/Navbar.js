@@ -5,6 +5,7 @@ import { slide as BurgerMenu } from "react-burger-menu";
 import { Menu as MenuIcon, X as CloseIcon } from "react-feather";
 
 const NavBarContainer = styled.div`
+  font-family: 'VulfSansRegular';
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -15,10 +16,11 @@ const NavBarContainer = styled.div`
     display: inline-flex;
     align-items: center;
     text-decoration: none;
-    font-size: 1.8rem;
-    font-weight: 600;
+    line-height: 20px;
+    font-size: 18px;
+    font-weight: ${(props) => props.theme['font-weight-strong']};;
+    color: ${(props) => props.theme['content-color-link']};
     margin-right: 12px;
-    color: #0265d2;
     border-bottom: 1px solid transparent;
   }
 
@@ -36,17 +38,17 @@ const NavBarContainer = styled.div`
     left: 0;
     top: 0;
     padding: 16px;
-    background-color: #f4f9f9;
+    background-color: ${(props) => props.theme['background-color-primary']};
   }
 `;
 
 const IconButton = styled.button`
   display: inline-flex !important;
-  border: none;
   outline: none;
   padding: 8px;
   border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.16);
+  border: 1px solid ${(props) => props.theme['content-color-secondary']};
+  color: ${(props) => props.theme['content-color-secondary']};
   background-color: transparent;
   height: 32px;
   width: 32px;
@@ -137,7 +139,7 @@ function Navbar(props) {
             </CloseButtonContainer>
             <BurgerMenuSection className="burger-menu__section">
               <NavLink exact to="/">
-                Home
+                Devansh Purohit
               </NavLink>
               <NavLink exact to="/about">
                 About
@@ -147,9 +149,6 @@ function Navbar(props) {
               </NavLink>
               <NavLink exact to="/designs">
                 Designs
-              </NavLink>
-              <NavLink exact to="/goals">
-                Goals
               </NavLink>
             </BurgerMenuSection>
             <Divider />
@@ -183,14 +182,13 @@ function Navbar(props) {
         <>
           <NavBarLeftSection>
             <NavLink exact to="/">
-              Home
+              Devansh Purohit
             </NavLink>
           </NavBarLeftSection>
           <NavBarRightSection>
             <NavLink to="/about">About</NavLink>
             <NavLink exact to="/dashboard">Dashboard</NavLink>
             <NavLink to="/designs">Designs</NavLink>
-            <NavLink to="/goals">Goals</NavLink>
           </NavBarRightSection>
         </>
       )}

@@ -4,22 +4,34 @@ import styled from 'styled-components';
 const StyledPageContainer = styled.div`
   margin-top: 64px;
   width: 100%;
-`;
+  margin-bottom: 128px;
 
-const PageHeading = styled.h1`
-  width: 100%;
-  text-align: left;
-  color: #212121;
-  font-size: 3.2rem;
-  font-weight: bold;
-  margin-bottom: 32px; 
+  h1, p {
+    width: 100%;
+    text-align: left;
+  }
+
+  & .page-container__heading {
+    color: ${(props) => props.theme['content-color-primary']};
+    font-family: ${(props) => props.theme['font-family-pageHeading']};
+    font-size: ${(props) => props.theme['font-size-xxl']};
+    opacity: 0.3;
+    margin-bottom: 16px;
+  }
+
+  p {
+    color: ${(props) => props.theme['content-color-primary']};
+    font-size: ${(props) => props.theme['font-size-m']};
+    line-height: 32px;
+    margin-bottom: 24px;
+  }
 `;
 
 export default function PageContainer(props) {
   const { children, title } = props;
   return(
     <StyledPageContainer>
-      <PageHeading>{title}</PageHeading>
+      <h1 className='page-container__heading'>{title}</h1>
       {children}
     </StyledPageContainer>
   );  

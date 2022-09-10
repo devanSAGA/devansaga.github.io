@@ -2,19 +2,20 @@ import React from "react";
 import styled from 'styled-components';
 
 const StyledLink = styled.a`
+  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   text-decoration: none;
-  font-size: 2rem;
-  font-weight: 600;
   height: 24px;
   padding: 4px 2px;
-  color: #0265D2;
+  font-size: ${(props) => props.theme['font-size-m']};
+  font-weight: ${(props) => props.theme['font-weight-regular']};
+  color: ${(props) => props.theme['content-color-link']};
 
   &:hover {
-    background-color: #E7F0FF;
+    background-color: ${(props) => props.theme['content-color-link-hover']};
+    border-radius: ${(props) => props.theme['border-radius-default']};
     padding: 4px 2px;
-    border-radius: 3px;
   }
 `;
 

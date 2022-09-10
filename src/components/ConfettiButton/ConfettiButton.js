@@ -75,7 +75,7 @@ const StyledConfettiButton = styled.button`
 
 function ConfettiButton(props) {
   const rewardRef = useRef();
-  const { text } = props;
+  const { text, className } = props;
 
   const handleOnClick = () => {
     rewardRef.current.rewardMe();
@@ -96,7 +96,7 @@ function ConfettiButton(props) {
         startVelocity: 40,
       }}
     >
-      <StyledConfettiButton onClick={handleOnClick}>
+      <StyledConfettiButton onClick={handleOnClick} className={className}>
         {text}
       </StyledConfettiButton>
     </Reward>
