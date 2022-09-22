@@ -6,11 +6,27 @@ import Spinner from '../components/Spinner/Spinner';
 import PageContainer from '../components/PageContainer/PageContainer';
 import useLocalStorage from '../hooks/useLocalStorage';
 import ConfettiButton from '../components/ConfettiButton/ConfettiButton';
+import LastActivityLabel from '../components/LastActivityLabel';
 
 const END_TIME=1672511340, // Epoch time of 31st Dec 2022
       START_TIME=1640975400, // Epoch time of 1st Jan 2022
       GET_STRAVA_ACCESS_TOKEN_URL=`https://www.strava.com/oauth/token?client_id=${process.env.REACT_APP_STRAVA_CLIENT_ID}&client_secret=${process.env.REACT_APP_STRAVA_CLIENT_SECRET}&refresh_token=${process.env.REACT_APP_STRAVA_REFRESH_TOKEN}&grant_type=refresh_token`,
       GET_ACTIVITIES_INFO=`https://www.strava.com/api/v3/athlete/activities?before=${END_TIME}&after=${START_TIME}&per_page=100`;
+
+const MONTH_NUMBER_TO_NAME_MAPPING = {
+  1: 'Jan',
+  2: 'Feb',
+  3: 'March',
+  4: 'April',
+  5: 'May',
+  6: 'June',
+  7: 'July',
+  8: 'Aug',
+  9: 'Sept',
+  10: 'Oct',
+  11: 'Nov',
+  12: 'Dec'
+};
 
 const DashboardCardsList = styled.div`
   margin-top: 32px;
@@ -56,7 +72,7 @@ const CardContent = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
-  span {
+  .card-content__info {
     font-size: ${(props) => props.theme['font-size-xl']};
     font-weight: ${(props) => props.theme['font-weight-strong']};
     color: ${(props) => props.theme['strava-primary-color']};
@@ -75,19 +91,11 @@ const CardContentHeading = styled.div`
     line-height: 24px;
   }
 
-  span {
+  .card-content__subheading {
     display: inline-block;
     margin-left: 4px;
     color: ${(props) => props.theme['content-color-secondary']};
     font-size: ${(props) => props.theme['font-size-s']};
-  }
-
-  span.last-activity__name {
-    display: block;
-    margin-left: 0;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
   }
 `;
 
@@ -109,6 +117,7 @@ const GiveKudosButton = styled(ConfettiButton)`
   align-items: center;
   transition: border-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
 
+
   &:hover {
     border: 1px solid ${(props) => props.theme['strava-primary-color']};
     box-shadow: 0 0 0 2px ${(props) => props.theme['strava-primary-color']}
@@ -125,14 +134,30 @@ const GiveKudosButton = styled(ConfettiButton)`
   }
 `
 
+function getSuffixedDate(date) {
+  if (date > 3 && date < 21) return `${date}th`;
+  switch (date % 10) {
+    case 1:  return `${date}st`;
+    case 2:  return `${date}nd`;
+    case 3:  return `${date}rd`;
+    default: return `${date}th`;
+  }
+}
+
 function populateLastActivity(allActivities) {
   if(Array.isArray(allActivities) && allActivities.length !== 0) {
     let lastActivity = allActivities[0];
-    const { distance, type, name } = lastActivity;
+    const { distance, type, name, id, start_date } = lastActivity;
+    let dateOfActivity = new Date(start_date);
+    dateOfActivity = getSuffixedDate(dateOfActivity.getDate()) + ' ' + MONTH_NUMBER_TO_NAME_MAPPING[(dateOfActivity.getMonth()+1)];
+
+
     return {
       distance: Math.round(distance/1000),
       type: type.toLowerCase(),
-      name
+      name,
+      id,
+      date: dateOfActivity
     };
   }
 }
@@ -157,8 +182,8 @@ function calculateTotalDistance(allActivities) {
 }
 
 export default function Dashboard() {
-  const [totalDistanceWalked, setTotalDistanceWalked] = useState('');
-  const [totalDistanceCycled, setTotalDistanceCycled] = useState('');
+  const [totalDistanceWalked, setTotalDistanceWalked] = useState(0);
+  const [totalDistanceCycled, setTotalDistanceCycled] = useState(0);
 
   const [fallbackWalkedDistance, setFallbackWalkedDistance] = useLocalStorage('fallbackWalkedDistance', 0);
   const [fallbackCycledDistance, setFallbackCycledDistance] = useLocalStorage('fallbackCycledDistance', 0);
@@ -188,7 +213,6 @@ export default function Dashboard() {
         if ( totalDistanceCycled !== 0 && totalDistanceWalked !==0 ) {
           setTotalDistanceCycled(totalDistanceCycled);
           setTotalDistanceWalked(totalDistanceWalked);
-          console.log('here');
           setFallbackCycledDistance(totalDistanceCycled);
           setFallbackWalkedDistance(totalDistanceWalked);
         } else {
@@ -199,13 +223,13 @@ export default function Dashboard() {
       })
       .catch(() => {
         setLoading(false);
+
+        if( totalDistanceCycled === 0 && totalDistanceWalked ===0 ) {
+          setTotalDistanceCycled(fallbackCycledDistance);
+          setTotalDistanceWalked(fallbackWalkedDistance);
+        }
       })
   }, []);
-
-  // useEffect(() => {
-  //   if ( totalDistanceCycled !== 0 && totalDistanceWalked !==0 ) {
-  //   }
-  // }, [totalDistanceCycled, totalDistanceWalked])
 
   return (
     <PageContainer title="Dashboard">
@@ -214,9 +238,9 @@ export default function Dashboard() {
           <CardContent className='dashboard-card__content'>
             <CardContentHeading>
               <h2>Running</h2>
-              <span>in 2022</span>
+              <span className='card-content__subheading'>in 2022</span>
             </CardContentHeading>
-            {isLoading ? <Spinner /> : <span>{totalDistanceWalked}km</span>}
+            {isLoading ? <Spinner /> : <span className='card-content__info' >{totalDistanceWalked}km</span>}
           </CardContent>
           <Emoji ariaLabel="running-man" emoji="🏃" className="dashboard-card__emoji"/>
         </DashboardCard>
@@ -224,9 +248,9 @@ export default function Dashboard() {
           <CardContent className='dashboard-card__content'>
             <CardContentHeading>
               <h2>Cycling</h2>
-              <span>in 2022</span>
+              <span className='card-content__subheading'>in 2022</span>
             </CardContentHeading>
-            {isLoading ? <Spinner /> : <span>{totalDistanceCycled}km</span>}
+            {isLoading ? <Spinner /> : <span className='card-content__info'>{totalDistanceCycled}km</span>}
           </CardContent>
           <Emoji ariaLabel="cycling-man" emoji="🚴‍♂️" className="dashboard-card__emoji"/>
         </DashboardCard>
@@ -234,10 +258,10 @@ export default function Dashboard() {
           <CardContent className='dashboard-card__content'>
             <CardContentHeading>
               <h2>Last activity</h2>
-              <span className='last-activity__name'>{lastActivity.name}</span>
+              <LastActivityLabel isLoading={isLoading} lastActivity={lastActivity} />
             </CardContentHeading>
             {isLoading ? <Spinner /> : (
-              <span>
+              <span className='card-content__info'>
                 A&nbsp;
                 <span className='last-activity__distance'>{lastActivity.distance}km</span>
                 &nbsp;{lastActivity.type}
