@@ -26,16 +26,28 @@ body {
 
 @font-face {
   font-family: VulfSansMedium;
-  src: url(./styles/fonts/Vulf_Sans-Medium.ttf);
+  font-style: normal;
+  font-display: fallback;
+  src: url('./styles/fonts/Vulf_Sans-Medium.woff2') format('woff2');
 }
-
 
 @font-face {
   font-family: VulfSansRegular;
-  src: url(./styles/fonts/Vulf_Sans-Regular.ttf);
+  font-style: normal;
+  font-display: fallback;
+  src: url('./styles/fonts/Vulf_Sans-Regular.woff2') format('woff2');
 }
 
 @font-face {
   font-family: VulfSansBoldItalic;
-  src: url(./styles/fonts/Vulf_Sans-Bold_Italic.woff2);
+  font-style: normal;
+  font-display: fallback;
+  src: url('./styles/fonts/Vulf_Sans-Bold_Italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-display: fallback;
+  src: url('./styles//fonts/Inter-Regular.woff2') format('woff2');
 }
