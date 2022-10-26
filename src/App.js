@@ -8,7 +8,7 @@ import Navbar from "./components/Navbar/Navbar";
 import HomePage from "./pages/HomePage";
 import Designs from './pages/Designs';
 import AboutMe from "./pages/AboutMe";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard/Dashboard";
 import GridBackground from './assets/grid.svg';
 
 const RootContainer = styled.div`

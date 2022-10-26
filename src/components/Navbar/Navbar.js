@@ -5,7 +5,7 @@ import { slide as BurgerMenu } from "react-burger-menu";
 import { Menu as MenuIcon, X as CloseIcon } from "react-feather";
 
 const NavBarContainer = styled.div`
-  font-family: ${(props) => props.theme['font-family-navLink']};
+  font-family: ${(props) => props.theme['font-family-primary']};
   display: flex;
   justify-content: space-between;
   width: 100%;
