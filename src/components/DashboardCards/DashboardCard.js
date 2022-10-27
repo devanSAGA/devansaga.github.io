@@ -45,43 +45,60 @@ const CardContent = styled.div`
   font-family: ${(props) => props.theme['font-family-primary']};
   font-weight: ${(props) => props.theme['font-weight-strong']};
   font-size: ${(props) => props.theme['font-size-l']};
+  line-height: 24px;
 
   a {
     color: ${(props) => props.theme[`${props.brand}-primary-color`]};
-    line-height: 24px;
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   .dashboard-card__content {
     display: flex;
     flex-grow: 1;
     height: 100%;
+    width: calc(100% - 32px);
 
     &--text {
       justify-content: flex-start;
       align-self: flex-end;
+      width: 100%;
     }
   }
 
   .dashboard-card__metaIcon {
-    display: flex;;
+    display: flex;
     align-self: flex-end;
+    margin-left: 4px;
   }
 `;
 
-
 const StyledDashboardCard = styled.div`
   display: flex;
-  height: 200px;
+  height: ${(props) => props.height};
   border-radius: 16px;
   padding: 12px;
   border: 4px solid ${(props) => props.theme[`${props.brand}-primary-color`]};
 `;
 
-
 function DashboardCard(props) {
-  const { className, children, heading, subHeading, subHeadingPosition, content, metaIcon, brand } = props;
+  const {
+    heading,
+    subHeading,
+    subHeadingPosition,
+    content,
+    metaIcon,
+    brand,
+    height,
+    children,
+    className,
+ } = props;
+
   return (
-    <StyledDashboardCard className={className} brand={brand}>
+    <StyledDashboardCard className={className} brand={brand} height={height}>
       {children ? children : (
         <CardContainer>
           <CardHeading subHeadingPosition={subHeadingPosition}>
@@ -101,7 +118,8 @@ function DashboardCard(props) {
 }
 
 DashboardCard.defaultProps = {
-  subHeadingPosition: 'right'
+  subHeadingPosition: 'right',
+  height: '200px'
 };
 
 export default DashboardCard;

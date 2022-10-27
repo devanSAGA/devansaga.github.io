@@ -4,6 +4,7 @@ import styled from 'styled-components';
 // UI Components
 import PageContainer from '../../components/PageContainer/PageContainer';
 import StravaUpdates from './StravaUpdates/StravaUpdates';
+import SpotifyUpdates from './SpotifyUpdates/SpotifyUpdates';
 
 const DashboardGrid = styled.div`
   display: flex;
@@ -21,6 +22,7 @@ export default function Dashboard() {
     <PageContainer title="Dashboard">
       <DashboardGrid>
         <StravaUpdates />
+        <SpotifyUpdates />
       </DashboardGrid>
     </PageContainer>
   );
