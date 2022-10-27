@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 // UI Components
-import ConfettiButton from '../../../components/ConfettiButton/ConfettiButton';
 import DashboardCard from '../../../components/DashboardCards/DashboardCard';
 import LastActivityCard from './LastActivityCard';
 import Emoji from '../../../components/Emoji/Emoji';
@@ -52,40 +51,29 @@ const CardGrid = styled.div`
   }
 `;
 
-const KudosButtonContainer = styled.div`
-  display: flex;
-  align-items: flex-end;
-`;
-
-const GiveKudosButton = styled(ConfettiButton)`
-  display: flex;
-  box-sizing: border-box;
-  height: 48px;
-  width: 48px;
-  font-size: ${(props) => props.theme['font-size-m']};
-  background-color: transparent;
-  border: 1px solid ${(props) => props.theme['border-color-light']};
-  border-radius: 999px;
-  justify-content: center;
-  align-items: center;
-  transition: border-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
-
-
-  &:hover {
-    border: 1px solid ${(props) => props.theme['strava-primary-color']};
-    box-shadow: 0 0 0 2px ${(props) => props.theme['strava-primary-color']}
-  }
-
-  &::before {
-    background: transparent;
-    border: none;
-  }
-
-  &::after {
-    background-color: transparent;
-    border: none;
-  }
-`
+function StravaLogo() {
+  return (
+    <a
+      href='https://www.strava.com/athletes/46493816'
+      target='_blank'
+      rel='noopener noreferrer'
+    >
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'white',
+        borderRadius: '999px',
+        height: '32px',
+        width: '32px'
+      }}>
+        <svg xmlns="http://www.w3.org/2000/svg" aria-label="Strava" viewBox="0 0 512 512">
+          <rect width="512" height="512" fill="#fc4c01" rx="15%"/><path fill="#fff" d="M120 288L232 56l112 232h-72l-40-96-40 96z"/><path fill="#fda580" d="M280 288l32 72 32-72h48l-80 168-80-168z"/>
+        </svg>
+      </div>
+    </a>
+  );
+}
 
 function getSuffixedDate(date) {
   if (date > 3 && date < 21) return `${date}th`;
@@ -204,11 +192,7 @@ function StravaUpdates() {
             {lastActivity.name} on {lastActivity.date}
           </a>
         )}
-        metaIcon={(
-          <KudosButtonContainer>
-            <GiveKudosButton text="🎉" />
-          </KudosButtonContainer>
-        )}
+        metaIcon={<StravaLogo />}
       />
       <DashboardCard
         brand='strava'
