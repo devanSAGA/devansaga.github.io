@@ -86,9 +86,13 @@ const Divider = styled.hr`
   margin: 16px 0px;
 `;
 
-const NavBarLeftSection = styled.div``;
+const NavBarLeftSection = styled.div`
+  height: 20px;
+`;
 
-const NavBarRightSection = styled.div``;
+const NavBarRightSection = styled.div`
+  height: 20px;
+`;
 
 function Navbar(props) {
   const [isBurgerMenuOpen, setBurgerMenuVisibility] = useState(false);

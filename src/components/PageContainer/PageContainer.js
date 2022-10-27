@@ -2,9 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledPageContainer = styled.div`
-  margin-top: 64px;
+  margin: 64px 0;
   width: 100%;
-  margin-bottom: 128px;
 
   h1, p {
     width: 100%;

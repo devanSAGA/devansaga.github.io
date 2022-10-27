@@ -24,6 +24,7 @@ const HomePageContainer = styled.div`
   width: 100%;
   flex-grow: 1;
   margin-bottom: 72px;
+  height: calc(100vh - 124px);
 `;
 
 const IntroSection = styled.section`

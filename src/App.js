@@ -33,7 +33,7 @@ const RootContainer = styled.div`
 const PageContainer = styled.div`
   position: relative;
   width: 1024px;
-  height: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   padding: 0 16px;
