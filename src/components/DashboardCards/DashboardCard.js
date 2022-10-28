@@ -82,6 +82,7 @@ const StyledDashboardCard = styled.div`
   border-radius: 16px;
   padding: 12px;
   border: 4px solid ${(props) => props.theme[`${props.brand}-primary-color`]};
+  max-width: calc(100vw - 32px);
 `;
 
 function DashboardCard(props) {
