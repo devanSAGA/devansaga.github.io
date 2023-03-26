@@ -4,12 +4,14 @@ import Link from "../components/Link/Link";
 import PageContainer from "../components/PageContainer/PageContainer";
 
 // Links I have used in my About Me section. 
-const INSTAGRAM_LINK = "https://www.instagram.com/_devansaga_/";
-const POSTMAN_LINK = "https://postman.com";
-const COMPETITIVE_PROGRAMMING_WIKI_LINK = "https://en.wikipedia.org/wiki/Competitive_programming#:~:text=Competitive%20programming%20is%20a%20mind,program%20according%20to%20provided%20specifications";
-const REACT_DOCS_LINK = "https://reactjs.org/";
-const TWITTER_LINK = "https://twitter.com/devanshp_";
-const THE_LOCAL_TRAIN_SPOTIFY_LINK = "https://open.spotify.com/artist/7b6Ui7JVaBDEfZB9k6nHL0";
+export const INSTAGRAM_LINK = "https://www.instagram.com/_devansaga_/";
+export const LINKEDIN_LINK = "https://www.linkedin.com/in/devansh-purohit-3541b7140/";
+export const GITHUB_LINK = "https://github.com/devanSAGA";
+export const POSTMAN_LINK = "https://postman.com";
+export const COMPETITIVE_PROGRAMMING_WIKI_LINK = "https://en.wikipedia.org/wiki/Competitive_programming#:~:text=Competitive%20programming%20is%20a%20mind,program%20according%20to%20provided%20specifications";
+export const REACT_DOCS_LINK = "https://reactjs.org/";
+export const TWITTER_LINK = "https://twitter.com/devanshp_";
+export const THE_LOCAL_TRAIN_SPOTIFY_LINK = "https://open.spotify.com/artist/7b6Ui7JVaBDEfZB9k6nHL0";
 
 function AboutMe() {
   return (

@@ -27,10 +27,10 @@ const MONTH_NUMBER_TO_NAME_MAPPING = {
   12: 'Dec'
 };
 
-const END_TIME=1672511340, // Epoch time of 31st Dec 2022
-      START_TIME=1640975400, // Epoch time of 1st Jan 2022
+const END_TIME_2023=1704067199, // Epoch time of 31st Dec 2022
+      START_TIME_2023=1672531200, // Epoch time of 1st Jan 2022
       GET_STRAVA_ACCESS_TOKEN_URL=`https://www.strava.com/oauth/token?client_id=${process.env.REACT_APP_STRAVA_CLIENT_ID}&client_secret=${process.env.REACT_APP_STRAVA_CLIENT_SECRET}&refresh_token=${process.env.REACT_APP_STRAVA_REFRESH_TOKEN}&grant_type=refresh_token`,
-      GET_ACTIVITIES_INFO=`https://www.strava.com/api/v3/athlete/activities?before=${END_TIME}&after=${START_TIME}&per_page=100`,
+      GET_ACTIVITIES_INFO_2023=`https://www.strava.com/api/v3/athlete/activities?before=${END_TIME_2023}&after=${START_TIME_2023}&per_page=100`,
       STRAVA_WEBSITE_URL='https://www.strava.com';
 
 const CardGrid = styled.div`
@@ -138,7 +138,7 @@ function StravaUpdates() {
 
         return axios({
           method: 'get',
-          url: GET_ACTIVITIES_INFO,
+          url: GET_ACTIVITIES_INFO_2023,
           headers: {
             Authorization: `Bearer ${access_token}`
           }
@@ -146,6 +146,7 @@ function StravaUpdates() {
       })
       .then(response => response.data)
       .then(activities => {
+        console.log('$$', activities);
         const lastActivity = populateLastActivity(activities);
         setLastActivity(lastActivity);
 
@@ -173,42 +174,58 @@ function StravaUpdates() {
   }, []);
 
   return (
-    <CardGrid>
-      <LastActivityCard
-        brand='strava'
-        heading='Last activity'
-        subHeading={(
-          <AsyncText isLoading={isLoading}>
-            A {lastActivity.distance}km {lastActivity.type}
-          </AsyncText>
-        )}
-        subHeadingPosition='bottom'
-        content={isLoading ? <Spinner /> : (
-          <a
-            href={`${STRAVA_WEBSITE_URL}/activities/${lastActivity.id}`}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            {lastActivity.name} on {lastActivity.date}
-          </a>
-        )}
-        metaIcon={<StravaLogo />}
-      />
-      <DashboardCard
-        brand='strava'
-        heading='Running'
-        subHeading='in 2022'
-        content={isLoading ? <Spinner /> : `${totalDistanceWalked}km`}
-        metaIcon={<Emoji size='xl' ariaLabel="running-man" emoji="🏃" />}
-      />
-      <DashboardCard
-        brand='strava'
-        heading='Cycling'
-        subHeading='in 2022'
-        content={isLoading ? <Spinner /> : `${totalDistanceCycled}km`}
-        metaIcon={<Emoji size='xl' ariaLabel="cycling-man" emoji="🚴‍♂️" />}
-      />
-    </CardGrid>
+    <>
+      <CardGrid>
+        <LastActivityCard
+          brand='strava'
+          heading='Last activity'
+          subHeading={(
+            <AsyncText isLoading={isLoading}>
+              A {lastActivity.distance}km {lastActivity.type}
+            </AsyncText>
+          )}
+          subHeadingPosition='bottom'
+          content={isLoading ? <Spinner /> : (
+            <a
+              href={`${STRAVA_WEBSITE_URL}/activities/${lastActivity.id}`}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              {lastActivity.name} on {lastActivity.date}
+            </a>
+          )}
+          metaIcon={<StravaLogo />}
+        />
+        <DashboardCard
+          brand='strava'
+          heading='Running'
+          subHeading='in 2023'
+          content={isLoading ? <Spinner /> : `${totalDistanceWalked}km`}
+          metaIcon={<Emoji size='xl' ariaLabel="running-man" emoji="🏃" />}
+        />
+        <DashboardCard
+          brand='strava'
+          heading='Cycling'
+          subHeading='in 2023'
+          content={isLoading ? <Spinner /> : `${totalDistanceCycled}km`}
+          metaIcon={<Emoji size='xl' ariaLabel="cycling-man" emoji="🚴‍♂️" />}
+        />
+        <DashboardCard
+          brand='strava'
+          heading='Running'
+          subHeading='in 2022'
+          content={isLoading ? <Spinner /> : `${396}km`}
+          metaIcon={<Emoji size='xl' ariaLabel="running-man" emoji="🏃" />}
+        />
+        <DashboardCard
+          brand='strava'
+          heading='Cycling'
+          subHeading='in 2022'
+          content={isLoading ? <Spinner /> : `${413}km`}
+          metaIcon={<Emoji size='xl' ariaLabel="cycling-man" emoji="🚴‍♂️" />}
+        />
+      </CardGrid>
+    </>
   );
 }
 

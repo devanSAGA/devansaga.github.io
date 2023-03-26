@@ -50,6 +50,9 @@ const getTopTracks = async (access_token) => {
     url: GET_TOP_TRACKS,
     headers: {
       Authorization: `Bearer ${access_token}`
+    },
+    params: {
+      time_range: 'short_term'
     }
   })
 

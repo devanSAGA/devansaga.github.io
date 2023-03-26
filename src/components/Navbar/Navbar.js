@@ -3,6 +3,12 @@ import styled from "styled-components";
 import { NavLink, withRouter } from "react-router-dom";
 import { slide as BurgerMenu } from "react-burger-menu";
 import { Menu as MenuIcon, X as CloseIcon } from "react-feather";
+import AvatarImg from '../../assets/AppleAvatar.webp';
+import Link from '../Link/Link';
+import { INSTAGRAM_LINK, TWITTER_LINK, GITHUB_LINK } from "../../pages/AboutMe";
+import TwitterIcon from "../../icons/TwitterIcon";
+import GithubIcon from "../../icons/GithubIcon";
+import InstagramIcon from "../../icons/InstagramIcon";
 
 const NavBarContainer = styled.div`
   font-family: ${(props) => props.theme['font-family-primary']};
@@ -44,18 +50,20 @@ const NavBarContainer = styled.div`
 
 const IconButton = styled.button`
   display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
   outline: none;
-  padding: 8px;
   border-radius: 4px;
-  border: 1px solid ${(props) => props.theme['content-color-secondary']};
+  border: 1px solid ${(props) => props.theme['content-color-tertiary']};
   color: ${(props) => props.theme['content-color-secondary']};
   background-color: transparent;
   height: 32px;
   width: 32px;
 
   svg {
-    height: 16px;
-    width: 16px;
+    height: 20px;
+    width: 20px;
+    stroke: ${({ theme }) => theme['content-color-primary']};;
   }
 
   &:hover {
@@ -64,26 +72,50 @@ const IconButton = styled.button`
   }
 `;
 
-const CloseButtonContainer = styled.div`
-  margin-bottom: 64px;
+const BurgerMenuContent = styled.div`
+  display: flex !important;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
 `;
 
 const BurgerMenuSection = styled.div`
-  a {
+  position: relative;
+`;
+
+const Avatar = styled.img`
+  position: absolute;
+  height: 96px;
+  width: 96px;
+  top: -96px;
+  left: -20px;
+`;
+
+const StyledNavLink = styled(NavLink)`
+  && {
     box-sizing: border-box;
     display: block;
-    padding: 8px 0px;
-    border-radius: 4px;
-    font-size: 1.6rem;
-    font-weight: 600;
+    margin-right: 0px;
+    margin-bottom: 4px;
+    padding: 4px 0px;
+    border: none;
+    font-size: ${(props) => props.theme['font-size-s']};
+  }
+
+  &.burger-menu__section--home-page-link {
+    margin-bottom: 16px;
+    color: ${({ theme }) => theme['content-color-primary']};
   }
 `;
 
-const Divider = styled.hr`
-  outline: none;
-  border: 1px solid #EDEDED;
-  width: 100%;
-  margin: 16px 0px;
+const SocialLinks = styled.div`
+  margin-top: 24px;
+  display: flex;
+
+  & svg {
+    height: 16px;
+    width: 16px;
+  }
 `;
 
 const NavBarLeftSection = styled.div`
@@ -136,50 +168,31 @@ function Navbar(props) {
             disableAutoFocus
             className="burger-menu"
           >
-            <CloseButtonContainer>
+            <BurgerMenuContent>
               <IconButton onClick={closeMenu}>
-                <CloseIcon/>
+                <CloseIcon />
               </IconButton>
-            </CloseButtonContainer>
-            <BurgerMenuSection className="burger-menu__section">
-              <NavLink exact to="/">
-                Devansh Purohit
-              </NavLink>
-              <NavLink exact to="/about">
-                About
-              </NavLink>
-              <NavLink exact to="/dashboard">
-                Dashboard
-              </NavLink>
-              <NavLink exact to="/designs">
-                Designs
-              </NavLink>
-            </BurgerMenuSection>
-            <Divider />
-            <BurgerMenuSection className="burger-menu__section">
-              <a
-                href="https://twitter.com/devanshp_"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Twitter
-              </a>
-              <a
-                href="https://github.com/devanSAGA"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Github
-              </a>
-              <a
-                href="https://www.instagram.com/_devansaga_/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Instagram
-              </a>
-            </BurgerMenuSection>
-            <Divider />
+              <BurgerMenuSection className="burger-menu__section">
+                <Avatar src={AvatarImg} alt='My Avatar' />
+                <StyledNavLink exact to="/" className='burger-menu__section--home-page-link'>
+                  Devansh Purohit
+                </StyledNavLink>
+                <StyledNavLink exact to="/about">
+                  About
+                </StyledNavLink>
+                <StyledNavLink exact to="/dashboard">
+                  Dashboard
+                </StyledNavLink>
+                <StyledNavLink exact to="/designs">
+                  Designs
+                </StyledNavLink>
+                <SocialLinks>
+                  <Link to={TWITTER_LINK} className="social-link__twitter"><TwitterIcon /></Link>
+                  <Link to={INSTAGRAM_LINK} className="social-link__instagram"><InstagramIcon /></Link>
+                  <Link to={GITHUB_LINK} className="social-link__github"><GithubIcon /></Link>
+                </SocialLinks>
+              </BurgerMenuSection>
+            </BurgerMenuContent>
           </BurgerMenu>
         </>
       ) : (

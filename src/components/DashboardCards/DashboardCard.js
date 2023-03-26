@@ -78,7 +78,7 @@ const CardContent = styled.div`
 
 const StyledDashboardCard = styled.div`
   display: flex;
-  height: ${(props) => props.height};
+  min-height: ${(props) => props.height};
   border-radius: 16px;
   padding: 12px;
   border: 4px solid ${(props) => props.theme[`${props.brand}-primary-color`]};
