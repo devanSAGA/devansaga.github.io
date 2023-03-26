@@ -2,13 +2,10 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { NavLink, withRouter } from "react-router-dom";
 import { slide as BurgerMenu } from "react-burger-menu";
-import { Menu as MenuIcon, X as CloseIcon } from "react-feather";
+import { Menu as MenuIcon, X as CloseIcon, Twitter, GitHub, Instagram } from "react-feather";
 import AvatarImg from '../../assets/AppleAvatar.webp';
 import Link from '../Link/Link';
 import { INSTAGRAM_LINK, TWITTER_LINK, GITHUB_LINK } from "../../pages/AboutMe";
-import TwitterIcon from "../../icons/TwitterIcon";
-import GithubIcon from "../../icons/GithubIcon";
-import InstagramIcon from "../../icons/InstagramIcon";
 
 const NavBarContainer = styled.div`
   font-family: ${(props) => props.theme['font-family-primary']};
@@ -103,18 +100,23 @@ const StyledNavLink = styled(NavLink)`
   }
 
   &.burger-menu__section--home-page-link {
-    margin-bottom: 16px;
+    margin-bottom: 0px;
     color: ${({ theme }) => theme['content-color-primary']};
   }
 `;
 
 const SocialLinks = styled.div`
-  margin-top: 24px;
+  margin-bottom: 16px;
   display: flex;
+
+  & a {
+    margin-right: 4px;
+  }
 
   & svg {
     height: 16px;
     width: 16px;
+    stroke: ${({ theme }) => theme['content-color-secondary']};
   }
 `;
 
@@ -177,6 +179,11 @@ function Navbar(props) {
                 <StyledNavLink exact to="/" className='burger-menu__section--home-page-link'>
                   Devansh Purohit
                 </StyledNavLink>
+                <SocialLinks>
+                  <Link to={TWITTER_LINK} className="social-link__twitter"><Twitter /></Link>
+                  <Link to={INSTAGRAM_LINK} className="social-link__instagram"><Instagram /></Link>
+                  <Link to={GITHUB_LINK} className="social-link__github"><GitHub /></Link>
+                </SocialLinks>
                 <StyledNavLink exact to="/about">
                   About
                 </StyledNavLink>
@@ -186,11 +193,6 @@ function Navbar(props) {
                 <StyledNavLink exact to="/designs">
                   Designs
                 </StyledNavLink>
-                <SocialLinks>
-                  <Link to={TWITTER_LINK} className="social-link__twitter"><TwitterIcon /></Link>
-                  <Link to={INSTAGRAM_LINK} className="social-link__instagram"><InstagramIcon /></Link>
-                  <Link to={GITHUB_LINK} className="social-link__github"><GithubIcon /></Link>
-                </SocialLinks>
               </BurgerMenuSection>
             </BurgerMenuContent>
           </BurgerMenu>
