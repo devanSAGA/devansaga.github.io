@@ -275,6 +275,7 @@ function ShowDetails(props) {
 const StyledEpisodeMetaInfoLink = styled.a`
   display: inline-flex;
   align-items: center;
+  padding: 0px 4px;
   font-size: 12px;
   font-weight: 400;
   color: ${(props) => props.theme['content-color-tertiary']};
