@@ -9,6 +9,7 @@ import HomePage from "./pages/HomePage";
 import Designs from './pages/Designs';
 import AboutMe from "./pages/AboutMe";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import IMDP from "./pages/IMDP";
 import GridBackground from './assets/grid.svg';
 
 const RootContainer = styled.div`
@@ -57,6 +58,7 @@ class App extends Component {
                 <Route path="/about" component={AboutMe} />
                 <Route path="/dashboard" component={Dashboard} />
                 <Route path="/designs" component={Designs} />
+                <Route path="/imdp" component={IMDP} />
               </Switch>
             </PageContainer>
           </RootContainer>

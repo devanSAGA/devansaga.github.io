@@ -193,6 +193,9 @@ function Navbar(props) {
                 <StyledNavLink exact to="/designs">
                   Designs
                 </StyledNavLink>
+                <StyledNavLink exact to="/imdp">
+                  IMDP
+                </StyledNavLink>
               </BurgerMenuSection>
             </BurgerMenuContent>
           </BurgerMenu>
@@ -208,6 +211,7 @@ function Navbar(props) {
             <NavLink to="/about">About</NavLink>
             <NavLink exact to="/dashboard">Dashboard</NavLink>
             <NavLink to="/designs">Designs</NavLink>
+            <NavLink to="/imdp">IMDP</NavLink>
           </NavBarRightSection>
         </>
       )}
