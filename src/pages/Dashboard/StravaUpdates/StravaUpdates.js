@@ -146,7 +146,6 @@ function StravaUpdates() {
       })
       .then(response => response.data)
       .then(activities => {
-        console.log('$$', activities);
         const lastActivity = populateLastActivity(activities);
         setLastActivity(lastActivity);
 

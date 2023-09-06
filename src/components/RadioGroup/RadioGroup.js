@@ -6,7 +6,7 @@ const RadioGroupContainer = styled.div`
 	position: relative;
   border: 1px solid rgb(86 77 168);
 	padding: 8px;
-	border-radius: 24px;
+	border-radius: 100px;
   * {
 		z-index: 2;
 	}
@@ -32,11 +32,11 @@ const RadioGroupContainer = styled.div`
   .glider {
     position: absolute;
     display: flex;
-    height: 32px;
-    width: 164px;
-    background-color: #623497;
+    height: 24px;
+    width: 140px;
+    background-color: ${(props) => props.theme['imdp-primary-color']};
     z-index: 1;
-    border-radius: 16px;
+    border-radius: 100px;
     transition: 0.3s ease-out;
   }
 `;
@@ -49,10 +49,11 @@ const StyledLabel = styled.label`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 32px;
-	width: 164px;
+	height: 24px;
+	width: 140px;
+  font-family: ${(props) => props.theme['font-family-secondary']};
 	font-size: 14px;
-	font-weight: 600;
+	font-weight: 400;
 	cursor: pointer;
 	transition: color 0.15s ease-in;
   color: #C0A8E1;

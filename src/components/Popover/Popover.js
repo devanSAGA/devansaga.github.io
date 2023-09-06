@@ -3,22 +3,6 @@ import styled from "styled-components";
 import Tippy from "@tippyjs/react";
 import './popover.css';
 
-export const POPOVER_PLACEMENT_POSITIONS = [
-  "auto",
-  "top",
-  "top-start",
-  "top-end",
-  "bottom",
-  "bottom-start",
-  "bottom-end",
-  "left",
-  "left-start",
-  "left-end",
-  "right",
-  "right-start",
-  "right-end",
-];
-
 export const StyledPopover = styled(Tippy)`
   & .tippy-content {
     min-width: 120px;

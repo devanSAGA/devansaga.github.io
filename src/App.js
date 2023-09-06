@@ -9,7 +9,7 @@ import HomePage from "./pages/HomePage";
 import Designs from './pages/Designs';
 import AboutMe from "./pages/AboutMe";
 import Dashboard from "./pages/Dashboard/Dashboard";
-import IMDP from "./pages/IMDP";
+import IMDP from "./pages/IMDP/IMDP";
 import GridBackground from './assets/grid.svg';
 
 const RootContainer = styled.div`
