@@ -1,11 +1,10 @@
 import React from 'react';
-import { ExternalLink } from 'react-feather';
 import styled from 'styled-components';
+import ExternalLinkIcon from '../../../icons/ExternalLinkIcon';
 
 const StyledEpisodeMetaInfoLink = styled.a`
   display: inline-flex;
   align-items: center;
-  padding: 0px 4px;
   font-size: 12px;
   font-weight: 400;
   color: ${(props) => props.theme['content-color-tertiary']};
@@ -18,12 +17,6 @@ const StyledEpisodeMetaInfoLink = styled.a`
     color: ${(props) => props.theme['content-color-primary']};
     text-decoration: underline;
   }
-
-  svg {
-    height: 12px;
-    width: 12px;
-    margin-left: 4px;
-  }
 `;
 
 function EpisodeMetaInfoLink(props) {
@@ -31,7 +24,7 @@ function EpisodeMetaInfoLink(props) {
   return (
     <StyledEpisodeMetaInfoLink href={link} target='_blank'>
       {title}
-      <ExternalLink />
+      <ExternalLinkIcon />
     </StyledEpisodeMetaInfoLink>
   );
 }

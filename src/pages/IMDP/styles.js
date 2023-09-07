@@ -8,6 +8,47 @@ const Grid = styled.div`
   grid-gap: 12px;
 `;
 
+const GridBottom = styled.div`
+  z-index: -1;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 120px;
+  border: 1px solid transparent;
+  border-top: 1px solid transparent;
+  border-radius: 12px;
+  margin-top: 24px;
+  background: ${(props) => `padding-box linear-gradient(#161616, #161616),
+    border-box linear-gradient(${props.theme['imdp-primary-color']}, ${props.theme['imdp-primary-color']})`};
+`;
+
+const InfoNote = styled.div`
+  padding: 8px;
+  margin: 48px auto;
+  border-radius: 8px;
+  width: 72%;
+  font-size: 12px;
+  color: ${(props) => props.theme['content-color-primary']};
+  background-color: ${(props) => props.theme['imdp-primary-color']};
+  text-align: center;
+
+  @media (max-width: 459px ) {
+    width: 100%;
+  }
+`;
+
+const Section = styled.div`
+  position: relative;
+  margin: 32px auto;
+`;
+
+const MovieCardsContainer = styled.div`
+  padding: 16px;
+`;
+
+const TVShowContainer = styled.div`
+  padding: 16px;
+`;
 
 const BlankState = styled.div`
   width: 100%;
@@ -35,7 +76,7 @@ const IMDPPageHeading = styled.h1`
   font-family: ${(props) => props.theme['font-family-secondary']};
   font-size: ${(props) => props.theme['font-size-xl']};
   color: ${(props) => props.theme['content-color-primary']};
-  margin-top: 32px;
+  margin: 16px 0px;
 `;
 
 const FilterSection = styled.div`
@@ -44,6 +85,14 @@ const FilterSection = styled.div`
   justify-content: space-between;
   margin-top: 32px;
   margin-bottom: 16px;
+  
+  @media (max-width: 459px ) {
+    flex-direction: column;
+
+    & > div {
+      margin-bottom: 32px;
+    }
+  }
 `;
 
 const FilterDropdowns = styled.div`
@@ -66,6 +115,7 @@ const FilterDropdowns = styled.div`
 
   @media (max-width: 459px ) {
     flex-direction: column;
+    align-items: center;
 
     & > .filter-select-dropdown:not(:last-child) {
       margin-right: 0px;
@@ -79,9 +129,14 @@ const FilterDropdowns = styled.div`
 
 export {
   Grid,
+  GridBottom,
+  Section,
+  MovieCardsContainer,
+  TVShowContainer,
   BlankState,
   IMDPLogoContainer,
   IMDPPageHeading,
   FilterSection,
-  FilterDropdowns
+  FilterDropdowns,
+  InfoNote
 };

@@ -56,7 +56,7 @@ const StyledLabel = styled.label`
 	font-weight: 400;
 	cursor: pointer;
 	transition: color 0.15s ease-in;
-  color: #C0A8E1;
+  color: ${(props) => props.theme['content-color-secondary']};
 `;
 
 export default function RadioGroup(props) {

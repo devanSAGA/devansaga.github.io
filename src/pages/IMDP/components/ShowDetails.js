@@ -60,7 +60,7 @@ function ShowDetails(props) {
         ))}
         <Divider />
         <EpisodeMetaInfoLink link={episodeRatingLink} title='Per episode ratings' />
-        {OTTLink && <EpisodeMetaInfoLink link={OTTLink} title={`Watch it on ${OTT}`} />}
+        {OTTLink && <EpisodeMetaInfoLink link={OTTLink} title={`Available on ${OTT}`} />}
       </ShowMetaDetails>
     </StyledShowDetails>
   );

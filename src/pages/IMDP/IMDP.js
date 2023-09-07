@@ -6,8 +6,21 @@ import RadioGroup from '../../components/RadioGroup/RadioGroup';
 import Spinner from '../../components/Spinner/Spinner';
 import FilterByOTTDropdown from './components/FilterByOTTDropdown';
 import FilterByGenreDropdown from './components/FilterByGenreDropdown';
-import GridCard from './components/GridCard';
-import { BlankState, FilterDropdowns, FilterSection, IMDPLogoContainer, Grid, IMDPPageHeading } from './styles';
+import TVShowCard from './components/TVShowCard';
+import {
+  Grid,
+  GridBottom,
+  Section,
+  MovieCardsContainer,
+  BlankState,
+  IMDPLogoContainer,
+  IMDPPageHeading,
+  FilterSection,
+  FilterDropdowns,
+  TVShowContainer,
+  InfoNote
+} from './styles';
+import MovieCard from './components/MovieCard';
 
 const AIRTABLE_API_BASE_URL = 'https://api.airtable.com/v0';
 const TV_SHOWS_TABLES_ID = 'tbluWl1xcEifazpLC';
@@ -16,6 +29,11 @@ const LANG_FILTER_OPTIONS = [
   { value: 'indian', label: 'Indian TV Shows'},
   { value: 'english', label: 'English TV Shows'}
 ];
+const MUST_WATCH_MOVIES_URL = 'https://letterboxd.com/devansaga/films/rated/4.5-5/';
+const UNDERRATED_MOVIES_URL = 'https://letterboxd.com/devansaga/list/underrated/';
+const REALLY_GOOD_MOVIES_URL = 'https://letterboxd.com/devansaga/films/rated/4/';
+const GOOD_MOVIES_URL = 'https://letterboxd.com/devansaga/films/rated/3-3.5/';
+const ALL_MOVIES_URL = 'https://letterboxd.com/devansaga/films';
 
 export default function IMDP() {
   const [shows, setShows] = useState([]);
@@ -81,50 +99,96 @@ export default function IMDP() {
       <IMDPLogoContainer>
         <img alt='IMDP Logo' src={IMDPLogo} />
       </IMDPLogoContainer>
-      <IMDPPageHeading>TV Shows</IMDPPageHeading>
-      <FilterSection>
-        <RadioGroup options={LANG_FILTER_OPTIONS} value={langFilterValue} onChange={setLangFilterValue} />
-        <FilterDropdowns>
-          <span>Filter By:</span>
-          <FilterByOTTDropdown
-            selectedOTTs={selectedOTTs}
-            setSelectedOTTs={setSelectedOTTs}
-          />
-          <FilterByGenreDropdown
-            selectedGenres={selectedGenres}
-            setSelectedGenres={setSelectedGenres}
-          />
-        </FilterDropdowns>
-      </FilterSection>
-      {isLoading ? <BlankState><Spinner /></BlankState> : (
-        <Grid>
-          {filteredShows
-            .filter((show) => {
-              if (langFilterValue === 'english') {
-                if (show.fields.Language === 'English') return true;
-                else return false;
-              } else {
-                if (show.fields.Language === 'English') return false;
-                else return true;
-              }
-            })
-            .map((show, index) => {
-              const { Name, Rating, Genre, NumberOfSeasons, EpisodeWiseRating, OTT, Link } = show.fields;
-              return (
-                <GridCard
-                  key={index}
-                  name={Name}
-                  rating={Rating}
-                  genres={Genre}
-                  OTTLink={Link}
-                  OTT={OTT}
-                  numberOfSeasons={NumberOfSeasons}
-                  episodeRatingLink={EpisodeWiseRating}
-                />
-              );
-          })}
-        </Grid>
-      )}
+      <Section>
+        <GridBottom />
+        <IMDPPageHeading>TV Shows</IMDPPageHeading>
+        <FilterSection>
+          <RadioGroup options={LANG_FILTER_OPTIONS} value={langFilterValue} onChange={setLangFilterValue} />
+          <FilterDropdowns>
+            <span>Filter By:</span>
+            <FilterByOTTDropdown
+              selectedOTTs={selectedOTTs}
+              setSelectedOTTs={setSelectedOTTs}
+            />
+            <FilterByGenreDropdown
+              selectedGenres={selectedGenres}
+              setSelectedGenres={setSelectedGenres}
+            />
+          </FilterDropdowns>
+        </FilterSection>
+        {isLoading ? <BlankState><Spinner /></BlankState> : (
+          <TVShowContainer>
+            <Grid>
+              {filteredShows
+                .filter((show) => {
+                  if (langFilterValue === 'english') {
+                    if (show.fields.Language === 'English') return true;
+                    else return false;
+                  } else {
+                    if (show.fields.Language === 'English') return false;
+                    else return true;
+                  }
+                })
+                .map((show, index) => {
+                  const { Name, Rating, Genre, NumberOfSeasons, EpisodeWiseRating, OTT, Link } = show.fields;
+                  return (
+                    <TVShowCard
+                      key={index}
+                      name={Name}
+                      rating={Rating}
+                      genres={Genre}
+                      OTTLink={Link}
+                      OTT={OTT}
+                      numberOfSeasons={NumberOfSeasons}
+                      episodeRatingLink={EpisodeWiseRating}
+                    />
+                  );
+              })}
+            </Grid>
+          </TVShowContainer>
+        )}
+      </Section>
+      <Section>
+        <IMDPPageHeading>Movies</IMDPPageHeading>
+        <GridBottom />
+        <MovieCardsContainer>
+          <Grid>
+            <MovieCard
+              heading='Must Watch Movies'
+              subHeading='4.5-5 Stars'
+              url={MUST_WATCH_MOVIES_URL}
+              headingColor='#74AEF6'
+            />
+            <MovieCard
+              heading='Really Good Movies'
+              subHeading='4 Stars'
+              url={REALLY_GOOD_MOVIES_URL}
+              headingColor='#6BDD9A'
+            />
+            <MovieCard
+              heading='Good Movies'
+              subHeading='3-3.5 Stars'
+              url={GOOD_MOVIES_URL}
+              headingColor='#FFE47E'
+            />
+            <MovieCard
+              heading='Underrated Movies'
+              subHeading='Star Performances'
+              url={UNDERRATED_MOVIES_URL}
+              headingColor='#ff7c37'
+            />          
+            <MovieCard
+              heading='Check full list'
+              letterboxdEasterEgg
+              url={ALL_MOVIES_URL}
+              headingColor='#FFFFFF'
+            />          
+          </Grid>
+        </MovieCardsContainer>
+      </Section>
+      <InfoNote>
+        The ratings are based on my personal opinion and based on how much I enjoyed watching them. If you don't agree with particular rating, just consider as <i>the fault in our stars</i> ✨.
+      </InfoNote>
     </PageContainer>
   ); 
 }

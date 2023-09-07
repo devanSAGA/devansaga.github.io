@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import RatingBadge from './RatingBadge';
 import ShowDetails from './ShowDetails';
 
-const StyledGridCard = styled.div`
+const StyledTVShowCard = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -15,13 +15,12 @@ const StyledGridCard = styled.div`
   padding: 12px;
   font-size: 16px;
   font-weight: 400;
-  color: red;
 `;
 
-function GridCard(props) {
+function TVShowCard(props) {
   const { name, rating, numberOfSeasons, genres, episodeRatingLink, OTT, OTTLink } = props;
   return (
-    <StyledGridCard>
+    <StyledTVShowCard>
       <RatingBadge rating={rating} />
       <ShowDetails
         name={name}
@@ -31,8 +30,8 @@ function GridCard(props) {
         OTTLink={OTTLink}
         episodeRatingLink={episodeRatingLink}
       />
-    </StyledGridCard>
+    </StyledTVShowCard>
   );
 }
 
-export default GridCard;
+export default TVShowCard;
