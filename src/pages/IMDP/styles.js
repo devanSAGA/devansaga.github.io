@@ -121,7 +121,7 @@ const FilterSection = styled.div`
   margin-top: 32px;
   margin-bottom: 16px;
   
-  @media (max-width: 840px ) {
+  @media (max-width: 900px ) {
     flex-direction: column;
 
     & > div {
@@ -148,7 +148,7 @@ const FilterDropdowns = styled.div`
     margin-right: 8px;
   }
 
-  @media (max-width: 840px ) {
+  @media (max-width: 900px ) {
     flex-direction: column;
     align-items: center;
 

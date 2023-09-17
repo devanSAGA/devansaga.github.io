@@ -7,8 +7,8 @@ const StyledTooltip = styled(Tippy)`
     background-color: #000000;
     color: ${(props) => props.theme['content-color-secondary']};
     border: 1px solid #404040;
-    border-radius: 4px;
-    padding: 8px;
+    border-radius: 8px;
+    padding: 6px;
     ${(props) => props.theme['popover-shadow']};
     font-size: ${(props) => props.theme['font-size-xs']};
     text-align: center;

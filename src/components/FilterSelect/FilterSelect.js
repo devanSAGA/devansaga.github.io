@@ -4,9 +4,9 @@ import Select from 'react-select';
 import {
   CustomValueContainer,
   CustomMultiValueContainer,
+  ClearIndicatorIcon,
   DropdownIndicatorIcon,
-  CustomOption,
-  MenuList
+  CustomOption
 } from './CustomFilterSelectComponents';
 
 import {
@@ -67,19 +67,18 @@ export default function FilterSelect(props) {
         placeholder={placeholder}
         isDisabled={isDisabled}
         isSearchable={false}
-        isClearable={false}
+        isClearable={true}
         inlineLabel={inlineLabel}
         label={label}
         emptyStateMessage={emptyStateMessage}
         classNamePrefix='filter-select-dropdown'
         components={{
-          ClearIndicator: null,
+          ClearIndicator: ClearIndicatorIcon,
           IndicatorSeparator: null,
           DropdownIndicator: DropdownIndicatorIcon,
           MultiValue: CustomMultiValueContainer,
           ValueContainer: CustomValueContainer,
-          Option: CustomOption,
-          MenuList
+          Option: CustomOption
         }}
       />
     </FilterSelectContainer>

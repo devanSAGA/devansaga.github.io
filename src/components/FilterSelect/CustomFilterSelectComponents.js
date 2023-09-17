@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { components } from 'react-select';
+import Tooltip from '../../components/Tooltip/Tooltip';
 
 // Custom down chevron icon inside trigger
-const StyledDropdownIndicator = styled.div`
+const IconContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,13 +14,12 @@ const StyledDropdownIndicator = styled.div`
 
 function DropdownIndicatorIcon(props) {
   return (
-    <StyledDropdownIndicator>
+    <IconContainer>
       <svg
         width='16'
         height='16'
         viewBox='0 0 16 16'
         fill='none'
-        xmlns='http://www.w3.org/2000/svg'
       >
         <path
           fillRule='evenodd'
@@ -28,7 +28,35 @@ function DropdownIndicatorIcon(props) {
           fill='#6B6B6B'
         />
       </svg>
-    </StyledDropdownIndicator>
+    </IconContainer>
+  );
+}
+
+function ClearIndicatorIcon(props) {
+  const { innerProps: { ref, ...restInnerProps } } = props;
+  return (
+    <IconContainer ref={ref} {...restInnerProps}>
+      <Tooltip content="Clear selections">
+        <svg
+          width='16'
+          height='16'
+          viewBox='0 0 16 16'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+        >
+          <path
+            d='M8.00001 8.70711L5.35356 11.3536L4.64645 10.6465L7.2929 8.00001L4.64645 5.35356L5.35356 4.64645L8.00001 7.2929L10.6465 4.64645L11.3536 5.35356L8.70711 8.00001L11.3536 10.6465L10.6465 11.3536L8.00001 8.70711Z'
+            fill='#6B6B6B'
+          />
+          <path
+            fillRule='evenodd'
+            clipRule='evenodd'
+            d='M8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16ZM8 15C11.866 15 15 11.866 15 8C15 4.13401 11.866 1 8 1C4.13401 1 1 4.13401 1 8C1 11.866 4.13401 15 8 15Z'
+            fill='#6B6B6B'
+          />
+        </svg>
+      </Tooltip>
+    </IconContainer>
   );
 }
 
@@ -51,8 +79,8 @@ const Prefix = styled.span`
   margin-right: 8px;
   background-color: ${(props) => props.theme['imdp-primary-color']};
   color: ${(props) => props.theme['content-color-primary']};
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
 `;
 
 function CustomValueContainer(props) {
@@ -117,68 +145,10 @@ function CustomOption(props) {
   );
 }
 
-// Custom menu popover - which includes "Clear" button in the bottom
-const StyledClearButtonContainer = styled.div`
-  background-color: ${(props) => props.theme['background-color-primary']};
-  padding-bottom: 4px;
-`;
-
-const ClearSelectionButton = styled.button`
-  width: 100%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  outline: none;
-  border: none;
-  border: 1px solid ${(props) => props.theme['imdp-primary-color']};
-  border-radius: ${(props) => props.theme['border-radius-default']};
-  height: 32px;
-  padding: 0px 8px;
-  margin-top: 4px;
-  color: ${(props) => props.theme['content-color-primary']};
-  background-color: transparent;
-  cursor: pointer;
-  user-select: none;
-
-  &:disabled {
-    cursor: not-allowed;
-    border: 1px solid ${(props) => props.theme['border-color-light']};
-    color: ${(props) => props.theme['content-color-secondary']};
-  }
-`;
-
-const StyledMenuList = styled(components.MenuList)`
-  padding: 8px;
-`;
-
-function MenuList(props) {
-  const { children = [], selectProps } = props;
-  const {
-    onClearSelectedOptions,
-    value,
-  } = selectProps;
-
-  const isClearButtonDisabled = !(value && value.length);
-  return (
-    <>
-      <StyledMenuList {...props}>{children}</StyledMenuList>
-      <StyledClearButtonContainer>
-        <ClearSelectionButton
-          onClick={onClearSelectedOptions}
-          disabled={isClearButtonDisabled}
-        >
-          Cleat selected
-        </ClearSelectionButton>
-      </StyledClearButtonContainer>
-    </>
-  );
-}
-
-
 export {
   CustomValueContainer,
   CustomMultiValueContainer,
+  ClearIndicatorIcon,
   DropdownIndicatorIcon,
-  CustomOption,
-  MenuList
+  CustomOption
 };

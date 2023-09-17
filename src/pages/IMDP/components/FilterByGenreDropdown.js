@@ -47,7 +47,7 @@ export default function FilterByGenreDropdown(props) {
     placeholder='Select genre'
     label='Genre'
     inlineLabel={inlineLabel}
-    width='200px'
+    width='228px'
   />
  ); 
 }

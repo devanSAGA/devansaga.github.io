@@ -41,7 +41,7 @@ export default function FilterByOTTDropdown(props) {
     placeholder='Select platform'
     label='OTT'
     inlineLabel={inlineLabel}
-    width='200px'
+    width='228px'
   />
  ); 
 }
