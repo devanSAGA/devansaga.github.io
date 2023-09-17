@@ -14,13 +14,15 @@ import {
   MovieCardsContainer,
   BlankState,
   IMDPLogoContainer,
-  IMDPPageHeading,
+  SectionHeading,
   FilterSection,
   FilterDropdowns,
   TVShowContainer,
-  InfoNote
+  InfoNote,
+  IMDPPageHeading
 } from './styles';
 import MovieCard from './components/MovieCard';
+import Tooltip from '../../components/Tooltip/Tooltip';
 
 const AIRTABLE_API_BASE_URL = 'https://api.airtable.com/v0';
 const TV_SHOWS_TABLES_ID = 'tbluWl1xcEifazpLC';
@@ -42,6 +44,18 @@ export default function IMDP() {
   const [isLoading, setLoading] = useState(true);
   const [selectedOTTs, setSelectedOTTs] = useState([]);
   const [selectedGenres, setSelectedGenres] = useState([]);
+
+  const filterShowsBasedOnLang = (shows) => {
+    return shows.filter((show) => {
+      if (langFilterValue === 'english') {
+        if (show.fields.Language === 'English') return true;
+        else return false;
+      } else {
+        if (show.fields.Language === 'English') return false;
+        else return true;
+      }
+    });
+  }
 
   useEffect(() => {
     axios({
@@ -65,13 +79,20 @@ export default function IMDP() {
         return ratingOrder[a.fields.Rating] - ratingOrder[b.fields.Rating];
       });
       setShows(sortedList);
-      setFilteredShows(sortedList);
+
+      const filteredShowsBasedOnLang = filterShowsBasedOnLang(sortedList);
+      setFilteredShows(filteredShowsBasedOnLang);
+
       setLoading(false);
     })
   }, []);
 
   useEffect(() => {
     let newFilteredShows = [...shows];
+
+    if (newFilteredShows.length === 0) return;
+    
+    newFilteredShows = filterShowsBasedOnLang(newFilteredShows);
 
     if (selectedOTTs.length > 0) {
       const filteredOTTs = selectedOTTs.map((option) => option.value);
@@ -92,103 +113,108 @@ export default function IMDP() {
     }
 
     setFilteredShows(newFilteredShows);
-  }, [selectedOTTs, selectedGenres]);
+  }, [shows, selectedOTTs, selectedGenres, langFilterValue]);
 
   return (
     <PageContainer>
       <IMDPLogoContainer>
-        <img alt='IMDP Logo' src={IMDPLogo} />
+        <Tooltip content={<span>IMDP stands for <b>I am Devansh Purohit</b> 😛</span>}>
+          <img alt='IMDP Logo' src={IMDPLogo} />
+        </Tooltip>
       </IMDPLogoContainer>
-      <Section>
-        <GridBottom />
-        <IMDPPageHeading>TV Shows</IMDPPageHeading>
-        <FilterSection>
-          <RadioGroup options={LANG_FILTER_OPTIONS} value={langFilterValue} onChange={setLangFilterValue} />
-          <FilterDropdowns>
-            <span>Filter By:</span>
-            <FilterByOTTDropdown
-              selectedOTTs={selectedOTTs}
-              setSelectedOTTs={setSelectedOTTs}
-            />
-            <FilterByGenreDropdown
-              selectedGenres={selectedGenres}
-              setSelectedGenres={setSelectedGenres}
-            />
-          </FilterDropdowns>
-        </FilterSection>
-        {isLoading ? <BlankState><Spinner /></BlankState> : (
-          <TVShowContainer>
-            <Grid>
-              {filteredShows
-                .filter((show) => {
-                  if (langFilterValue === 'english') {
-                    if (show.fields.Language === 'English') return true;
-                    else return false;
-                  } else {
-                    if (show.fields.Language === 'English') return false;
-                    else return true;
-                  }
-                })
-                .map((show, index) => {
-                  const { Name, Rating, Genre, NumberOfSeasons, EpisodeWiseRating, OTT, Link } = show.fields;
-                  return (
-                    <TVShowCard
-                      key={index}
-                      name={Name}
-                      rating={Rating}
-                      genres={Genre}
-                      OTTLink={Link}
-                      OTT={OTT}
-                      numberOfSeasons={NumberOfSeasons}
-                      episodeRatingLink={EpisodeWiseRating}
-                    />
-                  );
-              })}
-            </Grid>
-          </TVShowContainer>
-        )}
-      </Section>
-      <Section>
-        <IMDPPageHeading>Movies</IMDPPageHeading>
-        <GridBottom />
-        <MovieCardsContainer>
-          <Grid>
-            <MovieCard
-              heading='Must Watch Movies'
-              subHeading='4.5-5 Stars'
-              url={MUST_WATCH_MOVIES_URL}
-              headingColor='#74AEF6'
-            />
-            <MovieCard
-              heading='Really Good Movies'
-              subHeading='4 Stars'
-              url={REALLY_GOOD_MOVIES_URL}
-              headingColor='#6BDD9A'
-            />
-            <MovieCard
-              heading='Good Movies'
-              subHeading='3-3.5 Stars'
-              url={GOOD_MOVIES_URL}
-              headingColor='#FFE47E'
-            />
-            <MovieCard
-              heading='Underrated Movies'
-              subHeading='Star Performances'
-              url={UNDERRATED_MOVIES_URL}
-              headingColor='#ff7c37'
-            />          
-            <MovieCard
-              heading='Check full list'
-              letterboxdEasterEgg
-              url={ALL_MOVIES_URL}
-              headingColor='#FFFFFF'
-            />          
-          </Grid>
-        </MovieCardsContainer>
-      </Section>
-      <InfoNote>
-        The ratings are based on my personal opinion and based on how much I enjoyed watching them. If you don't agree with particular rating, just consider as <i>the fault in our stars</i> ✨.
-      </InfoNote>
+      <IMDPPageHeading>Recommended list of TV shows and Movies</IMDPPageHeading>
+      {isLoading ? <BlankState><Spinner /></BlankState> : (
+        <>
+          <Section>
+            {!isLoading && filteredShows.length !== 0 ? <GridBottom /> : null}
+            <SectionHeading>TV Shows</SectionHeading>
+            <FilterSection>
+              <RadioGroup options={LANG_FILTER_OPTIONS} value={langFilterValue} onChange={setLangFilterValue} />
+              <FilterDropdowns>
+                <span>Filter By:</span>
+                <FilterByOTTDropdown
+                  selectedOTTs={selectedOTTs}
+                  setSelectedOTTs={setSelectedOTTs}
+                />
+                <FilterByGenreDropdown
+                  selectedGenres={selectedGenres}
+                  setSelectedGenres={setSelectedGenres}
+                />
+              </FilterDropdowns>
+            </FilterSection>
+            <TVShowContainer>
+              {filteredShows.length === 0 ? (
+                <BlankState showBorder={true}>
+                  <span className='blank-state_title'>No TV Shows found</span>
+                  <span className='blank-state_desc'>Change the filters</span>
+                </BlankState>
+              ) : (
+                <Grid>
+                  {filteredShows
+                    .map((show, index) => {
+                      const { Name, Rating, Genre, NumberOfSeasons, EpisodeWiseRating, OTT, Link, Emoji } = show.fields;
+                      return (
+                        <TVShowCard
+                          key={index}
+                          name={Name}
+                          rating={Rating}
+                          genres={Genre}
+                          OTTLink={Link}
+                          OTT={OTT}
+                          numberOfSeasons={NumberOfSeasons}
+                          hoverEmoji={Emoji}
+                          episodeRatingLink={EpisodeWiseRating}
+                        />
+                      );
+                  })}
+                </Grid>
+              )}
+
+            </TVShowContainer>
+          </Section>
+          <Section>
+            <SectionHeading>Movies</SectionHeading>
+            <GridBottom />
+            <MovieCardsContainer>
+              <Grid>
+                <MovieCard
+                  heading='Must Watch Movies'
+                  subHeading='4.5-5 Stars'
+                  url={MUST_WATCH_MOVIES_URL}
+                  headingColor='#74AEF6'
+                />
+                <MovieCard
+                  heading='Really Good Movies'
+                  subHeading='4 Stars'
+                  url={REALLY_GOOD_MOVIES_URL}
+                  headingColor='#6BDD9A'
+                />
+                <MovieCard
+                  heading='Good Movies'
+                  subHeading='3-3.5 Stars'
+                  url={GOOD_MOVIES_URL}
+                  headingColor='#FFE47E'
+                />
+                <MovieCard
+                  heading='Underrated Movies'
+                  subHeading='Star Performances'
+                  url={UNDERRATED_MOVIES_URL}
+                  headingColor='#ff7c37'
+                />          
+                <MovieCard
+                  heading='Check full list'
+                  letterboxdEasterEgg
+                  url={ALL_MOVIES_URL}
+                  headingColor='#FFFFFF'
+                />          
+              </Grid>
+            </MovieCardsContainer>
+          </Section>
+          <InfoNote>
+            The ratings are based on my personal opinion and based on how much I enjoyed watching them. If you don't agree with particular rating, just consider as <i>the fault in our stars</i> ✨.
+          </InfoNote>
+        </>
+      )}
     </PageContainer>
   ); 
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { components } from 'react-select';
 
+// Custom down chevron icon inside trigger
 const StyledDropdownIndicator = styled.div`
   display: flex;
   align-items: center;
@@ -10,8 +11,6 @@ const StyledDropdownIndicator = styled.div`
   height: 24px;
 `;
 
-
-// Component to define the down-arrow icon inside react-select's trigger
 function DropdownIndicatorIcon(props) {
   return (
     <StyledDropdownIndicator>
@@ -33,15 +32,11 @@ function DropdownIndicatorIcon(props) {
   );
 }
 
+// Custom trigger component
 const StyledCustomValueContainer = styled(components.ValueContainer)`
   box-sizing: border-box;
   display: flex;
   align-items: center;
-`;
-
-const SelectedOptionsLabel = styled.span`
-  color: ${(props) => props.theme['content-color-primary']};
-  font-size: ${(props) => props.theme['font-size-xs']};
 `;
 
 const Prefix = styled.span`
@@ -60,34 +55,130 @@ const Prefix = styled.span`
   border-bottom-left-radius: 3px;
 `;
 
-const ValueContainerText = styled.span`
-  height: 100%;
-`;
-
 function CustomValueContainer(props) {
-  const { selectProps, hasValue } =  props;
-  const { inlineLabel, label } =  selectProps;
-
+  const { selectProps: { label }, children } =  props;
   return (
     <StyledCustomValueContainer {...props}>
       {label && <Prefix>{label}</Prefix>}
-      <ValueContainerText>
-        {
-          !hasValue ? props.children : (
-            <SelectedOptionsLabel>{inlineLabel}</SelectedOptionsLabel>
-          )
-        }
-      </ValueContainerText>
+      {children}
     </StyledCustomValueContainer>
   );
 }
 
-function Null() {
-  return null;
+const SelectedOptionsLabel = styled.span`
+  color: ${(props) => props.theme['content-color-primary']};
+  font-size: ${(props) => props.theme['font-size-xs']};
+`;
+
+function CustomMultiValueContainer(props) {
+  if (props.index > 0) return null;
+
+  const { selectProps: { inlineLabel } } =  props;
+  
+  return <SelectedOptionsLabel>{inlineLabel}</SelectedOptionsLabel>;
 }
 
+// Custom option componenf - which includes checkbox
+const StyledMultiSelectOption = styled.div`
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+
+  & .filter-select-dropdown__option--checkbox {
+    margin-right: 8px;
+  }
+`;
+
+function CheckBox(props) {
+  const { isChecked, className } = props;
+  return <input type='checkbox' checked={isChecked} className={className} />
+}
+
+function CustomOption(props) {
+  const {
+    isSelected,
+    isFocused,
+    children,
+    ...restOfProps
+  } = props;
+
+  return (
+    <components.Option {...restOfProps}>
+      <StyledMultiSelectOption isFocused={isFocused}>
+        <CheckBox
+          isChecked={isSelected}
+          className='filter-select-dropdown__option--checkbox'
+        />
+        <span>{children}</span>
+      </StyledMultiSelectOption>
+    </components.Option>
+  );
+}
+
+// Custom menu popover - which includes "Clear" button in the bottom
+const StyledClearButtonContainer = styled.div`
+  background-color: ${(props) => props.theme['background-color-primary']};
+  padding-bottom: 4px;
+`;
+
+const ClearSelectionButton = styled.button`
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  border: none;
+  border: 1px solid ${(props) => props.theme['imdp-primary-color']};
+  border-radius: ${(props) => props.theme['border-radius-default']};
+  height: 32px;
+  padding: 0px 8px;
+  margin-top: 4px;
+  color: ${(props) => props.theme['content-color-primary']};
+  background-color: transparent;
+  cursor: pointer;
+  user-select: none;
+
+  &:disabled {
+    cursor: not-allowed;
+    border: 1px solid ${(props) => props.theme['border-color-light']};
+    color: ${(props) => props.theme['content-color-secondary']};
+  }
+`;
+
+const StyledMenuList = styled(components.MenuList)`
+  padding: 8px;
+`;
+
+function MenuList(props) {
+  const { children = [], selectProps } = props;
+  const {
+    onClearSelectedOptions,
+    value,
+  } = selectProps;
+
+  const isClearButtonDisabled = !(value && value.length);
+  return (
+    <>
+      <StyledMenuList {...props}>{children}</StyledMenuList>
+      <StyledClearButtonContainer>
+        <ClearSelectionButton
+          onClick={onClearSelectedOptions}
+          disabled={isClearButtonDisabled}
+        >
+          Cleat selected
+        </ClearSelectionButton>
+      </StyledClearButtonContainer>
+    </>
+  );
+}
+
+
 export {
-  Null,
   CustomValueContainer,
-  DropdownIndicatorIcon
+  CustomMultiValueContainer,
+  DropdownIndicatorIcon,
+  CustomOption,
+  MenuList
 };

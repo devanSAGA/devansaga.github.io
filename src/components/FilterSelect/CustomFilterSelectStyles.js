@@ -37,7 +37,6 @@ const postmanSpecificStyles = css`
 
   & .filter-select-dropdown__menu {
     padding: 8px 8px 4px 8px;
-    /* box-shadow: 0 0 1px rgba(255, 255, 255, 0.72), 0 16px 24px -8px rgba(0, 0, 0, 0.32); */
     box-shadow: ${(props) => props.theme['popover-shadow']};
   }
 

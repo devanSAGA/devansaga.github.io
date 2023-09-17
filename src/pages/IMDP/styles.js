@@ -54,8 +54,29 @@ const BlankState = styled.div`
   width: 100%;
   height: 600px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 64px;
+
+  ${(props) => props.showBorder && `
+    border: 1px solid ${props.theme['imdp-primary-color']};
+    border-radius: 8px;
+  `};
+
+
+  .blank-state_title {
+    color: ${(props) => props.theme['content-color-primary']};
+    font-size: ${(props) => props.theme['font-size-m']};
+    font-family: ${(props) => props.theme['font-family-secondary']};
+    line-height: 1.2;
+  }
+
+  .blank-state_desc {
+    color: ${(props) => props.theme['content-color-secondary']};
+    font-size: ${(props) => props.theme['font-size-s']};
+    font-family: ${(props) => props.theme['font-family-secondary']};
+  }
 `;
 
 const IMDPLogoContainer = styled.div`
@@ -74,6 +95,19 @@ const IMDPPageHeading = styled.h1`
   display: flex;
   justify-content: center;
   font-family: ${(props) => props.theme['font-family-secondary']};
+  font-size: ${(props) => props.theme['font-size-m']};
+  color: ${(props) => props.theme['content-color-secondary']};
+  margin: 8px 0px 64px 0px;
+
+  @media (max-width: 459px ) {
+    text-align: center !important;
+  }
+`;
+
+const SectionHeading = styled.h1`
+  display: flex;
+  justify-content: center;
+  font-family: ${(props) => props.theme['font-family-secondary']};
   font-size: ${(props) => props.theme['font-size-xl']};
   color: ${(props) => props.theme['content-color-primary']};
   margin: 16px 0px;
@@ -83,10 +117,11 @@ const FilterSection = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0px 16px;
   margin-top: 32px;
   margin-bottom: 16px;
   
-  @media (max-width: 459px ) {
+  @media (max-width: 840px ) {
     flex-direction: column;
 
     & > div {
@@ -113,7 +148,7 @@ const FilterDropdowns = styled.div`
     margin-right: 8px;
   }
 
-  @media (max-width: 459px ) {
+  @media (max-width: 840px ) {
     flex-direction: column;
     align-items: center;
 
@@ -135,6 +170,7 @@ export {
   TVShowContainer,
   BlankState,
   IMDPLogoContainer,
+  SectionHeading,
   IMDPPageHeading,
   FilterSection,
   FilterDropdowns,

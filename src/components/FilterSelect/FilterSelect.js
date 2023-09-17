@@ -2,9 +2,11 @@ import React, { useRef } from 'react';
 import styled from 'styled-components';
 import Select from 'react-select';
 import {
-  Null,
   CustomValueContainer,
-  DropdownIndicatorIcon
+  CustomMultiValueContainer,
+  DropdownIndicatorIcon,
+  CustomOption,
+  MenuList
 } from './CustomFilterSelectComponents';
 
 import {
@@ -74,8 +76,10 @@ export default function FilterSelect(props) {
           ClearIndicator: null,
           IndicatorSeparator: null,
           DropdownIndicator: DropdownIndicatorIcon,
-          MultiValue: Null,
-          ValueContainer: CustomValueContainer
+          MultiValue: CustomMultiValueContainer,
+          ValueContainer: CustomValueContainer,
+          Option: CustomOption,
+          MenuList
         }}
       />
     </FilterSelectContainer>
