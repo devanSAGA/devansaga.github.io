@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import polyline from '@mapbox/polyline';
 
 // UI Components
 import DashboardCard from '../../../components/DashboardCards/DashboardCard';
@@ -11,6 +12,7 @@ import AsyncText from '../../../components/Typography/AsyncText';
 
 // Utils
 import useLocalStorage from '../../../hooks/useLocalStorage';
+import LastActivityMap from './LastActivityMap';
 
 const MONTH_NUMBER_TO_NAME_MAPPING = {
   1: 'Jan',
@@ -85,20 +87,35 @@ function getSuffixedDate(date) {
   }
 }
 
+function getCoordinates(activity) {
+  if (!activity || !activity.map) return;
+
+  let coordinates = polyline.decode(activity.map);
+  let newCoordinates = [];
+
+  for (let i = 0; i < coordinates.length; i++) {
+    const [lat, long] = coordinates[i];
+    newCoordinates[i] = [long, lat];
+  }
+
+  return newCoordinates;
+}
+
 function populateLastActivity(allActivities) {
   if(Array.isArray(allActivities) && allActivities.length !== 0) {
     let lastActivity = allActivities[0];
-    const { distance, type, name, id, start_date } = lastActivity;
+
+    const { distance, type, name, id, start_date, map } = lastActivity;
     let dateOfActivity = new Date(start_date);
     dateOfActivity = getSuffixedDate(dateOfActivity.getDate()) + ' ' + MONTH_NUMBER_TO_NAME_MAPPING[(dateOfActivity.getMonth()+1)];
-
 
     return {
       distance: Math.round(distance/1000),
       type: type.toLowerCase(),
       name,
       id,
-      date: dateOfActivity
+      date: dateOfActivity,
+      map: map.summary_polyline
     };
   }
 }
@@ -125,11 +142,12 @@ function calculateTotalDistance(allActivities) {
 function StravaUpdates() {
   const [totalDistanceWalked, setTotalDistanceWalked] = useState(0);
   const [totalDistanceCycled, setTotalDistanceCycled] = useState(0);
+  const [coordinates, setCoordinates] = useState([]);
 
   const [fallbackWalkedDistance, setFallbackWalkedDistance] = useLocalStorage('fallbackWalkedDistance', 0);
   const [fallbackCycledDistance, setFallbackCycledDistance] = useLocalStorage('fallbackCycledDistance', 0);
   const [isLoading, setLoading] = useState(true);
-  const [lastActivity, setLastActivity] = useState({ distance: 0, type: '', name: '' });
+  const [lastActivity, setLastActivity] = useState({ distance: 0, type: '', name: '', map: '' });
 
   useEffect(() => {
     axios.post(GET_STRAVA_ACCESS_TOKEN_URL)
@@ -147,7 +165,9 @@ function StravaUpdates() {
       .then(response => response.data)
       .then(activities => {
         const lastActivity = populateLastActivity(activities);
+        const newCoordinates = getCoordinates(lastActivity);
         setLastActivity(lastActivity);
+        setCoordinates(newCoordinates);
 
         const { totalDistanceCycled, totalDistanceWalked } = calculateTotalDistance(activities);
 
@@ -185,13 +205,16 @@ function StravaUpdates() {
           )}
           subHeadingPosition='bottom'
           content={isLoading ? <Spinner /> : (
-            <a
-              href={`${STRAVA_WEBSITE_URL}/activities/${lastActivity.id}`}
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              {lastActivity.name} on {lastActivity.date}
-            </a>
+            <>
+              <LastActivityMap coordinates={coordinates} />
+              <a
+                href={`${STRAVA_WEBSITE_URL}/activities/${lastActivity.id}`}
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                {lastActivity.name} on {lastActivity.date}
+              </a>
+            </>
           )}
           metaIcon={<StravaLogo />}
         />
