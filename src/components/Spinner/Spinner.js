@@ -21,7 +21,6 @@ function SpinnerSVG() {
         opacity='0.2'
         rx='2'
         ry='2'
-        className='aether-spinner-no-flicker-style'
       >
         <animate
           attributeName='opacity'
@@ -57,7 +56,6 @@ function SpinnerSVG() {
         opacity='0.2'
         rx='2'
         ry='2'
-        className='aether-spinner-no-flicker-style'
       >
         <animate
           attributeName='opacity'
@@ -93,7 +91,6 @@ function SpinnerSVG() {
         opacity='0.2'
         rx='2'
         ry='2'
-        className='aether-spinner-no-flicker-style'
       >
         <animate
           attributeName='opacity'

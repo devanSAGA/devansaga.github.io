@@ -25,10 +25,11 @@ export const aliases = {
     'background-color-primary': '#161616',
     'content-color-primary': '#ffffff',
     'content-color-secondary': '#A6A6A6',
-    'content-color-tertiary': '#464646',
+    'content-color-tertiary': '#8C8C8C',
     'content-color-link': '#61acff',
     'content-color-link-hover': '#002D70',
-    'border-color-light': '#666666'
+    'border-color-light': '#666666',
+    'popover-shadow': '1px 2px 2px hsl(0deg 0% 0% / 0.2), 2px 4px 4px hsl(0deg 0% 0% / 0.2), 4px 8px 8px hsl(0deg 0% 0% / 0.2), 8px 16px 16px hsl(0deg 0% 0% / 0.2), 16px 32px 32px hsl(0deg 0% 0% / 0.2)'
   }
 }
 
@@ -38,6 +39,9 @@ export const pageSpecificTokens = {
     dashboard: {
       'strava-primary-color': '#E05320',
       'spotify-primary-color': '#6ED2B7'
+    },
+    imdp: {
+      'imdp-primary-color': '#564da8',
     }
   }
 }
