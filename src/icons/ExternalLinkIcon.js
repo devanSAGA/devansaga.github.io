@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ExternalLinkIcon = React.forwardRef(function ExternalLinkIcon(props) {
+function ExternalLinkIcon(props) {
   const { height = 16, width = 16 } = props;
   return (
     <svg
@@ -16,6 +16,6 @@ const ExternalLinkIcon = React.forwardRef(function ExternalLinkIcon(props) {
       />
     </svg>
   );
-});
+};
 
 export default ExternalLinkIcon;

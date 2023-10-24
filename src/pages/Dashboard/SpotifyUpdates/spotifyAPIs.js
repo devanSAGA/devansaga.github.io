@@ -9,7 +9,7 @@ const GET_CURRENT_SONG_ACTIVITY = 'https://api.spotify.com/v1/me/player/currentl
 const client_id = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
 const client_secret = process.env.REACT_APP_SPOTIFY_CLIENT_SECRET;
 const refresh_token = process.env.REACT_APP_SPOTIFY_REFRESH_TOKEN;
-const encoded_credentials = Buffer.from(`${client_id}:${client_secret}`, 'utf-8').toString('base64');
+const encoded_credentials = btoa(`${client_id}:${client_secret}`);
 
 // This API returns the access token, using which we can access private spotify account data
 const getAccessToken = async () => {
