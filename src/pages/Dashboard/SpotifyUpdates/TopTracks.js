@@ -66,7 +66,7 @@ function TopTracks(props) {
   return (
     <TopTracksCard
       brand='spotify'
-      heading={!isLoading ? 'Top tracks' : null}
+      heading={!isLoading ? 'This week\'s hits' : null}
       content={isLoading ? <Spinner /> : (
         <TopTracksList>
           {tracks.map((track, index) => (

@@ -12,7 +12,7 @@ const CardGrid = styled.div`
   display: grid;
   grid-column-gap: 16px;
   grid-row-gap: 16px;
-  grid-template-columns: 2fr 4fr;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 4fr);
   grid-template-rows: auto;
 
   @media (min-width: 469px) and (max-width: 768px) {
