@@ -11,6 +11,7 @@ import AboutMe from "./pages/AboutMe";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import IMDP from "./pages/IMDP/IMDP";
 import GridBackground from './assets/grid.svg';
+import NarutoSeries from "./pages/Designs/NarutoSeries";
 
 const RootContainer = styled.div`
   position: relative;
@@ -58,7 +59,8 @@ class App extends Component {
                 <Route path="/" exact component={HomePage} />
                 <Route path="/about" component={AboutMe} />
                 <Route path="/dashboard" component={Dashboard} />
-                <Route path="/designs" component={Designs} />
+                <Route path="/designs" exact component={Designs} />
+                <Route path="/designs/naruto" exact component={NarutoSeries} />
                 <Route path="/imdp" component={IMDP} />
               </Switch>
             </PageContainer>
