@@ -1,0 +1,22 @@
+import React from 'react';
+
+function RightArrowIcon() {
+  return (
+    <svg
+      width='16'
+      height='16'
+      viewBox='0 0 16 16'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+    >
+      <path
+        fillRule='evenodd'
+        clipRule='evenodd'
+        d='M9.29282 7.99996L5.64637 11.6464L6.35348 12.3535L10.707 7.99996L6.35348 3.64641L5.64637 4.35352L9.29282 7.99996Z'
+        fill='#6B6B6B'
+      />
+    </svg>
+  );
+};
+
+export default RightArrowIcon;
