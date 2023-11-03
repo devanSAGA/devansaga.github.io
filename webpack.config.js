@@ -8,6 +8,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'build'),
+    publicPath: '/',
     filename: 'bundle.js',
   },
   resolve: {
@@ -21,9 +22,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
+        use: ['babel-loader']
       },
       {
         test: /\.svg$/,
@@ -31,14 +30,11 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          {
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader',
-          },
-        ],
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
         test: /\.(webp|png|jpe?g|gif)$/i,
