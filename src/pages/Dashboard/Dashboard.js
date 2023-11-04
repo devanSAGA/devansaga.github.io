@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import PageContainer from '../../components/PageContainer/PageContainer';
 import StravaUpdates from './StravaUpdates/StravaUpdates';
 import SpotifyUpdates from './SpotifyUpdates/SpotifyUpdates';
+import PokemonUpdates from './PokemonUpdates/PokemonUpdates';
 
 const DashboardGrid = styled.div`
   display: flex;
@@ -23,6 +24,7 @@ export default function Dashboard() {
       <DashboardGrid>
         <StravaUpdates />
         <SpotifyUpdates />
+        <PokemonUpdates />
       </DashboardGrid>
     </PageContainer>
   );
