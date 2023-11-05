@@ -6,6 +6,7 @@
   "dependencies": {
     "@mapbox/polyline": "^1.1.1",
     "@tippyjs/react": "^4.2.6",
+    "@vercel/analytics": "^1.1.1",
     "axios": "^0.27.2",
     "mapbox-gl": "^2.13.0",
     "react": "16.8.3",

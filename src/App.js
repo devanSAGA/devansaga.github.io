@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from 'styled-components';
 import { ThemeProvider } from "styled-components";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Analytics } from '@vercel/analytics/react';
 
 import darkTheme from './tokens/themes/dark';
 import Navbar from "./components/Navbar/Navbar";
@@ -63,6 +64,7 @@ class App extends Component {
               </Switch>
             </PageContainer>
           </RootContainer>
+          <Analytics />
         </ThemeProvider>
       </BrowserRouter>
     );
