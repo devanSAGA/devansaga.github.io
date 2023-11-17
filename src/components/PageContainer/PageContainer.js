@@ -29,15 +29,11 @@ const BackButton = styled.button`
   outline: none;
   border: none;
   border-radius: ${(props) => props.theme['border-radius-max']};
-  background-color: transparent;
-  padding: 4px 12px 4px 8px;
+  background: rgba(255, 255, 255, .1);
+  padding: 6px;
   color: ${(props) => props.theme['content-color-primary']};
   font-size: ${(props) => props.theme['content-color-primary']};
   line-height: 20px;
-
-  svg {
-    margin-right: 4px;
-  }
 
   svg path {
     fill: ${(props) => props.theme['content-color-primary']};
@@ -61,7 +57,6 @@ function PageContainer(props) {
       {showBackButton ? (
         <BackButton onClick={handleBackButtonClick}>
           <BackArrowIcon />
-          Back
         </BackButton>
       ) : null}
       <h1 className='page-container__heading'>{title}</h1>

@@ -40,7 +40,7 @@ const NARUTO_DESIGNS = [
 const Description = styled.p`
   margin: 0;
   font-size: ${(props) => props.theme['font-size-s']};
-  color: ${(props) => props.theme['content-color-secondary']};
+  color: ${(props) => props.theme['content-color-primary']};
   line-height: 1.44;
   margin-bottom: 16px;
 `;

@@ -6,7 +6,6 @@ import Link from '../components/Link/Link';
 import RightArrowIcon from '../icons/RightArrowIcon';
 import PageContainer from '../components/PageContainer/PageContainer';
 import NarutoSeriesCoverImage from '../assets/designs/naruto/Jiraiya.jpg';
-import CartoonSeriesCoverImage from '../assets/designs/cartoons/SwatKats-01.jpg';
 
 const INSTAGRAM_LINK = "https://www.instagram.com/_devansaga_/";
 
@@ -165,18 +164,6 @@ function Designs() {
               imgAlt='The Naruto Series'
             />
           </NavLink>
-          <GallaryItem
-            title='Nostalgic Cartoons Series'
-            desc=''
-            imgSrc={CartoonSeriesCoverImage}
-            imgAlt='The Nostalgic Cartoons Series'
-          />
-          <GallaryItem
-            title='Nostalgic Cartoons Series'
-            desc=''
-            imgSrc={CartoonSeriesCoverImage}
-            imgAlt='The Nostalgic Cartoons Series'
-          />
         </GallaryGrid>
       </Category>
     </PageContainer>
