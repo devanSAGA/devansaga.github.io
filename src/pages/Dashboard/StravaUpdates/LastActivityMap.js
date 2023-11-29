@@ -4,7 +4,6 @@ import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
-// eslint-disable-next-line import/no-webpack-loader-syntax
 mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
 const StyledMapContainer = styled.div`
@@ -49,7 +48,7 @@ export default function LastActivityMap(props) {
       zoom: 12
     });
   
-    map.on('load', (e) => {
+    map.on('load', () => {
       map.addSource('route', { type: 'geojson', data: geoJSON });
       map.addLayer({
         id: 'route',

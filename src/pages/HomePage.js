@@ -111,6 +111,6 @@ function HomePage() {
       </InterestsText>
     </HomePageContainer>
   );
-};
+}
 
 export default HomePage;

@@ -211,7 +211,7 @@ export default function IMDP() {
             </MovieCardsContainer>
           </Section>
           <InfoNote>
-            The ratings are based on my personal opinion and based on how much I enjoyed watching them. If you don't agree with particular rating, just consider as <i>the fault in our stars</i> ✨.
+            The ratings are based on my personal opinion and based on how much I enjoyed watching them. If you don&apos;t agree with particular rating, just consider as <i>the fault in our stars</i> ✨.
           </InfoNote>
         </>
       )}

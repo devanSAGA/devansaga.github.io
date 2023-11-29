@@ -15,6 +15,6 @@ function BackArrowIcon() {
       />
     </svg>
   );
-};
+}
 
 export default BackArrowIcon;

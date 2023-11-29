@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import styled, { keyframes } from "styled-components";
 import Reward from "rewards-lite";
 
-const gradientAnimation = (percentage) => keyframes`
+const gradientAnimation = () => keyframes`
     0% {
       background-position: 0 0;
     }

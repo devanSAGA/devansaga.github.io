@@ -88,7 +88,7 @@ function ToggleSwitch(props) {
       />
     </StyledSwitchContainer>
   );
-};
+}
 
 export default ToggleSwitch;
 

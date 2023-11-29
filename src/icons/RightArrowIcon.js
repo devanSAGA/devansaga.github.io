@@ -17,6 +17,6 @@ function RightArrowIcon() {
       />
     </svg>
   );
-};
+}
 
 export default RightArrowIcon;

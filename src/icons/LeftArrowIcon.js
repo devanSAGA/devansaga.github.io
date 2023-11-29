@@ -17,6 +17,6 @@ function LeftArrowIcon() {
       />
     </svg>
   );
-};
+}
 
 export default LeftArrowIcon;

@@ -16,6 +16,6 @@ function ExternalLinkIcon(props) {
       />
     </svg>
   );
-};
+}
 
 export default ExternalLinkIcon;

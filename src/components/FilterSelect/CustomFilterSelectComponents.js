@@ -12,7 +12,7 @@ const IconContainer = styled.div`
   height: 24px;
 `;
 
-function DropdownIndicatorIcon(props) {
+function DropdownIndicatorIcon() {
   return (
     <IconContainer>
       <svg

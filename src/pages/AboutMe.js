@@ -38,7 +38,7 @@ function AboutMe() {
 
         <p>
           During college, I also got introduced to programming as one of the subjects!
-          I was getting interested in programming as I was learning it but unlike the common college trend, <Link to={COMPETITIVE_PROGRAMMING_WIKI_LINK}>competitive programming</Link> didn't
+          I was getting interested in programming as I was learning it but unlike the common college trend, <Link to={COMPETITIVE_PROGRAMMING_WIKI_LINK}>competitive programming</Link> didn&apos;t
           interest me much. I wanted to use programming concepts to build something that I can use in daily life.
           Soon, I got to know about Frontend Development.
         </p>
@@ -48,7 +48,7 @@ function AboutMe() {
           As I continued learning I came across <Link to={REACT_DOCS_LINK}>React</Link>,
           and this was the first <i>aha</i> moment for me.
           React enabled me to connect 
-          two concepts in my mind (Design and Programming) using which I can "Build Things".
+          two concepts in my mind (Design and Programming) using which I can &quot;Build Things&quot;.
         </p>
 
         <p>
@@ -65,6 +65,6 @@ function AboutMe() {
       </AboutMeContent>
     </PageContainer>
   );
-};
+}
 
 export default AboutMe;

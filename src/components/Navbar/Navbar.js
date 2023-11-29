@@ -142,7 +142,7 @@ function Navbar(props) {
   }, []);
 
   useEffect(() => {
-    const unlisten = props.history.listen((location, action) => {
+    const unlisten = props.history.listen(() => {
       closeMenu();
     });
 

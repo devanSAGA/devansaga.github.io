@@ -41,7 +41,7 @@ const RadioGroupContainer = styled.div`
   }
 `;
 
-const StyledInput = styled.input.attrs(props => ({
+const StyledInput = styled.input.attrs(() => ({
   type: 'radio'
 }))``;
 

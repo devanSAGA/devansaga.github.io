@@ -4,4 +4,5 @@ import "./index.css";
 import "./styles/utility.css";
 import App from "./App";
 
+// eslint-disable-next-line react/no-deprecated
 ReactDOM.render(<App />, document.getElementById("root"));
