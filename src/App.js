@@ -6,7 +6,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import darkTheme from './tokens/themes/dark';
 import Navbar from "./components/Navbar/Navbar";
 import HomePage from "./pages/HomePage";
-import Designs from './pages/Designs';
+import Designs from './pages/Designs/Designs';
 import AboutMe from "./pages/AboutMe";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import IMDP from "./pages/IMDP/IMDP";

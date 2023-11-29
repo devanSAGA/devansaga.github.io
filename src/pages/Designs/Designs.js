@@ -1,13 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { NavLink, withRouter } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-import Link from '../components/Link/Link';
-import RightArrowIcon from '../icons/RightArrowIcon';
-import PageContainer from '../components/PageContainer/PageContainer';
-import NarutoSeriesCoverImage from '../assets/designs/naruto/Jiraiya.jpg';
-
-const INSTAGRAM_LINK = "https://www.instagram.com/_devansaga_/";
+import PageContainer from '../../components/PageContainer/PageContainer';
+import NarutoSeriesCoverImage from '../../assets/designs/naruto/Jiraiya.jpg';
 
 const GallaryGrid = styled.div`
   display: grid;
@@ -17,25 +13,55 @@ const GallaryGrid = styled.div`
   margin-bottom: 24px;
 `;
 
+const CardStack = styled.div`
+  position: relative;
+
+  .card {
+    position: absolute;
+    transform-origin: bottom center;
+    height: 400px;
+    width: 100%;
+    border-radius: 8px;
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .placeholder-card:nth-child(2) {
+    transform: rotate(4deg);
+  }
+
+  .placeholder-card:nth-child(3) {
+    transform: rotate(-4deg);
+  }
+
+  &:hover {
+    .placeholder-card:nth-child(2) {
+      transform: rotate(8deg);
+    }
+
+    .placeholder-card:nth-child(3) {
+      transform: rotate(-8deg);
+    } 
+  }
+`;
+
 const StyledGallaryItem = styled.div`
   box-sizing: border-box;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  border-radius: 8px;
   box-shadow:
     1px 2px 2px rgba(0, 0, 0, 0.2),
     2px 4px 4px rgba(0, 0, 0, 0.2),
     4px 8px 8px rgba(0, 0, 0, 0.2);
   transition: transform 200ms linear;
+  z-index: 2;
 
   & img {
-    height: 400px;
+    height: 100%;
     width: 100%;
     border-radius: 8px;
     object-fit: cover;
-    opacity: 0.7;
   }
 
   &:hover {
@@ -51,7 +77,7 @@ const ImgBottomBlur = styled.div`
   bottom: 0;
   height: 200px;
   width: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.98)) rgba(0, 0, 0, 0);
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)) rgba(0, 0, 0, 0);
   padding: 2rem 1.5rem 1.5rem;
   border-radius: 8px;
   opacity: 0.4;
@@ -59,7 +85,7 @@ const ImgBottomBlur = styled.div`
 
 const ImgInfo = styled.div`
   position: absolute;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-end;
   display: inline-flex;
   width: 100%;
@@ -74,29 +100,8 @@ const ImgInfo = styled.div`
   }
 `;
 
-const GlassMorphicButton = styled.button`
-  box-sizing: border-box;
-  display: inline-flex;
-  align-items: center;
-  height: 32px;
-  padding: 0px 4px 0px 12px;
-  border-radius: 999px;
-  outline: none;
-  background: rgba(0, 0, 0, .5);
-  border: 1px solid hsla(0, 0%, 100%, .05);
-  backdrop-filter: blur(12px);
-  transition: all .2s ease;
-  color: ${(props) => props.theme['content-color-primary']};
-  line-height: 16px;
-  cursor: pointer;
-
-  & svg {
-    margin-left: 4px;
-  }
-
-  &:hover {
-    background: rgba(0, 0, 0, .4);
-  }
+const DummyGallaryItem = styled.div`
+  background-color: rgba(255, 255, 255, 0.9);
 `;
 
 const CategoryContainer = styled.div`
@@ -111,7 +116,7 @@ const CategoryContainer = styled.div`
   }
 
   & .category__desc {
-    margin-bottom: 24px;
+    margin-bottom: 48px;
     font-family: ${(props) => props.theme['font-family-primary']};
     font-size: ${(props) => props.theme['font-size-s']};
     line-height: 20px;
@@ -135,16 +140,17 @@ function GallaryItem(props) {
   const { title, imgSrc, imgAlt } = props;
 
   return (
-    <StyledGallaryItem>
-      <img src={imgSrc} alt={imgAlt} />
-      <ImgBottomBlur />
-      <ImgInfo>
-        {title && <h3>{title}</h3>}
-        <GlassMorphicButton>
-          Check <RightArrowIcon />
-        </GlassMorphicButton>
-      </ImgInfo>
-    </StyledGallaryItem>
+    <CardStack>
+      <StyledGallaryItem className='card'>
+        <img src={imgSrc} alt={imgAlt} />
+        <ImgBottomBlur />
+        <ImgInfo>
+          {title && <h3>{title}</h3>}
+        </ImgInfo>
+      </StyledGallaryItem>
+      <DummyGallaryItem className='card placeholder-card' />
+      <DummyGallaryItem className='card placeholder-card' />
+    </CardStack>
   );
 }
 
@@ -153,7 +159,7 @@ function Designs() {
     <PageContainer title="Designs">
       <Category
         title='Posters and Illustrations'
-        desc='Mostly based on my favourite TV shows/Movies/Anime. I have tried to follow a consistent design style each series'
+        desc='Based on TV shows/Movies/Anime, where I have tried to follow a consistent design style for  series'
       >
         <GallaryGrid>
           <NavLink exact to='/designs/naruto'>
