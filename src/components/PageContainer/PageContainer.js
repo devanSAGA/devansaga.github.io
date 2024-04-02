@@ -12,12 +12,15 @@ const StyledPageContainer = styled.div`
     text-align: left;
   }
 
-  & .page-container__heading {
-    color: ${(props) => props.theme['content-color-primary']};
+  & .page-container__headings {
+    margin: 16px 0px;
+    color: ${(props) => props.theme['content-color-tertiary']};
     font-family: ${(props) => props.theme['font-family-pageHeading']};
-    font-size: ${(props) => props.theme['font-size-xxl']};
-    opacity: 0.3;
-    margin-bottom: 16px;
+    line-height: 1;
+
+    &--main {
+      font-size: ${(props) => props.theme['font-size-xxl']};
+    }
   }
 `;
 
@@ -34,6 +37,7 @@ const BackButton = styled.button`
   color: ${(props) => props.theme['content-color-primary']};
   font-size: ${(props) => props.theme['content-color-primary']};
   line-height: 20px;
+  transition: box-shadow 0.3s ease;
 
   svg path {
     fill: ${(props) => props.theme['content-color-primary']};
@@ -42,11 +46,12 @@ const BackButton = styled.button`
   &:hover {
     background: rgba(255, 255, 255, .1);
     backdrop-filter: blur(15px);
+    box-shadow: 0 0 0 2px #505050;
   }
 `;
 
 function PageContainer(props) {
-  const { children, title, history, showBackButton = false } = props;
+  const { children, title: heading, history, showBackButton = false } = props;
 
   const handleBackButtonClick = () => {
     history.goBack();
@@ -59,7 +64,9 @@ function PageContainer(props) {
           <BackArrowIcon />
         </BackButton>
       ) : null}
-      <h1 className='page-container__heading'>{title}</h1>
+      <div className='page-container__headings'>
+        {heading ? <h1 className='page-container__headings--main'>{heading}</h1> : null}
+      </div>
       {children}
     </StyledPageContainer>
   );  

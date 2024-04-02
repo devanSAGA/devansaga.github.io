@@ -6,9 +6,14 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import RightArrowIcon from '../../icons/RightArrowIcon';
 import LeftArrowIcon from '../../icons/LeftArrowIcon';
 
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/keyboard';
+
 const Image = styled.img`
   height: ${(props) => props.height};
   width: ${(props) => props.width};
+  border-radius: ${(props) => props.roundedCorners ? '12px' : '0px' };
 `;
 
 const StyledSwiperSlide = styled(SwiperSlide)`
@@ -39,6 +44,12 @@ const SlidesTitle = styled.span`
   font-family: ${(props) => props.theme['font-family-secondary']};
   font-size: ${(props) => props.theme['font-size-m']};
   line-height: 1;
+`;
+
+const SlidesDescription = styled.p`
+  color: ${(props) => props.theme['content-color-secondary']};
+  font-size: ${(props) => props.theme['font-size-s']};
+  margin: 8px 0px;
 `;
 
 const SlidesNavigationContainer = styled.div`
@@ -119,10 +130,13 @@ const SlidePaginationBullet = styled.button`
 `;
 
 export default function Carousel(props) {
-  const { slides } = props;
-  const middleSlideIndex = Math.floor(slides.length / 2);
+  const { slides, slideDimensions, carouselConfig } = props;
+  const { height: slideHeight, width: slideWidth } = slideDimensions;
+  const { roundedCorners = false, startFromBeginning = false } = carouselConfig
+
+  const startingSlideIndex = startFromBeginning ? 0 : Math.floor(slides.length / 2);
   const [swiper, setSwiper] = useState(null);
-  const [activeSlide, setActiveSlide] = useState(middleSlideIndex);
+  const [activeSlide, setActiveSlide] = useState(startingSlideIndex);
 
   const slideNavigationRef = useRef(null);
 
@@ -184,7 +198,7 @@ export default function Carousel(props) {
         <Swiper
           effect='coverflow'
           slidesPerView='auto'
-          initialSlide={middleSlideIndex}
+          initialSlide={startingSlideIndex}
           grabCursor={true}
           centeredSlides={true}
           pagination={{
@@ -195,7 +209,7 @@ export default function Carousel(props) {
           coverflowEffect={{
             rotate: 10,
             stretch: 0,
-            depth: 300,
+            depth: 200,
             modifier: 1,
             slideShadows: true,
           }}
@@ -205,22 +219,29 @@ export default function Carousel(props) {
           onSwiper={setSwiper}
           onSlideChange={handleSlideChange}
         >
-          {slides.map((slide, index) => (
-            <StyledSwiperSlide
-              key={index}
-              height='500px'
-              width='350px'
-            >
-              <Image
-                height='500px'
-                width='350px'
-                src={slide.src}
-              />
-            </StyledSwiperSlide>
-          ))}
+          {slides.map((slide, index) => {
+            const height = slide.dimensions ? slide.dimensions.height : slideHeight;
+            const width = slide.dimensions ? slide.dimensions.width : slideWidth;
+
+            return (
+              <StyledSwiperSlide
+                key={index}
+                height={height}
+                width={width}
+              >
+                <Image
+                  height={height}
+                  width={width}
+                  src={slide.src}
+                  roundedCorners={roundedCorners}
+                />
+              </StyledSwiperSlide>
+            );
+          })}
         </Swiper>
         <SlidesInfo>
-          <SlidesTitle>{slides[activeSlide].title}</SlidesTitle>
+          {slides[activeSlide].title ? <SlidesTitle>{slides[activeSlide].title}</SlidesTitle> : null}
+          {slides[activeSlide].description ? <SlidesDescription>{slides[activeSlide].description}</SlidesDescription> : null}
         </SlidesInfo>
       </SlidesContainer>
       <SlidesNavigationContainer ref={slideNavigationRef}>

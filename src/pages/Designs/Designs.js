@@ -3,46 +3,15 @@ import styled from 'styled-components';
 import { NavLink } from "react-router-dom";
 
 import PageContainer from '../../components/PageContainer/PageContainer';
-import NarutoSeriesCoverImage from '../../assets/designs/naruto/Jiraiya.jpg';
+import { DESIGNS_MANIFEST, DESIGNS_OF_ILLUSTRATIONS_CATEGORY, DESIGNS_OF_PUNS_CATEGORY } from './designs-manifest';
 
 const GallaryGrid = styled.div`
   display: grid;
-  grid-column-gap: 24px;
-  grid-row-gap: 24px;
-  grid-template-columns: 1fr 1fr 1fr;
-  margin-bottom: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
 `;
 
-const CardStack = styled.div`
-  position: relative;
-
-  .card {
-    position: absolute;
-    transform-origin: bottom center;
-    height: 400px;
-    width: 100%;
-    border-radius: 8px;
-    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
-
-  .placeholder-card:nth-child(2) {
-    transform: rotate(4deg);
-  }
-
-  .placeholder-card:nth-child(3) {
-    transform: rotate(-4deg);
-  }
-
-  &:hover {
-    .placeholder-card:nth-child(2) {
-      transform: rotate(8deg);
-    }
-
-    .placeholder-card:nth-child(3) {
-      transform: rotate(-8deg);
-    } 
-  }
-`;
+const CardStack = styled.div``;
 
 const StyledGallaryItem = styled.div`
   box-sizing: border-box;
@@ -50,73 +19,80 @@ const StyledGallaryItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  border-radius: 16px;
   box-shadow:
     1px 2px 2px rgba(0, 0, 0, 0.2),
     2px 4px 4px rgba(0, 0, 0, 0.2),
     4px 8px 8px rgba(0, 0, 0, 0.2);
   transition: transform 200ms linear;
   z-index: 2;
+  height: 320px;
 
   & img {
     height: 100%;
     width: 100%;
-    border-radius: 8px;
+    border-radius: 16px;
     object-fit: cover;
+    filter: brightness(0.5);
   }
 
   &:hover {
     cursor: pointer;
     transform: scale(1.02);
+    
+    img {
+      filter: brightness(1);
+    }
   }
 `;
 
 const ImgBottomBlur = styled.div`
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 200px;
+  height: 100%;
   width: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)) rgba(0, 0, 0, 0);
-  padding: 2rem 1.5rem 1.5rem;
-  border-radius: 8px;
-  opacity: 0.4;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1)) rgba(0, 0, 0, 0);
+  border-radius: 16px;
+  opacity: 0.5;
 `;
 
 const ImgInfo = styled.div`
   position: absolute;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-end;
   display: inline-flex;
   width: 100%;
   padding: 12px 16px;
   bottom: 0;
+  border-radius: 16px;
 
   h3 {
     color: ${(props) => props.theme['content-color-primary']};
     font-family: ${(props) => props.theme['font-family-secondary']};
     font-size: ${(props) => props.theme['font-size-l']};
     line-height: 1.2;
+    text-align: left;
   }
 `;
 
-const DummyGallaryItem = styled.div`
-  background-color: rgba(255, 255, 255, 0.9);
-`;
 
 const CategoryContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 24px 0px;
+  margin: 24px 0px 48px 0px;
 
   & .category__title {
-    font-family: ${(props) => props.theme['font-family-secondary']};
-    font-size: ${(props) => props.theme['font-size-l']};
+    width: fit-content;
     color: ${(props) => props.theme['content-color-primary']};
+    font-family: ${(props) => props.theme['font-family-secondary']};
+    font-size: ${(props) => props.theme['font-size-m']};
+    line-height: 1;
+    padding: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #3c3c3c;
+    border-radius: 12px;
   }
 
   & .category__desc {
-    margin-bottom: 48px;
     font-family: ${(props) => props.theme['font-family-primary']};
     font-size: ${(props) => props.theme['font-size-s']};
     line-height: 20px;
@@ -128,11 +104,13 @@ function Category(props) {
   const { title, desc, children } = props;
 
   return (
-    <CategoryContainer>
-      {title && <h3 className='category__title'>{title}</h3>}
-      {desc && <span className='category__desc'>{desc}</span>}
-      {children}
-    </CategoryContainer>
+    <div>
+      <CategoryContainer>
+        {title && <span className='category__title'>{title}</span>}
+        {desc && <span className='category__desc'>{desc}</span>}
+        {children}
+      </CategoryContainer>
+    </div>
   );
 }
 
@@ -148,8 +126,6 @@ function GallaryItem(props) {
           {title && <h3>{title}</h3>}
         </ImgInfo>
       </StyledGallaryItem>
-      <DummyGallaryItem className='card placeholder-card' />
-      <DummyGallaryItem className='card placeholder-card' />
     </CardStack>
   );
 }
@@ -158,18 +134,53 @@ function Designs() {
   return (
     <PageContainer title="Designs">
       <Category
-        title='Posters and Illustrations'
-        desc='Based on TV shows/Movies/Anime, where I have tried to follow a consistent design style for  series'
+        title='Puns'
       >
         <GallaryGrid>
-          <NavLink exact to='/designs/naruto'>
-            <GallaryItem
-              title='Naruto Series'
-              desc=''
-              imgSrc={NarutoSeriesCoverImage}
-              imgAlt='The Naruto Series'
-            />
-          </NavLink>
+          {Object.keys(DESIGNS_MANIFEST)
+            .filter((seriesName) => DESIGNS_OF_PUNS_CATEGORY.includes(seriesName))
+            .map((seriesName, index) => {
+            const {
+              path,
+              title,
+              coverImage,
+              coverImageAlt
+            } = DESIGNS_MANIFEST[seriesName];
+            return (
+              <NavLink exact to={path} key={index}>
+                <GallaryItem
+                  title={title}
+                  imgSrc={coverImage}
+                  imgAlt={coverImageAlt}
+                />
+              </NavLink>
+            );
+          })}
+        </GallaryGrid>
+      </Category>
+      <Category
+        title='Illustrations'
+      >
+        <GallaryGrid>
+          {Object.keys(DESIGNS_MANIFEST)
+            .filter((seriesName) => DESIGNS_OF_ILLUSTRATIONS_CATEGORY.includes(seriesName))
+            .map((seriesName, index) => {
+            const {
+              path,
+              title,
+              coverImage,
+              coverImageAlt
+            } = DESIGNS_MANIFEST[seriesName];
+            return (
+              <NavLink exact to={path} key={index}>
+                <GallaryItem
+                  title={title}
+                  imgSrc={coverImage}
+                  imgAlt={coverImageAlt}
+                />
+              </NavLink>
+            );
+          })}
         </GallaryGrid>
       </Category>
     </PageContainer>

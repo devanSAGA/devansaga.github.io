@@ -11,7 +11,17 @@ import AboutMe from "./pages/AboutMe";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import IMDP from "./pages/IMDP/IMDP";
 import GridBackground from './assets/grid.svg';
-import NarutoSeries from "./pages/Designs/NarutoSeries";
+
+import NarutoSeries from "./pages/Designs/series/NarutoSeries";
+import MarioSeries from "./pages/Designs/series/MarioSeries";
+import CartoonsSeries from "./pages/Designs/series/CartoonsSeries";
+import GotgSeries from "./pages/Designs/series/GotgSeries";
+import MBPSeries from "./pages/Designs/series/MBPSeries";
+import RandomSeries from "./pages/Designs/series/RandomSeries";
+import OnceAPunATimeSeries from './pages/Designs/series/OnceAPunATimeSeries';
+import TopicalishSeries from "./pages/Designs/series/TopicalishSeries";
+import SpecialDaysSeries from './pages/Designs/series/SpecialDaysSeries';
+import MothersDaySeries from "./pages/Designs/series/MothersDaySeries";
 
 const RootContainer = styled.div`
   position: relative;
@@ -61,6 +71,15 @@ class App extends Component {
                 <Route path="/dashboard" component={Dashboard} />
                 <Route path="/designs" exact component={Designs} />
                 <Route path="/designs/naruto" exact component={NarutoSeries} />
+                <Route path="/designs/cartoons" exact component={CartoonsSeries} />
+                <Route path="/designs/mbp" exact component={MBPSeries} />
+                <Route path="/designs/mario" exact component={MarioSeries} />
+                <Route path="/designs/gotg" exact component={GotgSeries} />
+                <Route path="/designs/misc" exact component={RandomSeries} />
+                <Route path="/designs/onceapunatime" exact component={OnceAPunATimeSeries} />
+                <Route path="/designs/topicalish" exact component={TopicalishSeries} />
+                <Route path="/designs/specialdays" exact component={SpecialDaysSeries} />
+                <Route path="/designs/mothersday" exact component={MothersDaySeries} />
                 <Route path="/imdp" component={IMDP} />
               </Switch>
             </PageContainer>

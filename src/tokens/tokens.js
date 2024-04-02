@@ -24,7 +24,7 @@ export const aliases = {
   dark: {
     'background-color-primary': '#161616',
     'content-color-primary': '#ffffff',
-    'content-color-secondary': '#A6A6A6',
+    'content-color-secondary': '#8B8B8B',
     'content-color-tertiary': '#6B6B6B',
     'content-color-link': '#61acff',
     'content-color-link-hover': '#002D70',
