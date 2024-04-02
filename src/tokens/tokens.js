@@ -37,7 +37,7 @@ export const pageSpecificTokens = {
   ligth: {},
   dark: {
     dashboard: {
-      'strava-primary-color': '#E05320',
+      'strava-primary-color': '#FF6C37',
       'spotify-primary-color': '#6ED2B7',
       'pokemon-primary-color': '#389CFF'
     },
