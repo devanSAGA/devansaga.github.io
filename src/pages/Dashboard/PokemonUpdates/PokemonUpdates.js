@@ -74,8 +74,6 @@ export default function PokemonUpdates () {
       .then((pokemon) => {
         setLoading(false);
         setPokemon(pokemon);
-
-        console.log(pokemon.sprites.versions['generation-v']['black-white']);
       })
     })
     .catch(() => {
