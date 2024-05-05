@@ -29,11 +29,21 @@ const MONTH_NUMBER_TO_NAME_MAPPING = {
   12: 'Dec'
 };
 
-const END_TIME_2023=1704067199, // Epoch time of 31st Dec 2022
-      START_TIME_2023=1672531200, // Epoch time of 1st Jan 2022
+const END_TIME=1735671300, // Epoch time of 31st Dec 2024
+      START_TIME=1704052860, // Epoch time of 1st Jan 2024
       GET_STRAVA_ACCESS_TOKEN_URL=`https://www.strava.com/oauth/token?client_id=${process.env.REACT_APP_STRAVA_CLIENT_ID}&client_secret=${process.env.REACT_APP_STRAVA_CLIENT_SECRET}&refresh_token=${process.env.REACT_APP_STRAVA_REFRESH_TOKEN}&grant_type=refresh_token`,
-      GET_ACTIVITIES_INFO_2023=`https://www.strava.com/api/v3/athlete/activities?before=${END_TIME_2023}&after=${START_TIME_2023}&per_page=100`,
-      STRAVA_WEBSITE_URL='https://www.strava.com';
+      GET_ACTIVITIES_INFO=`https://www.strava.com/api/v3/athlete/activities?before=${END_TIME}&after=${START_TIME}&per_page=100`,
+      STRAVA_WEBSITE_URL='https://www.strava.com',
+      YEARLY_ACTIVITY_DATA = {
+        2022: {
+          'run': 396,
+          'cycle': 413,
+        },
+        2023: {
+          'run': 227,
+          'cycle': 432,
+        }
+      }
 
 const CardGrid = styled.div`
   display: grid;
@@ -52,6 +62,26 @@ const CardGrid = styled.div`
     grid-row-gap: 16px;
   }
 `;
+
+const StyledYearDropdown = styled.select`
+  border: none;
+  outline: none;
+  background-color: transparent;
+  display: inline-block;
+  color: ${(props) => props.theme['content-color-secondary']};
+  font-size: ${(props) => props.theme['font-size-s']};
+  font-family: ${(props) => props.theme['font-family-pageHeading']};
+`;
+
+function YearDropdown (props) {
+  const { handleYearSelection, selectedYear } = props;
+  return (
+    <StyledYearDropdown value={selectedYear} onChange={handleYearSelection}>
+      <option value='2023'>in 2023</option>
+      <option value='2022'>in 2022</option>
+    </StyledYearDropdown>
+  );
+}
 
 function StravaLogo() {
   return (
@@ -122,15 +152,15 @@ function populateLastActivity(allActivities) {
 
 function calculateTotalDistance(allActivities) {
   const DISTANCE_TO_KAMATIGARDEN = 2.25;
-  let totalDistanceCycled, totalDistanceWalked;
+  let totalDistanceCycled = 0, totalDistanceWalked = 0;
 
   if(Array.isArray(allActivities) && allActivities.length !== 0) {
     const allRunningActivities = allActivities.filter(activity => activity.type === 'Run' || activity.type === 'Walk');
     const allCyclingActivities = allActivities.filter(activity => activity.type === 'Ride');
     const noOfRidesToKamatiGardens = allActivities.filter(activity => activity.name.includes('Ride to Kamatibaug')).length;
-
-    totalDistanceWalked = allRunningActivities.map(activity => activity.distance/1000).reduce((prev, next) => prev + next);
-    totalDistanceCycled = allCyclingActivities.map(activity => activity.distance/1000).reduce((prev, next) => prev + next) + (DISTANCE_TO_KAMATIGARDEN*2*noOfRidesToKamatiGardens);
+    
+    totalDistanceWalked =allRunningActivities.map(activity => activity.distance/1000).reduce((prev, next) => prev + next, 0);
+    totalDistanceCycled = allCyclingActivities.map(activity => activity.distance/1000).reduce((prev, next) => prev + next, 0) + (DISTANCE_TO_KAMATIGARDEN*2*noOfRidesToKamatiGardens);
   }
 
   return {
@@ -148,6 +178,7 @@ function StravaUpdates() {
   const [fallbackCycledDistance, setFallbackCycledDistance] = useLocalStorage('fallbackCycledDistance', 0);
   const [isLoading, setLoading] = useState(true);
   const [lastActivity, setLastActivity] = useState({ distance: 0, type: '', name: '', map: '' });
+  const [selectedYear, setSelectedYear] = useState('2023');
 
   useEffect(() => {
     axios.post(GET_STRAVA_ACCESS_TOKEN_URL)
@@ -156,7 +187,7 @@ function StravaUpdates() {
 
         return axios({
           method: 'get',
-          url: GET_ACTIVITIES_INFO_2023,
+          url: GET_ACTIVITIES_INFO,
           headers: {
             Authorization: `Bearer ${access_token}`
           }
@@ -171,7 +202,7 @@ function StravaUpdates() {
 
         const { totalDistanceCycled, totalDistanceWalked } = calculateTotalDistance(activities);
 
-        if ( totalDistanceCycled !== 0 && totalDistanceWalked !==0 ) {
+        if ( totalDistanceCycled !== 0 && totalDistanceWalked !== 0 ) {
           setTotalDistanceCycled(totalDistanceCycled);
           setTotalDistanceWalked(totalDistanceWalked);
           setFallbackCycledDistance(totalDistanceCycled);
@@ -191,6 +222,11 @@ function StravaUpdates() {
         }
       })
   }, []);
+
+  const handleYearSelection = (event) => {
+    const newSelectedYear = event.target.value;
+    setSelectedYear(newSelectedYear);
+  }
 
   return (
     <>
@@ -221,29 +257,35 @@ function StravaUpdates() {
         <DashboardCard
           brand='strava'
           heading='Running'
-          subHeading='in 2023'
-          content={isLoading ? <Spinner /> : `${totalDistanceWalked}km`}
+          subHeading='in 2024'
+          content={isLoading ? <Spinner /> : `${totalDistanceWalked} km`}
           metaIcon={<Emoji size='xl' ariaLabel="running-man" emoji="🏃" />}
         />
         <DashboardCard
           brand='strava'
           heading='Cycling'
-          subHeading='in 2023'
-          content={isLoading ? <Spinner /> : `${totalDistanceCycled}km`}
+          subHeading='in 2024'
+          content={isLoading ? <Spinner /> : `${totalDistanceCycled} km`}
           metaIcon={<Emoji size='xl' ariaLabel="cycling-man" emoji="🚴‍♂️" />}
         />
         <DashboardCard
           brand='strava'
           heading='Running'
-          subHeading='in 2022'
-          content={isLoading ? <Spinner /> : `${396}km`}
+          subHeading={<YearDropdown
+            handleYearSelection={handleYearSelection}
+            selectedYear={selectedYear}
+          />}
+          content={isLoading ? <Spinner /> : `${YEARLY_ACTIVITY_DATA[selectedYear].run} km`}
           metaIcon={<Emoji size='xl' ariaLabel="running-man" emoji="🏃" />}
         />
         <DashboardCard
           brand='strava'
           heading='Cycling'
-          subHeading='in 2022'
-          content={isLoading ? <Spinner /> : `${413}km`}
+          subHeading={<YearDropdown
+            handleYearSelection={handleYearSelection}
+            selectedYear={selectedYear}
+          />}
+          content={isLoading ? <Spinner /> : `${YEARLY_ACTIVITY_DATA[selectedYear].cycle} km`}
           metaIcon={<Emoji size='xl' ariaLabel="cycling-man" emoji="🚴‍♂️" />}
         />
       </CardGrid>
