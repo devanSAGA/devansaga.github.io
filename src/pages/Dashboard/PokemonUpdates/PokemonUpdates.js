@@ -1,124 +1,144 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import { POKEMON_DATA } from './pokemon_data';
+import {
+  PokedexEmptyState,
+  PokedexFilters,
+  PokedexHeader,
+  PokemonGrid,
+  PokemonGridItem,
+  PokemonInfo,
+  PokemonSprite,
+  StyledPokedexContainer,
+  StyledRadioGroup,
+  StyledRegionDropdown
+} from './styles';
 
-// UI components
-import DashboardCard from '../../../components/DashboardCards/DashboardCard';
-import Spinner from '../../../components/Spinner/Spinner';
-import PokeballLogo from './PokeballLogo';
-
-const POKEAPI_BASE_URL = 'https://pokeapi.co/api/v2/pokemon';
-const AIRTABLE_API_BASE_URL = 'https://api.airtable.com/v0';
-const POKEMON_GO_ACTIVITY_TABLE_ID = 'tblrVOOZwayk82Ffu';
-const GET_POKEMON_GO_ACTIVITY_URL = `${AIRTABLE_API_BASE_URL}/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${POKEMON_GO_ACTIVITY_TABLE_ID}`;
-
-const LastCaughtPokemonCard = styled(DashboardCard)`
-  position: relative;
-  width: 50%;
-
-  .pokemon-sprite {
-    position: absolute;
-    background-color: #001F3D;
-    border: 1px solid ${(props) => props.theme['pokemon-primary-color']};
-    border-radius: 8px;
-    left: 8px;
-    bottom: 8px;
+// constants
+const POKEMON_STATUS_CAUGHT = 'caught';
+const POKEMON_STATUS_UNCAUGHT = 'uncaught';
+const POKEMON_FILTER_OPTIONS = [
+  { value: POKEMON_STATUS_CAUGHT, label: 'Caught'},
+  { value: POKEMON_STATUS_UNCAUGHT, label: 'Uncaught'}
+];
+const POKEMON_REGION_DATA = {
+  'kanto': {
+    uncaught: [],
+    firstPokemonIndex: 0,
+    lastPokemonIndex: 151, 
+  },
+  'johto': {
+    uncaught: [201, 239],
+    firstPokemonIndex: 151,
+    lastPokemonIndex: 251,
+  },
+  'hoenn': {
+    uncaught: [321, 357, 367, 369],
+    firstPokemonIndex: 251,
+    lastPokemonIndex: 386
+  },
+  'sinnoh': {
+    uncaught: [413, 423, 462, 469, 476, 477, 479, 489, 490],
+    firstPokemonIndex: 386,
+    lastPokemonIndex: 492
   }
+};
+const POKEMON_SPRITE_BASE_URL = 'https://img.pokemondb.net/sprites/diamond-pearl/normal/';
 
-  @media (min-width: 469px) and (max-width: 768px) {
-    width: 100%;
-  }
-
-  @media (max-width: 468px) {
-    width: 100%;
-  }
-`;
-
-const ErrorMessage = styled.span`
-  display: inline-block;
-  width: 242px;
-  color: #F37264;
-  font-size: ${(props) => props.theme['font-size-m']};
-  font-family: ${(props) => props.theme['font-family-primary']};
-  line-height: 1;
-`;
-
+// utils functions
 const capitalizeFirstLetter = (str = '') => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-const getSubHeading = (name, id) => {
-  return `${capitalizeFirstLetter(name)} #${id}`;
-}
-
-export default function PokemonUpdates () {
-  const [isLoading, setLoading] = useState(true);
-  const [pokemon, setPokemon] = useState(null);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    setError(false);
-
-    fetch(GET_POKEMON_GO_ACTIVITY_URL, {
-      method: 'get',
-      headers: {
-        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_TOKEN}`
-      }
-    })
-    .then((response) => response.json())
-    .then((data) => {
-      const POKEMON_ID = data?.records?.[0]?.fields?.last_caught_pokemon_id || 132;
-
-      fetch(`${POKEAPI_BASE_URL}/${POKEMON_ID}`)
-      .then((response) => response.json())
-      .then((pokemon) => {
-        setLoading(false);
-        setPokemon(pokemon);
-      })
-    })
-    .catch(() => {
-      setLoading(false);
-      setError(true);
-    })
-  }, []);
-
-  const renderPokemonContent = (sprites, error) => {
-    if (error) {
-      return <ErrorMessage>Team Rocket attacked! Couldn't fetch the data.</ErrorMessage>
-    }
-
-    const spriteURL = 
-      sprites?.versions?.['generation-v']?.['black-white']?.animated?.front_default ||
-      sprites?.front_default
-
-    if (spriteURL) {
-      return (
-        <img
-          height='96px'
-          width='96px'
-          className='pokemon-sprite'
-          src={spriteURL}
-        />
-      );
-    }
-
-    return null;
+const formatPokemonIndex = (index) => {
+  if (index < 10) {
+    return '#00' + index;
+  } else if (index >=10 && index <= 99) {
+    return '#0' + index;
   }
 
-  const { name, id, sprites } = pokemon || {};
+  return '#' + index;
+}
+
+export default function Pokedex() {
+  const [caughtPokemons, setCaughtPokemons] = useState([]);
+  const [uncaughtPokemons, setUncaughtPokemons] = useState([]);
+  const [region, setRegion] = useState('kanto');
+  const [caughtStatus, setCaughtStatus] = useState(POKEMON_FILTER_OPTIONS[0].value);
+
+  useEffect(() => {
+    const currentRegionData = POKEMON_REGION_DATA[region];
+    const regionWiseFilteredPokemons = POKEMON_DATA
+      .slice(currentRegionData.firstPokemonIndex, currentRegionData.lastPokemonIndex)
+    
+      const updatedCaughtPokemons = [], updatedUncaughtPokemons = [];
+      for (const pokemon of regionWiseFilteredPokemons) {
+        if (currentRegionData.uncaught.includes(pokemon.id)) {
+          updatedUncaughtPokemons.push(pokemon);
+        } else {
+          updatedCaughtPokemons.push(pokemon);
+        }
+      }
+      
+    setCaughtPokemons(updatedCaughtPokemons);
+    setUncaughtPokemons(updatedUncaughtPokemons);
+  }, [caughtStatus, region]);
+
+  const handleRegionSelect = (event) => {
+    const newSelectedRegion = event.target.value;
+    setRegion(newSelectedRegion);
+  }
+
+  const pokemonsList = caughtStatus === POKEMON_STATUS_CAUGHT ? caughtPokemons : uncaughtPokemons;
 
   return (
-    <LastCaughtPokemonCard
-      brand='pokemon'
-      heading='Latest capture in Pokémon Go!'
-      subHeading={(name && id && !error) ? getSubHeading(name, id) : ''}
-      subHeadingPosition='bottom'
-      content={isLoading ? <Spinner /> : (
-        <>
-          {renderPokemonContent(sprites, error)}
-        </>
-      )}
-      metaIcon={<PokeballLogo />}
-    />
+    <StyledPokedexContainer>
+      <PokedexHeader>
+        <h3 className='pokedex_header--title'>Pokédex</h3>
+        <div className='pokedex_header--circles'>
+          <div className='circle red-circle' />
+          <div className='circle yellow-circle' />
+          <div className='circle green-circle' />
+        </div>
+      </PokedexHeader>
+      <PokedexFilters>
+        <StyledRadioGroup
+          options={POKEMON_FILTER_OPTIONS}
+          value={caughtStatus}
+          onChange={setCaughtStatus}
+          color='pokedex-secondary-color'
+        />
+        <StyledRegionDropdown onChange={handleRegionSelect}>
+          <option value='kanto'>Kanto</option>
+          <option value='johto'>Johto</option>
+          <option value='hoenn'>Hoenn</option>
+          <option value='sinnoh'>Sinnoh</option>
+        </StyledRegionDropdown>
+      </PokedexFilters>
+        {pokemonsList.length === 0 ? (
+          <PokedexEmptyState>
+            <span className='pokedex_emptystate--message'>
+              No uncaught pokémon in this region.
+            </span>
+            <span className='pokedex_emptystate--message'>
+              All caught!
+            </span>
+          </PokedexEmptyState>
+        ) : (
+          <PokemonGrid>
+          {pokemonsList.map((pokemon) => {
+            return (
+              <PokemonGridItem key={pokemon.id}>
+                <PokemonSprite src={`${POKEMON_SPRITE_BASE_URL}${pokemon.name}.png`} />
+                <PokemonInfo>
+                  <span className='pokemon_name'>{capitalizeFirstLetter(pokemon.name)}</span>
+                  <span className='pokemon_index'>{formatPokemonIndex(pokemon.id)}</span>
+                </PokemonInfo>
+              </PokemonGridItem>
+            );
+          }
+          )}
+          </PokemonGrid>
+        )}
+    </StyledPokedexContainer>
   );
 }
