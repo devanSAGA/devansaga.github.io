@@ -39,7 +39,11 @@ export const pageSpecificTokens = {
     dashboard: {
       'strava-primary-color': '#E05320',
       'spotify-primary-color': '#6ED2B7',
-      'pokemon-primary-color': '#389CFF'
+      'pokemon-primary-color': '#389CFF',
+      'pokedex-primary-color': '#C63C51',
+      'pokedex-secondary-color': '#ca5959',
+      'pokedex-tertiary-color': '#7b0000',
+      'pokedex-border-color': '#9f2e2e'
     },
     imdp: {
       'imdp-primary-color': '#564da8',

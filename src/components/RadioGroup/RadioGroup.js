@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const RadioGroupContainer = styled.div`
 	display: inline-flex;
 	position: relative;
-  border: 1px solid rgb(86 77 168);
+  border: 1px solid ${(props) => props.theme[props.color]};
 	padding: 8px;
 	border-radius: 100px;
   * {
@@ -17,7 +17,7 @@ const RadioGroupContainer = styled.div`
 
   input[type="radio"]:checked {
     & + label {
-      color: #F7F2FF;
+      color: ${({theme}) => theme['content-color-primary']};
     }
   }
 
@@ -34,7 +34,7 @@ const RadioGroupContainer = styled.div`
     display: flex;
     height: 24px;
     width: 140px;
-    background-color: ${(props) => props.theme['imdp-primary-color']};
+    background-color: ${(props) => props.theme[props.color]};
     z-index: 1;
     border-radius: 100px;
     transition: 0.3s ease-out;
@@ -60,10 +60,10 @@ const StyledLabel = styled.label`
 `;
 
 export default function RadioGroup(props) {
-  const { options, value, onChange } = props;
+  const { options, value, onChange, className, color = 'imdp-primary-color' } = props;
 
   return (
-    <RadioGroupContainer>
+    <RadioGroupContainer className={className} color={color}>
       {options.map((option, index) => {
         const isChecked = value === option.value;
         return (
