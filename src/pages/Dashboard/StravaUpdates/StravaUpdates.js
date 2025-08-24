@@ -29,8 +29,8 @@ const MONTH_NUMBER_TO_NAME_MAPPING = {
   12: 'Dec'
 };
 
-const END_TIME=1735671300, // Epoch time of 31st Dec 2024
-      START_TIME=1704052860, // Epoch time of 1st Jan 2024
+const END_TIME=1767225540, // Epoch time of 31st Dec 2025
+      START_TIME=1735426860, // Epoch time of 1st Jan 2025
       GET_STRAVA_ACCESS_TOKEN_URL=`https://www.strava.com/oauth/token?client_id=${process.env.REACT_APP_STRAVA_CLIENT_ID}&client_secret=${process.env.REACT_APP_STRAVA_CLIENT_SECRET}&refresh_token=${process.env.REACT_APP_STRAVA_REFRESH_TOKEN}&grant_type=refresh_token`,
       GET_ACTIVITIES_INFO=`https://www.strava.com/api/v3/athlete/activities?before=${END_TIME}&after=${START_TIME}&per_page=100`,
       STRAVA_WEBSITE_URL='https://www.strava.com',
@@ -42,6 +42,10 @@ const END_TIME=1735671300, // Epoch time of 31st Dec 2024
         2023: {
           'run': 227,
           'cycle': 432,
+        },
+        2024: {
+          'run': 296,
+          'cycle': 13,
         }
       }
 
@@ -77,6 +81,7 @@ function YearDropdown (props) {
   const { handleYearSelection, selectedYear } = props;
   return (
     <StyledYearDropdown value={selectedYear} onChange={handleYearSelection}>
+      <option value='2024'>in 2024</option>
       <option value='2023'>in 2023</option>
       <option value='2022'>in 2022</option>
     </StyledYearDropdown>
@@ -170,15 +175,15 @@ function calculateTotalDistance(allActivities) {
 }
 
 function StravaUpdates() {
-  const [totalDistanceWalked, setTotalDistanceWalked] = useState(0);
-  const [totalDistanceCycled, setTotalDistanceCycled] = useState(0);
+  const [totalDistanceWalked, setTotalDistanceWalked] = useState(-1);
+  const [totalDistanceCycled, setTotalDistanceCycled] = useState(-1);
   const [coordinates, setCoordinates] = useState([]);
 
   const [fallbackWalkedDistance, setFallbackWalkedDistance] = useLocalStorage('fallbackWalkedDistance', 0);
   const [fallbackCycledDistance, setFallbackCycledDistance] = useLocalStorage('fallbackCycledDistance', 0);
   const [isLoading, setLoading] = useState(true);
   const [lastActivity, setLastActivity] = useState({ distance: 0, type: '', name: '', map: '' });
-  const [selectedYear, setSelectedYear] = useState('2023');
+  const [selectedYear, setSelectedYear] = useState('2024');
 
   useEffect(() => {
     axios.post(GET_STRAVA_ACCESS_TOKEN_URL)
@@ -195,6 +200,7 @@ function StravaUpdates() {
       })
       .then(response => response.data)
       .then(activities => {
+        console.log(activities);
         const lastActivity = populateLastActivity(activities);
         const newCoordinates = getCoordinates(lastActivity);
         setLastActivity(lastActivity);
@@ -202,7 +208,7 @@ function StravaUpdates() {
 
         const { totalDistanceCycled, totalDistanceWalked } = calculateTotalDistance(activities);
 
-        if ( totalDistanceCycled !== 0 && totalDistanceWalked !== 0 ) {
+        if ( totalDistanceCycled !== -1 && totalDistanceWalked !== -1 ) {
           setTotalDistanceCycled(totalDistanceCycled);
           setTotalDistanceWalked(totalDistanceWalked);
           setFallbackCycledDistance(totalDistanceCycled);
@@ -257,14 +263,14 @@ function StravaUpdates() {
         <DashboardCard
           brand='strava'
           heading='Running'
-          subHeading='in 2024'
+          subHeading='in 2025'
           content={isLoading ? <Spinner /> : `${totalDistanceWalked} km`}
           metaIcon={<Emoji size='xl' ariaLabel="running-man" emoji="🏃" />}
         />
         <DashboardCard
           brand='strava'
           heading='Cycling'
-          subHeading='in 2024'
+          subHeading='in 2025'
           content={isLoading ? <Spinner /> : `${totalDistanceCycled} km`}
           metaIcon={<Emoji size='xl' ariaLabel="cycling-man" emoji="🚴‍♂️" />}
         />
